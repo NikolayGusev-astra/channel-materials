@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Стек Hermes — инструкция</title>
+<style>
+  :root { color-scheme: inherit; }
+  body {
+    color: var(--foreground);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .wrap { max-width: 1020px; padding: 4px 2px 12px; }
+  h1 { font-size: 1.45rem; margin: 0 0 2px; letter-spacing: -0.01em; }
+  .meta { color: var(--muted-foreground); font-size: 12px; margin-bottom: 14px; }
+  .meta code { font-size: 11px; }
+  h2 { font-size: 1.02rem; margin: 20px 0 8px; }
+  code, .mono {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 10px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .card .head { display: flex; align-items: center; gap: 9px; margin-bottom: 6px; }
+  .card .head svg { width: 26px; height: 26px; color: var(--accent); flex: none; }
+  .card .name { font-weight: 650; font-size: 13.5px; }
+  .card .tag { color: var(--muted-foreground); font-size: 11.5px; }
+  .card ul { margin: 6px 0 0; padding-left: 16px; }
+  .card li { margin: 3px 0; font-size: 12.5px; }
+  .card li.cmd code { display: inline-block; margin: 1px 0; }
+  .warn {
+    margin-top: 7px;
+    font-size: 12px;
+    border-left: 3px solid var(--accent);
+    padding: 4px 8px;
+    background: color-mix(in srgb, var(--accent) 9%, transparent);
+    border-radius: 0 6px 6px 0;
+  }
+  .diagram {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 10px;
+  }
+  .diagram svg { width: 100%; height: auto; color: var(--foreground); display: block; }
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; margin-top: 8px; }
+  th, td { border: 1px solid var(--border); padding: 5px 9px; text-align: left; vertical-align: top; }
+  th { background: color-mix(in srgb, var(--accent) 12%, transparent); font-weight: 650; }
+  td.m { white-space: nowrap; }
+  .footer { color: var(--muted-foreground); font-size: 11.5px; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 8px; }
+  .kbd { font-size: 11px; border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; background: var(--card); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Стек Hermes — шпаргалка</h1>
+  <div class="meta">2026-09-07 · источник: <code>C:\Work\llm-wiki\wiki\concepts\installed-stack-instructions.md</code> · всё проверено живыми прогонами</div>
+
+  <div class="warn" style="margin:0 0 14px;">
+    <b>Свежая сессия.</b> Новые MCP-серверы (chrome-devtools, headroom) видны только после рестарта сессии. Текущая сессия их не видит — это нормально.
+  </div>
+
+  <h2>Шесть инструментов</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 8.5h19"/><circle cx="5.4" cy="6.2" r=".6" fill="currentColor" stroke="none"/><circle cx="7.6" cy="6.2" r=".6" fill="currentColor" stroke="none"/><circle cx="9.8" cy="6.2" r=".6" fill="currentColor" stroke="none"/><path d="M12 12.5l4 2.2-4 2.2z" fill="currentColor" stroke="none"/><path d="M17.5 12h2.5M17.5 15h2.5" stroke-linecap="round"/></svg>
+        <div><div class="name">chrome-devtools-mcp</div><div class="tag">инспекция живого Chrome · 26 тулов</div></div>
+      </div>
+      <ul>
+        <li>Консоль с source-mapped стеками, network, снапшоты DOM, скриншоты, perf-трейсы</li>
+        <li>Тулы появляются в сессии автоматически: <code>take_snapshot</code>, <code>list_console_messages</code>, <code>network_requests</code>…</li>
+        <li>Телеметрия Google отключена: <code>--no-usage-statistics</code></li>
+      </ul>
+      <div class="warn">Не навешивать на профиль с личными сессиями то, что не хочешь светить агенту.</div>
+    </div>
+
+    <div class="card">
+      <div class="head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16M4 20h16" stroke-linecap="round"/><path d="M12 7v4m0 0l-2.2-2.2M12 11l2.2-2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17v-4m0 0l-2.2 2.2M12 13l2.2 2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="8.5" y="4" width="7" height="16" rx="1.5" opacity=".35"/></svg>
+        <div><div class="name">headroom</div><div class="tag">сжатие контекста · CLI + MCP</div></div>
+      </div>
+      <ul>
+        <li><code>headroom_compress</code> → жмёт лог/JSON (60–95% на JSON), отдаёт хеш</li>
+        <li><code>headroom_retrieve</code> — оригинал по хешу; <code>headroom_stats</code> — экономия</li>
+        <li>Типовой проход: длинный лог → compress → reasoning по сжатому</li>
+      </ul>
+      <div class="warn"><code>hermes mcp test headroom</code> может дать ложный «Connection closed» — сервер жив, проверять прямым stdio-прогоном.</div>
+    </div>
+
+    <div class="card">
+      <div class="head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="8" r="2.4"/><circle cx="10" cy="17.5" r="2.4"/><path d="M8.2 7l7.4 1M7 8.2l2 7M16.6 10l-4.8 5.6"/></svg>
+        <div><div class="name">graphify</div><div class="tag">кодбаза → граф знаний</div></div>
+      </div>
+      <ul>
+        <li>Код-парсинг tree-sitter локально; семантика — через LM Studio <code>:1234</code>, бесплатно</li>
+        <li><code>graphify &lt;repo&gt; --yes --backend openai</code> с env (ниже)</li>
+        <li><code>graphify query "auth flow" --graph graphify-out/graph.json</code></li>
+      </ul>
+      <div class="warn">Обязательный env: <code>OLLAMA_HOST=127.0.0.1:11434</code> + <code>OPENAI_BASE_URL=http://127.0.0.1:1234/v1 OPENAI_API_KEY=lm-studio</code>. Глобальный <code>OLLAMA_HOST=0.0.0.0</code> ломает запуск.</div>
+    </div>
+
+    <div class="card">
+      <div class="head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M6 9.5l3 2.7-3 2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.5 15h6" stroke-linecap="round"/><circle cx="18.5" cy="6.8" r="1.1" opacity=".6"/></svg>
+        <div><div class="name">agent-browser</div><div class="tag">второй браузерный стек · Rust CLI</div></div>
+      </div>
+      <ul>
+        <li><code>agent-browser open &lt;url&gt;</code> / <code>text</code> / <code>snapshot</code> — 0.2–0.8s</li>
+        <li>Захват логинов: <code>--auto-connect state save auth.json</code> → работать через <code>--state auth.json</code></li>
+        <li><code>network requests</code>, <code>trace start/stop</code>, batch с <code>--bail</code></li>
+      </ul>
+      <div class="warn">ВСЕГДА <code>export NO_PROXY="127.0.0.1,localhost"</code> — иначе системный прокси вешает localhost-CDP. Деление: встроенный browser_exec — сессия; agent-browser — CLI, пакеты, auth, трейсы.</div>
+    </div>
+
+    <div class="card">
+      <div class="head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="7.2" height="7.2" rx="1.6"/><rect x="13.3" y="3.5" width="7.2" height="7.2" rx="1.6"/><rect x="3.5" y="13.3" width="7.2" height="7.2" rx="1.6"/><rect x="13.3" y="13.3" width="7.2" height="7.2" rx="1.6" opacity=".45"/></svg>
+        <div><div class="name">agent-skills ×25</div><div class="tag">инженерные скиллы в /cursor</div></div>
+      </div>
+      <ul>
+        <li>Префикс <code>agent-skills-</code>: API-дизайн, security, observability, performance, деплой, CI/CD…</li>
+        <li>«спроектируй API» → <code>agent-skills-api-and-interface-design</code></li>
+        <li>«hardening / аудит зависимостей» → <code>agent-skills-security-and-hardening</code></li>
+        <li>Полный список: <code>_cursor_index.md</code>, группа agent-skills</li>
+      </ul>
+      <div class="warn">Родной TDD-скилл (от superpowers) остался <code>test-driven-development</code>; порт — <code>agent-skills-test-driven-development</code>. Не путать.</div>
+    </div>
+
+    <div class="card">
+      <div class="head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="5" cy="12" r="2.2"/><circle cx="18.5" cy="5.5" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="18.5" cy="18.5" r="2"/><path d="M7.2 11.2L16.6 6M7.2 12h9.8M7.2 12.8l9.2 5"/></svg>
+        <div><div class="name">model-routing</div><div class="tag">автовыбор модели · экономия лимитов</div></div>
+      </div>
+      <ul>
+        <li>Скоринг запроса (11 сигналов) → категория → цепочка из 3 звеньев</li>
+        <li>Звенья диверсифицируют <b>провайдеров</b>: zcode → codex → free</li>
+        <li>Правила и диаграмма — ниже</li>
+      </ul>
+      <div class="warn">Спросить «какой моделью делать» или «usage limit что делать» — роутер сработает. Твоё явное «сделай на sol» перекрывает скоринг.</div>
+    </div>
+
+  </div>
+
+  <h2>model-routing: как работает выбор</h2>
+  <div class="diagram">
+    <svg viewBox="0 0 980 168" font-size="12">
+      <g fill="none" stroke="var(--border)" stroke-width="1.4">
+        <rect x="8" y="52" width="150" height="64" rx="9" fill="var(--card)"/>
+        <rect x="208" y="30" width="200" height="108" rx="9" fill="var(--card)"/>
+        <rect x="458" y="52" width="120" height="64" rx="9" fill="var(--card)"/>
+        <rect x="628" y="30" width="344" height="108" rx="9" fill="var(--card)"/>
+      </g>
+      <g stroke="currentColor" stroke-width="1.4" fill="none">
+        <path d="M158 84h42m0 0l-6-5m6 5l-6 5"/>
+        <path d="M408 84h42m0 0l-6-5m6 5l-6 5"/>
+        <path d="M578 84h42m0 0l-6-5m6 5l-6 5"/>
+      </g>
+      <g fill="currentColor">
+        <text x="83" y="78" text-anchor="middle" font-weight="650">запрос</text>
+        <text x="83" y="96" text-anchor="middle" opacity=".6">на входе делегата</text>
+        <text x="308" y="54" text-anchor="middle" font-weight="650">скоринг · 11 сигналов</text>
+        <text x="308" y="74" text-anchor="middle" opacity=".7">exhaustive +4 · subtasks +4 · arch +3</text>
+        <text x="308" y="92" text-anchor="middle" opacity=".7">impact +3 · risk/debug/fanout +2</text>
+        <text x="308" y="110" text-anchor="middle" opacity=".7">cross_file +2 · simple −2</text>
+        <text x="308" y="128" text-anchor="middle" opacity=".7">пороги: 0–2 / 3–5 / 6–9 / 10+</text>
+        <text x="518" y="78" text-anchor="middle" font-weight="650">категория</text>
+        <text x="518" y="96" text-anchor="middle" opacity=".6">quick · standard · deep</text>
+        <text x="518" y="112" text-anchor="middle" opacity=".6">architect · ultrabrain · writing</text>
+        <text x="800" y="54" text-anchor="middle" font-weight="650">цепочка из 3 звеньев</text>
+        <text x="800" y="78" text-anchor="middle" opacity=".7">primary → secondary → tertiary</text>
+        <text x="800" y="98" text-anchor="middle" opacity=".7">диверсификация провайдеров:</text>
+        <text x="800" y="116" text-anchor="middle" opacity=".7">zcode → codex → nous/openrouter</text>
+      </g>
+    </svg>
+  </div>
+
+  <h2>Цепочки по категориям</h2>
+  <table>
+    <tr><th>Категория</th><th>Тип задач</th><th>Цепочка</th></tr>
+    <tr><td class="m"><b>quick</b></td><td>однострочники, ренеймы, форматы</td><td class="mono">zcode/glm-flash → codex/luna → nous/free</td></tr>
+    <tr><td class="m"><b>standard</b></td><td>код 1–2 файла, багфиксы</td><td class="mono">zcode/glm-5.3 → codex/luna → codex/terra</td></tr>
+    <tr><td class="m"><b>deep</b></td><td>многофайловые правки, диагностика</td><td class="mono">codex/terra → zcode/glm-5.3 → codex/sol</td></tr>
+    <tr><td class="m"><b>architect</b></td><td>архитектура, ADR, security-аудит</td><td class="mono">codex/sol → zcode/glm-5.3 → codex/terra</td></tr>
+    <tr><td class="m"><b>writing</b></td><td>доки, проза, переводы</td><td class="mono">nous/free → openrouter/:free → zcode/glm-5.3</td></tr>
+    <tr><td class="m"><b>ultrabrain</b></td><td>тяжелейший анализ</td><td class="mono">codex/sol (xhigh) → codex/terra → спросить юзера</td></tr>
+  </table>
+
+  <h2>Железные правила переключения</h2>
+  <div class="grid">
+    <div class="card"><b>codex «usage limit»</b> — кап аккаунта: все 3 модели падают разом. Прыжок на zcode/free, не на соседнюю модель codex.</div>
+    <div class="card"><b>429 на free-модели</b> — следующее звено цепочки, не ретрай той же. Ретрай — только после сброса окна.</div>
+    <div class="card"><b>≤ 2 звена подряд</b> у одного провайдера. luna → terra ок; luna → terra → sol при капе бессмысленно.</div>
+    <div class="card"><b>Free-звенья:</b> интерактив — последними (медленно); writing/batch — первыми (экономия главнее).</div>
+  </div>
+
+  <h2>Грабли, на которые я уже наступил</h2>
+  <div class="diagram">
+    <ul style="margin:4px 0; padding-left:18px; font-size:12.5px;">
+      <li><b>hermes mcp add</b> пишет <code>--connect-timeout</code> в args сервера — после регистрации проверить блок в config.yaml руками</li>
+      <li><b>hermes mcp test</b> даёт ложный «Connection closed» на живом сервере — валидировать venv-клиентом mcp или прямым stdio-прогоном</li>
+      <li><b>Прокси vs localhost:</b> всё, что ходит на 127.0.0.1 (CDP 9223, LM Studio 1234), требует <code>NO_PROXY=127.0.0.1,localhost</code></li>
+      <li><b>OLLAMA_HOST=0.0.0.0</b> (глобальная env) валит graphify — переопределять точечно на <code>127.0.0.1</code></li>
+      <li><b>graphify + ollama-бэкенд</b> требует extra <code>graphifyy[ollama]</code>; рабочий путь — <code>--backend openai</code> на LM Studio</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    Где что лежит: скилл роутера — <code>skills/dev/model-routing</code> · порты — <code>skills/agent-skills-*</code> · инструкция — <code>llm-wiki wiki/concepts/installed-stack-instructions.md</code> · лог маршрутов — <code>~/.hermes/model-routing-log.jsonl</code> · Chrome for Testing — <code>~\.agent-browser\browsers\</code>
+  </div>
+
+</div>
+</body>
+</html>
