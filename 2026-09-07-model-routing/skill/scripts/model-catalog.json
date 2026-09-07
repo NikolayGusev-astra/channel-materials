@@ -1,0 +1,25 @@
+{
+  "version": "2026-09-07",
+  "note": "Free model IDs rotate: verify before using.",
+  "default_provider": "openrouter",
+  "categories": {
+    "quick": [],
+    "standard": [
+      {"provider": "codex", "model": "gpt-5.6-terra", "mode": "delegate", "command": "codex exec -m gpt-5.6-terra \"{task}\""},
+      {"provider": "zcode", "model": "glm-5.3", "mode": "delegate", "command": "zcode -p \"{task}\""},
+      {"provider": "openrouter", "model": "tencent/hy3:free", "mode": "direct", "command": "curl -s https://openrouter.ai/api/v1/chat/completions -H \"Authorization: Bearer $OPENROUTER_API_KEY\" -d '{\"model\":\"tencent/hy3:free\",\"messages\":[{\"role\":\"user\",\"content\":\"{task}\"}]}'"}
+    ],
+    "deep": [
+      {"provider": "codex", "model": "gpt-5.6-terra", "mode": "delegate", "command": "codex exec -m gpt-5.6-terra \"{task}\""},
+      {"provider": "zcode", "model": "glm-5.3", "mode": "delegate", "command": "zcode -p \"{task}\""},
+      {"provider": "openrouter", "model": "tencent/hy3:free", "mode": "direct", "command": "curl -s https://openrouter.ai/api/v1/chat/completions -H \"Authorization: Bearer $OPENROUTER_API_KEY\" -d '{\"model\":\"tencent/hy3:free\",\"messages\":[{\"role\":\"user\",\"content\":\"{task}\"}]}'"}
+    ],
+    "architect": [
+      {"provider": "codex", "model": "gpt-5.6-sol", "mode": "delegate", "command": "codex exec -m gpt-5.6-sol \"{task}\""},
+      {"provider": "zcode", "model": "glm-5.3", "mode": "delegate", "command": "zcode -p \"{task}\""}
+    ],
+    "ultrabrain": [
+      {"provider": "codex", "model": "gpt-5.6-sol-xhigh", "mode": "delegate", "command": "codex exec -m gpt-5.6-sol --reasoning-effort xhigh \"{task}\""}
+    ]
+  }
+}
