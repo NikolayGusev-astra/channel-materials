@@ -98,7 +98,7 @@ Vendor-заявления (70.2% у laguna) ≠ независимый заме�
 
 | Категория | Цепочка | Логика |
 |---|---|---|
-| **quick** | zcode/glm-flash → kilo OR ling-3.0-flash:free → codex/luna | рутина не заслуживает terra |
+| **quick** | zcode/glm-5-turbo → kilo OR ling-3.0-flash:free → codex/luna | рутина не заслуживает terra |
 | **standard** | zcode/glm-5.3 → kilo OR hy3:free (47.6%!) → codex/terra | free-код-модель как полноценное звено |
 | **deep** | codex/terra → zcode/glm-5.3 → kilo OR hy3:free | код-heavy free лучше, чем прыжок на sol |
 | **architect** | codex/sol → zcode/glm-5.3 → codex/terra | здесь free не дотягивает, экономим на другом |
