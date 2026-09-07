@@ -1,0 +1,49 @@
+{
+  "model": "smollm3-3b",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "\n\nок",
+      "reasoning_excerpt": "\nOkay, the user said \"Скажи 'ок' если живой. Одним словом.\" which translates to \"Say 'ok' if you're alive. In one word.\" I need to respond with just \"ок\" (which is Russian for \"ok\") and nothing else. ",
+      "elapsed": 1.2,
+      "in": 263,
+      "out": 91,
+      "reasoning_tokens": 85,
+      "error": "",
+      "fail_reason": "expect 'одно слово' not in output. content: '\\n\\nок'"
+    },
+    "T2_dispatch_en": {
+      "passed": true,
+      "content": "\nhermes-route \"Проектирование микросервиса для платежей с обеспечением безопасности и идемпотентности включает в себя следующие компоненты:\n\n1. **Платежный сервис (PaymentService):**\n   - Обеспечивает обработку транзакций.\n   - Использует безопасные протоколы, такие как HTTPS и TLS для шифрования да",
+      "reasoning_excerpt": "",
+      "elapsed": 2.1,
+      "in": 111,
+      "out": 200,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "\nSCORE: 4\nCATEGORY: deep\nCOMMAND: codex exec -m gpt-5.6-sol\nREASON: The task requires a deep analysis of the codebase to identify and fix all instances where deprecated APIs are used, ensuring that the solution is comprehensive and addresses every occurrence effectively.\n\nTo perform this task, I wil",
+      "reasoning_excerpt": "",
+      "elapsed": 3.2,
+      "in": 238,
+      "out": 301,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "\nOkay, the user is having trouble with payment on their e-commerce platform and needs help figuring it out. Let me start by understanding the problem better. They mentioned \"прод падает оплата,\" which",
+      "elapsed": 2.1,
+      "in": 88,
+      "out": 200,
+      "reasoning_tokens": 198,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: ''"
+    }
+  }
+}

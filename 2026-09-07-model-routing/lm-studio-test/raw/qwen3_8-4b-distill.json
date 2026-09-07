@@ -1,0 +1,49 @@
+{
+  "model": "qwen3.8-4b-distill",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "Thinking Process:\n\n1.  **Analyze the Request:** The user wants me to say \"ok\" (in Russian: \"ок\") if I am alive/active, and they explicitly request it in a single word (\"Одним словом\").\n\n2.  **Determin",
+      "elapsed": 1.5,
+      "in": 22,
+      "out": 100,
+      "reasoning_tokens": 100,
+      "error": "",
+      "fail_reason": "expect 'одно слово' not in output. content: ''"
+    },
+    "T2_dispatch_en": {
+      "passed": false,
+      "content": "# Проектирование микросервиса для платежей (Security & Idempotency)\n\n## 1. Архитектурная схема\n\n```\n┌─────────────┐     ┌──────────────┐     ┌─────────────┐\n│   Client    │────▶│ Payment API   │────▶│ Ledger DB   │\n│ (App/CLI)   │◀────│ Gateway       │◀────│ (PostgreSQL)│\n└─────────────┘     └──────",
+      "reasoning_excerpt": "Пользователь просит спроектировать микросервис для платежей с акцентом на безопасность и идемпотентность. Это задача по проектированию архитектуры, а не выполнение кода. Я должен предоставить разверну",
+      "elapsed": 2.7,
+      "in": 80,
+      "out": 200,
+      "reasoning_tokens": 80,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: '# Проектирование микросервиса для платежей (Security & Idempotency)\\n\\n## 1. Архитектурная схема\\n\\n```\\n'"
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "SCORE: 9\nCATEGORY: deep\nCOMMAND: codex exec -m gpt-5.6-terra \"найди все использование deprecated API и почини\"",
+      "reasoning_excerpt": "Пользователь просит найти все использование deprecated API и исправить их. Это задача на анализ кода, поиск устаревших паттернов и их замену.\n\nСигналы:\n- \"найди все\" → +4 (поиск всех)\n- \"deprecated AP",
+      "elapsed": 2.1,
+      "in": 197,
+      "out": 164,
+      "reasoning_tokens": 125,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": false,
+      "content": "# 🔍 План расследования падения оплаты (Production Incident)\n\n## 1. Собрать данные о масштабе проблемы\n\n```bash\n# Проверить логи на продакшене\nkubectl logs -f <payment-service-pod> --tail=50",
+      "reasoning_excerpt": "Пользователь просит помочь с проблемой падения оплаты на продакшене. Это классический инцидент, который требует системного подхода к расследованию.\n\nЯ должен:\n1. Предложить структурированный план расс",
+      "elapsed": 2.9,
+      "in": 49,
+      "out": 200,
+      "reasoning_tokens": 143,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: '# 🔍 План расследования падения оплаты (Production Incident)\\n\\n## 1. Собрать данные о масштабе проблем'"
+    }
+  }
+}

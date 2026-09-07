@@ -1,0 +1,49 @@
+{
+  "model": "granite-4.1-3b",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "ок",
+      "reasoning_excerpt": "",
+      "elapsed": 0.3,
+      "in": 27,
+      "out": 2,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": "expect 'одно слово' not in output. content: 'ок'"
+    },
+    "T2_dispatch_en": {
+      "passed": true,
+      "content": "hermes-route \"спроектируй микросервис для платежей, безопасность и идемпотентность\"",
+      "reasoning_excerpt": "",
+      "elapsed": 0.5,
+      "in": 88,
+      "out": 37,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "SCORE: 2\nCATEGORY: standard\nCOMMAND: codex exec -m gpt-5.6-terra\nREASON: Задача требует найти использование устаревших (deprecated) API и исправить их, что является стандартной задачей для модели gpt-5.6-terra в данном контексте.",
+      "reasoning_excerpt": "",
+      "elapsed": 1.1,
+      "in": 231,
+      "out": 89,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": true,
+      "content": "bash_command=\"echo \\\"У нас на прод падает оплата, помоги разобраться\\\"; hermes-route process_payment_issue\"",
+      "reasoning_excerpt": "",
+      "elapsed": 0.4,
+      "in": 65,
+      "out": 34,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    }
+  }
+}

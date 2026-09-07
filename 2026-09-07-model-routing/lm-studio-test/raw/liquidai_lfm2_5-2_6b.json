@@ -1,0 +1,49 @@
+{
+  "model": "liquidai_lfm2.5-2.6b",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "ок",
+      "reasoning_excerpt": "The user is asking me to say \"ок\" (ok) if I'm alive, in one word. This is a simple request. The word \"ок\" means \"okay\" or \"alright\" in Russian and can be used as an affirmation. Since I am an AI assis",
+      "elapsed": 1.6,
+      "in": 25,
+      "out": 96,
+      "reasoning_tokens": 93,
+      "error": "",
+      "fail_reason": "expect 'одно слово' not in output. content: 'ок'"
+    },
+    "T2_dispatch_en": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "The user wants me to design a payment microservice with security and idempotency considerations. This is a system design task. I need to create a comprehensive architecture plan that covers:\n\n1. Micro",
+      "elapsed": 2.3,
+      "in": 90,
+      "out": 200,
+      "reasoning_tokens": 200,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: ''"
+    },
+    "T3_dispatch_ru": {
+      "passed": false,
+      "content": "<|tool_call_start|>[bash(command='find / -type f -name \"*.py\" | head -50 2>/dev/null | xargs grep -l \"deprecat\" 2>/dev/null | head -20')]<|tool_call_end|>",
+      "reasoning_excerpt": "The user wants me to find all usages of deprecated APIs and fix them. This is a code analysis task where I need to:\n1. Find deprecated API usage in the codebase\n2. Fix/update those usages\n3. Calculate",
+      "elapsed": 2.9,
+      "in": 211,
+      "out": 321,
+      "reasoning_tokens": 271,
+      "error": "",
+      "fail_reason": "expect 'SCORE:' not in output. content: '<|tool_call_start|>[bash(command=\\'find / -type f -name \"*.py\" | head -50 2>/dev/null | xargs grep -l'"
+    },
+    "T4_natural": {
+      "passed": true,
+      "content": "",
+      "reasoning_excerpt": "The user is asking for help with a payment issue on production (\"прод\") and wants me to create a bash command using `hermes-route` with the user's task. However, they also said \"Не отвечай на задачу\" ",
+      "elapsed": 1.9,
+      "in": 57,
+      "out": 200,
+      "reasoning_tokens": 200,
+      "error": "",
+      "fail_reason": ""
+    }
+  }
+}

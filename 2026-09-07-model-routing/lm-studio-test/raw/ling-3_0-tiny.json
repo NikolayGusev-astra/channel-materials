@@ -1,0 +1,49 @@
+{
+  "model": "ling-3.0-tiny",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "1.  **Analyze the Request:**\n    *   Input: \"Скажи 'ок' если живой. Одним словом.\" (Say 'ok' if alive. One word.)\n    *   Constraint/Rule: The user is asking me to simulate a conditional response base",
+      "elapsed": 1.9,
+      "in": 37,
+      "out": 100,
+      "reasoning_tokens": 100,
+      "error": "",
+      "fail_reason": "expect 'одно слово' not in output. content: ''"
+    },
+    "T2_dispatch_en": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "1.  **Deconstruct the Request:**\n    *   **Topic:** Microservice for payments.\n    *   **Key Requirements:** Security, Idempotency.\n    *   **Language:** Russian.\n\n2.  **Initial Brainstorming & Archit",
+      "elapsed": 1.8,
+      "in": 92,
+      "out": 200,
+      "reasoning_tokens": 200,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: ''"
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "SCORE: 20\nCATEGORY: architect\nCOMMAND: codex exec -m gpt-5.6-sol\nREASON: Задача требует поиска и исправления deprecated API в коде, что является комплексной задачей. Она включает разбиение на этапы (разбей/план +4), выявление всех использований (найди все +4), архитектурную миграцию (архитектура +3)",
+      "reasoning_excerpt": "1.  **Analyze the Request:**\n    *   Input: \"найди все использования deprecated API и почини\" (find all uses of deprecated APIs and fix them).\n    *   Context: This is a task involving code analysis, ",
+      "elapsed": 10.3,
+      "in": 227,
+      "out": 1242,
+      "reasoning_tokens": 1060,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": true,
+      "content": "",
+      "reasoning_excerpt": "The user is asking me to help debug a payment issue that's causing a drop in sales on their platform. They want me to create a bash command for a \"hermes-route\" task related to this problem.\n\nLet me t",
+      "elapsed": 1.8,
+      "in": 71,
+      "out": 200,
+      "reasoning_tokens": 200,
+      "error": "",
+      "fail_reason": ""
+    }
+  }
+}
