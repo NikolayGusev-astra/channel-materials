@@ -41,9 +41,7 @@ zcode -p "задача"
 ```
 Если zcode тоже недоступен:
 ```
-curl -s https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -d '{"model":"tencent/hy3:free","messages":[{"role":"user","content":"задача"}]}'
+python -c "import requests; requests.post('https://openrouter.ai/api/v1/chat/completions', headers={'Authorization':'Bearer $OPENROUTER_API_KEY'}, json={'model':'tencent/hy3:free','messages':[{'role':'user','content':'задача'}]}).json()"
 ```
 
 ### deep (6–9)
@@ -56,9 +54,7 @@ zcode -p "задача"
 ```
 Если zcode тоже недоступен:
 ```
-curl -s https://openrouter.ai/api/v1/chat/completions \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -d '{"model":"tencent/hy3:free","messages":[{"role":"user","content":"задача"}]}'
+python -c "import requests; requests.post('https://openrouter.ai/api/v1/chat/completions', headers={'Authorization':'Bearer $OPENROUTER_API_KEY'}, json={'model':'tencent/hy3:free','messages':[{'role':'user','content':'задача'}]}).json()"
 ```
 
 ### architect (10+)

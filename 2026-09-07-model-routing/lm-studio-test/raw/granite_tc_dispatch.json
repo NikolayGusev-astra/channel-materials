@@ -1,0 +1,30 @@
+{
+  "quick": {
+    "verdict": "TOOL_CALL",
+    "fn": "answer_self",
+    "args": "{\"answer\":\"buffer\"}",
+    "elapsed": 13.3,
+    "finish": "tool_calls"
+  },
+  "standard": {
+    "verdict": "TOOL_CALL",
+    "fn": "delegate_task",
+    "args": "{\"goal\":\"find-all deprecated API usages and fix them\",\"model_hint\":\"deep\"}",
+    "elapsed": 1.0,
+    "finish": "tool_calls"
+  },
+  "deep": {
+    "verdict": "TOOL_CALL",
+    "fn": "delegate_task",
+    "args": "{\"goal\":\"распарлены загоды ятом Пайлаванике с зодини комого повыкования race condition в 3 добазия\",\"model_hint\":\"deep\"}",
+    "elapsed": 6.8,
+    "finish": "tool_calls"
+  },
+  "architect": {
+    "verdict": "TOOL_CALL",
+    "fn": "delegate_task",
+    "args": "{\"goal\":\"спроектировая архилка патыченной миксорвиса: продлывая безучноти Абристью и идепотинтенъчнотой, мажее быть изодепотнощного алксенть\",\"model_hint\":\"architect\"}",
+    "elapsed": 17.0,
+    "finish": "tool_calls"
+  }
+}

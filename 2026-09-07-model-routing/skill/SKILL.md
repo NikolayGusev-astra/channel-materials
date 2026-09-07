@@ -372,6 +372,9 @@ Free-пулы вращаются (модели уходят, лимиты мен
 использовать без перепроверки. Vendor-заявления бенчей не смешивать с
 независимыми замерами.
 
+> Note: free model IDs rotate. Before using any `:free` model, verify it is still
+> available in the provider catalog (`/api/v1/models` or Hermes catalog).
+
 **Свежий snapshot (2026-09-07, refresh не реже 1 раза в 2 недели):**
 `references/free-models-snapshot-2026-09.md` — таблицы по Kilo/OR/Nous с бенчами,
 платные-лидеры для калибровки, разбор «что путается в головах агентов»
