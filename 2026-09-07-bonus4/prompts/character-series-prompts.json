@@ -1,0 +1,45 @@
+{
+  "concept": "Один персонаж (Джилл) в 6 разных сценариях с сохранением лица через IP-Adapter. Одежда/поза/окружение меняются через промпт. Используется Nova Anime XL (Illustrious) + IP-Adapter SDXL (ip-adapter_sdxl_vit-h) + CLIPVision (clip-vision_vit-h) + Hyper-SDXL-8steps lora.",
+  "ip_adapter": {
+    "model": "ip-adapter_sdxl_vit-h.safetensors",
+    "clip_vision": "clip-vision_vit-h.safetensors",
+    "weight": 0.75,
+    "weight_type": "linear",
+    "start_at": 0.0,
+    "end_at": 1.0,
+    "reference": "jill-face-ref.png (Style_00001_ из style-test)"
+  },
+  "negative": "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, worst quality, low quality, blurry, watermark, multiple girls, 2girls, 3girls, bad face, asymmetric eyes",
+  "panels": [
+    {
+      "id": 1,
+      "scenario": "Утро в пижаме, варит кофе",
+      "prompt": "1girl, solo, young woman, purple hair in two round buns, wearing cozy pajamas with star print, barefoot, kitchen interior, morning sunlight through window, holding coffee mug, tired kind eyes, anime coloring, masterpiece, best quality, detailed background"
+    },
+    {
+      "id": 2,
+      "scenario": "На работу, идёт по улице, белая рубашка + чёрный жилет",
+      "prompt": "1girl, solo, young woman, purple hair in two round buns, white shirt, black bartender vest, walking down street, morning, soft daylight, dynamic walking pose, anime coloring, masterpiece, best quality, detailed background"
+    },
+    {
+      "id": 3,
+      "scenario": "За стойкой VA-11 HALL-A, вечер, протирает стакан",
+      "prompt": "1girl, solo, young woman bartender, purple hair in two round buns, white shirt, black vest, holding glass, polishing with cloth, bar interior, evening neon, warm cyan-magenta, anime coloring, masterpiece, best quality"
+    },
+    {
+      "id": 4,
+      "scenario": "Ночью, грустная, облокотившись на стойку",
+      "prompt": "1girl, solo, young woman bartender, purple hair in two round buns, white shirt, black vest, sad tired expression, leaning on bar counter, late night, dim warm light, anime coloring, masterpiece, best quality"
+    },
+    {
+      "id": 5,
+      "scenario": "Под дождём, бежит к двери, промокшая",
+      "prompt": "1girl, solo, young woman, purple hair in two round buns wet, white shirt translucent from rain, black vest, running through rain, motion blur, dramatic lighting, anime coloring, masterpiece, best quality, dynamic pose"
+    },
+    {
+      "id": 6,
+      "scenario": "Дома, в свитере, спит на диване",
+      "prompt": "1girl, sleeping, young woman, purple hair in two round buns, wearing oversized cozy sweater, sleeping on couch, evening warm light, peaceful, anime coloring, masterpiece, best quality"
+    }
+  ]
+}

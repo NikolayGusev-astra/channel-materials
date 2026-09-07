@@ -1,0 +1,47 @@
+{
+  "concept": "Один и тот же персонаж (Джилл Стингрей: фиолетовые пучки, белая рубашка, чёрный жилет, усталые добрые глаза) в 6 разных визуальных стилях. Промпт-стартеры под каждый локальный чекпойнт 8 GB VRAM.",
+  "panels": [
+    {
+      "id": 1,
+      "checkpoint": "Nova Anime XL (Illustrious)",
+      "scenario": "Джилл на своём рабочем месте, устало улыбается, вечерняя неоновая подсветка",
+      "prompt": "1girl, solo, young woman bartender, purple hair in two round buns, white shirt, black vest, tired kind eyes, sitting behind bar counter, soft smile, holding a glowing glass, evening neon light, warm cyan-magenta reflections, anime coloring, masterpiece, best quality, detailed background",
+      "neg": "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, worst quality, low quality, blurry, watermark"
+    },
+    {
+      "id": 2,
+      "checkpoint": "RealVisXL v5.0 (фотореал)",
+      "scenario": "Тот же персонаж как реальный человек, в реальном баре, портретный кадр",
+      "prompt": "RAW photo, 8k uhd, dslr, soft lighting, high quality, film grain, Canon EOS R5, 35mm lens f/1.8, depth of field, bokeh, photorealistic, hyperdetailed, portrait of young woman bartender, purple hair in two round buns, white button-up shirt, black bartender vest, tired kind eyes, soft smile, dim bar interior, warm tungsten light, late evening",
+      "neg": "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, worst quality, low quality, blurry, watermark, cartoon, anime, illustration, painting, drawing, 3d render"
+    },
+    {
+      "id": 3,
+      "checkpoint": "JuggernautXL v9 (кино/постер)",
+      "scenario": "Кинематографичный постер: Джилл в дверном проёме, дым, контрастный свет",
+      "prompt": "cinematic still, dramatic lighting, hollywood cinematography, anamorphic lens, depth of field, color grading, 8k, ultra detailed, masterpiece, young woman bartender, purple hair in two round buns, white shirt, black vest, standing in doorway, smoke, rim light, backlight, moody atmosphere, hyperdetailed face, intense gaze, film noir, high contrast",
+      "neg": "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, worst quality, low quality, blurry, watermark, anime, cartoon, bright cheerful, flat lighting"
+    },
+    {
+      "id": 4,
+      "checkpoint": "DreamShaperXL v1 (художественный/фэнтези)",
+      "scenario": "Фэнтези-иллюстрация: Джилл-алхимик в подземной таверне, магические ингредиенты",
+      "prompt": "digital painting, concept art, trending on artstation, sharp focus, illustration, art by greg rutkowski, fantasy, intricate detail, highly detailed, young woman alchemist bartender, purple hair in two round buns, white shirt, black vest, tired kind eyes, underground tavern, glowing potions and bottles, magical ingredients, candles, atmospheric perspective, fantasy setting, oil painting style",
+      "neg": "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, worst quality, low quality, blurry, watermark, photo, 3d, anime, simple background"
+    },
+    {
+      "id": 5,
+      "checkpoint": "epiCRealismXL v8 (3D/изометрия)",
+      "scenario": "3D-изометрический коктейль-бар: Джилл как стилизованный 3D-персонаж",
+      "prompt": "3d render, octane render, isometric, highly detailed, sharp focus, photorealistic, 8k uhd, unreal engine, stylized 3d character, young woman bartender, purple hair in two round buns, white shirt, black vest, tired kind eyes, cute proportions, inside cozy cocktail bar, glass shelves with bottles, warm interior lighting, blender render, pbr materials",
+      "neg": "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, worst quality, low quality, blurry, watermark, 2d, anime, flat, sketch, lineart"
+    },
+    {
+      "id": 6,
+      "checkpoint": "SDXL base 1.0 (нейтральный/baseline)",
+      "scenario": "Нейтральная baseline-версия: то же описание, без стилевых модификаторов",
+      "prompt": "young woman bartender, purple hair in two round buns, white shirt, black vest, tired kind eyes, sitting at bar counter, evening, warm interior light, detailed background, sharp focus, high quality",
+      "neg": "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, worst quality, low quality, blurry, watermark"
+    }
+  ]
+}
