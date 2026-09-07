@@ -26,6 +26,8 @@ terminal-bench хуже платной с 70%. Цена — второй фил�
 | **Субагент-делегация (минуты, свой токен-пул)** | **codex** (GPT Plus) | нет free; `gpt-5.6-sol`, `gpt-5.6-terra`, `gpt-5.6-luna` | дневной кап аккаунта; `chatgpt.com/backend-api` может быть egress-блокирован (отдельный диагноз!) | `codex exec -m <model> ...` через `delegate_task` / прямой вызов, `--sandbox danger-full-access` обязателен на Windows |
 | **Субагент-делегация** | **zcode** (Z.AI plan) | нет free; `glm-5.3`, `glm-5.2`, `glm-5-turbo` (конфиг `~/.zcode/cli/config.json`) | скользящее окно подписки; `--model` флага НЕТ, модель только через config.json | `node zcode.cjs -p ...` через `delegate_task`; ОБЯЗАТЕЛЬНО `pty=true` (без TTY молча ничего не делает) |
 
+**Примечание по glm-5.2:** в zcode-конфиге есть платный `glm-5.2` (для подписочных задач). В free-пуле живёт `z-ai/glm-5.2:free` — но только в Hermes-курированном каталоге (`model-catalog.json`), в живом OpenRouter `/api/v1/models` его **нет**. Это значит: для Hermes-портальной подписки модель доступна с другими лимитами, для OR-общего free-пула — нет. Роутер учитывает: `glm-5.2:free` идёт ТОЛЬКО если юзер заходит через `inference-api.nousresearch.com` (Hermes-ключ), иначе — пропускаем.
+
 ⚠️ **codex и zcode — НЕ провайдеры для моего прямого вызова.** Это субагент-делегация
 через `delegate_task` (или прямой вызов `codex exec` / `node zcode.cjs`). Они жгут
 СВОЙ токен-пул, выполняются минутами, требуют `pty=true` для zcode. Любой
@@ -57,10 +59,39 @@ Kilo гоняет свой terminal-bench на живых моделях — е�
 | `inclusionai/ling-3.0-flash` | 256K | — | быстрая рутина | — |
 | `baidu/cobuddy` | ? | 1.1% | НЕ ИСПОЛЬЗОВАТЬ для задач | всё |
 
+### 2.1. Hermes-курированный free-пул (приоритет над OR-общим)
+
+`hermes-agent.nousresearch.com/docs/api/model-catalog.json` отдаёт 10 моделей
+с пометкой `description: "free"`. Это **подмножество OR-общего free-пула, отфильтрованное
+командой Hermes** — брать предпочтительнее, чем сырой OR-список, потому что:
+
+- модель точно живая (Hermes-команда проверила)
+- лимиты предсказуемые: free-тир 50 RPM / 500K TPM, Plus $20/мес → 400 RPM / 4M TPM
+- не зависишь от того, что OR внезапно уберёт модель из free-ротации
+
+| Hermes-id | ctx | Kilo tb | Для чего | Примечание |
+|---|---|---|---|---|
+| `thinkingmachines/inkling:free` | 1M | 43.6% (платн.) | general, mm, long ctx | большая модель, дорогая по latency |
+| `thinkingmachines/inkling-small:free` | 1M | — | быстрая general/mm | |
+| `minimax/minimax-m3:free` | 1M | 47.6% (платн.) | long-horizon, mm, агенты | с этим ответом сейчас |
+| `z-ai/glm-5.2:free` | ? | — | general | **НЕТ в OR-общем**, только через Hermes-ключ |
+| `poolside/laguna-s-2.1:free` | 256K | 31.0% | код-агент | |
+| `poolside/laguna-xs-2.1:free` | 256K | 26.7% | мелкий код | |
+| `nvidia/nemotron-3-super-120b-a12b:free` | 256K | 15.5% | рутина, high-throughput | |
+| `nvidia/nemotron-3-ultra-550b-a55b:free` | 1M | 19.1% | orchestration, НЕ код | |
+| `nvidia/nemotron-3.5-lightning:free` | 1M | — | high-throughput | |
+
+Что **нет** в Hermes-курированном, но есть в OR-общем free (для OR-ключей):
+`tencent/hy3:free` (47.6% tb, ЛУЧШАЯ free код), `google/gemma-4-31b-it:free`,
+`inclusionai/ling-3.0-flash:free`. Эти три используем **ТОЛЬКО** когда Hermes-пул
+не подошёл, и **через OR-ключ**.
+
 Контекстный масштаб для калибровки: платные лиды того же бенча —
-gpt-6-astra 79.3%, gpt-5.6-sol 76.2%, gemini-3.8-flash 75.3%,
-z-ai/glm-5.2 53.0%. То есть лучшая free (hy3 47.6%) дотягивается до
-уровня glm-5.2/minimax-m3-платной, но НЕ до frontier.
+gpt-6-astra 79.3%, gpt-5.6-sol 76.2%, gemini-3.8-flash 75.3%. То есть лучшая
+free (hy3 47.6%) дотягивается до уровня платной minimax-m3 (47.6% платный замер),
+но НЕ до frontier. `z-ai/glm-5.2` 53.0% платный — старый платный замер, в роутере
+не участвует (есть только платный в zcode-конфиге; в free-пуле живёт как
+`z-ai/glm-5.2:free` через Hermes-портал — и то при наличии Hermes-ключа).
 
 Vendor-заявления (70.2% у laguna) ≠ независимый замер: kilo меряет свою
 версию terminal-bench на своём харнессе — цифры между бенчами несопоставимы,
@@ -163,8 +194,14 @@ Vendor-заявления (70.2% у laguna) ≠ независимый заме�
 curl -s https://openrouter.ai/api/v1/models | python -c "...фильтр :free..."
 # Kilo free + бенчи terminal-bench:
 curl -s https://kilo.ai/api/models | python -c "...priceInput==0, benchmarks.kiloBench..."
-# Nous Portal каталог:
-curl -sL https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
+# Nous Portal каталог (Hermes-курированный free-пул + default):
+curl -sL https://hermes-agent.nousresearch.com/docs/api/model-catalog.json \
+  | python -c "import sys,json; d=json.load(sys.stdin); \
+[print('default:',m['id']) for m in d['providers']['openrouter']['models'] if m.get('default')]; \
+[print('free:',m['id']) for m in d['providers']['openrouter']['models'] if m.get('description')=='free']"
+# Сохранить snapshot (для истории):
+curl -sL https://hermes-agent.nousresearch.com/docs/api/model-catalog.json \
+  -o raw/nous-model-catalog-$(date +%Y-%m-%d).json
 ```
 Free-пулы вращаются (модели уходят, лимиты меняют): реестр старше месяца не
 использовать без перепроверки. Vendor-заявления бенчей не смешивать с
