@@ -2,6 +2,43 @@
 
 Цель: поднять локальный арт-стек (Krita 5.2 + AI Diffusion v1.53.0 + ComfyUI + 5 SDXL чекпойнтов + IP-Adapter) на чистой Windows-машине с 8 ГБ VRAM за ~30 минут скачивания и 5 минут ручной работы. На выходе — возможность рисовать 0 руб/кадр в любом стиле с любой скоростью.
 
+## Структура папки (всё для одной статьи в одном месте)
+
+```
+2026-09-07-bonus4/
+├── README-install.md          ← этот файл, пошаговая установка от 0 до первой панели
+├── download-bonus4-bundle.py  ← один скрипт качает все 17 моделей
+├── text/                      ← исходник статьи
+│   └── article-source.md
+├── prompts/                   ← JSON с промптами для воспроизведения
+│   ├── style-test-prompts.json    (5 стилей × 1 панель)
+│   ├── character-series-prompts.json  (1 лицо × 6 сцен)
+│   └── character-pipeline.json       (описание техник IP-Adapter + ControlNet + Inpaint)
+├── styles/                    ← 5 панелей «один персонаж в 5 стилях»
+│   ├── style-test-5panels.png       (лист сравнения)
+│   ├── 01-nova-anime.png            (Nova Anime XL)
+│   ├── 02-realvis-photo.png         (RealVisXL v5.0)
+│   ├── 03-juggernaut-poster.png     (JuggernautXL v9)
+│   ├── 04-dreamshaper-fantasy.png   (DreamShaperXL Turbo)
+│   └── 05-sdxl-baseline.png         (SDXL base 1.0)
+├── character/                 ← 6-панельная серия «Джилл в 6 сценах» через IP-Adapter
+│   ├── character-series-strip.png   (6-панельный лист)
+│   ├── character-series-with-ref.png (референс + 6 панелей)
+│   ├── 01-pijamas.png through 06-spit.png  (по отдельности)
+│   └── 05-pod-dozhdem.png           (под дождём)
+└── nova/                      ← Nova Anime XL 6-панельный стрип Джилл
+    ├── jill-nova-strip.png          (6 панелей Nova)
+    └── compare-nova-llada-gemini.png  (3-way сравнение: Nova / LLaDA / Gemini)
+```
+
+Telegraph-статья ссылается на эти файлы через raw-ссылки GitHub (или GitFlic зеркало). Имена файлов стабильные — можно ссылаться в новых статьях.
+
+## Планы (следующие статьи)
+
+В этой папке только материалы Bonus 4. Для продолжения темы (Bonus 5+) — отдельные папки `2026-09-XX-bonus5-character-loras/`, `2026-09-XX-bonus6-controlnet-pose/` и т.д. Каждая статья = одна папка со своей структурой `text/`, `prompts/`, `images/`.
+
+
+
 ## Предусловия
 
 - Windows 10/11

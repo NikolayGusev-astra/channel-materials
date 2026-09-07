@@ -1,0 +1,78 @@
+{
+  "concept": "Один персонаж переходит между кадрами с изменением одежды, позы, ракурса, выражения лица. Стек: IP-Adapter (сохраняет лицо/стиль) + ControlNet (задаёт позу) + Inpaint (правит одежду/детали).",
+  "techniques": {
+    "ip_adapter": {
+      "what": "Сохраняет визуальную идентичность персонажа (лицо, цвет волос, общий стиль) между кадрами. Без него — каждый кадр будет немного другим человеком.",
+      "where": "Krita AI Diffusion → в docker'е добавить Control Layer типа 'IP-Adapter reference' → указать png-референс (обычно панель 1)",
+      "comfyui": "Нода IPAdapterModelLoader (ip-adapter_sdxl_vit-h) + IPAdapterApply (strength 0.6-0.85, weight_type='linear')",
+      "strength": "0.6-0.7 для лица, 0.85+ для одежды, 0.4-0.5 для стиля"
+    },
+    "controlnet_pose": {
+      "what": "Задаёт позу через OpenPose-скелет. Можно: 1) нарисовать позу в Krita палочками, 2) использовать фото реального человека, 3) сгенерировать скелет из текста через GLM-5.3-flash vision",
+      "where": "Control Layer → Pose → либо Draw (рисовать в Krita), либо Image (загрузить фото)",
+      "comfyui": "DWPreprocessor (pose) + ControlNetLoader (control_v11p_sd15_openpose) + ControlNetApply",
+      "strength": "0.8-1.0 для жёсткой позы, 0.5-0.7 для свободной интерпретации"
+    },
+    "controlnet_depth": {
+      "what": "Сохраняет глубину сцены — передний план остаётся впереди, задний позади. Полезно для последовательных кадров с одной камеры",
+      "where": "Control Layer → Depth → загрузить depth-map предыдущего кадра (генерится через MiDaS/DPT)",
+      "strength": "0.6-0.8"
+    },
+    "inpaint": {
+      "what": "Правит конкретные области: сменить рубашку на свитер, добавить шарф, поправить руку. Не перегенерирует весь кадр",
+      "where": "Krita: Selection tool (R) → выделить область → docker 'AI Image Generation' → mode 'Inpaint' → strength 0.6-0.8",
+      "comfyui": "VAEEncode(for original) + SetLatentNoiseMask(маска) + KSampler(denoise=0.6-0.8) + VAEDecode",
+      "tip": "Для одежды strength 0.7-0.85. Для фона 0.5-0.6. Для лица 0.4-0.5 (иначе лицо поплывёт)"
+    }
+  },
+  "panels": [
+    {
+      "id": 1,
+      "scene": "Джилл утром в пижаме, варит кофе на кухне",
+      "ip_adapter": "panel-1-reference.png (финальный референс панели 1, лицо крупно)",
+      "prompt": "1girl, solo, young woman, purple hair in two round buns, wearing cozy pajamas with star print, barefoot, kitchen interior, morning sunlight through window, holding coffee mug, tired kind eyes, anime coloring, masterpiece, best quality",
+      "controlnet": "depth (от фотки кухни)",
+      "inpaint": "поменять пижаму на рабочую форму (выделить торс)"
+    },
+    {
+      "id": 2,
+      "scene": "Та же Джилл через 2 часа, одетая на работу — белая рубашка + чёрный жилет, идёт по улице",
+      "ip_adapter": "panel-1-reference.png (тот же референс лица)",
+      "prompt": "1girl, solo, young woman, purple hair in two round buns, white shirt, black bartender vest, walking down street, morning, soft daylight, dynamic pose, anime coloring, masterpiece, best quality, detailed background",
+      "controlnet": "pose (поза шага — фото референс или нарисовать)",
+      "inpaint": null
+    },
+    {
+      "id": 3,
+      "scene": "Джилл за стойкой VA-11 HALL-A, вечер, неон, протирает стакан",
+      "ip_adapter": "panel-1-reference.png",
+      "prompt": "1girl, solo, young woman bartender, purple hair in two round buns, white shirt, black vest, holding glass, polishing with cloth, bar interior, evening neon, warm cyan-magenta, anime coloring, masterpiece, best quality",
+      "controlnet": "pose (статичная поза с руками перед грудью)",
+      "inpaint": "выражение лица — добавить лёгкую улыбку (выделить область рта)"
+    },
+    {
+      "id": 4,
+      "scene": "Та же Джилл ночью, грустная, облокотившись на стойку",
+      "ip_adapter": "panel-1-reference.png",
+      "prompt": "1girl, solo, young woman bartender, purple hair in two round buns, white shirt, black vest, sad tired expression, leaning on bar counter, late night, dim warm light, anime coloring, masterpiece, best quality",
+      "controlnet": "pose (облокотившись, голова на руке)",
+      "inpaint": "сменить expression через inpaint (маска вокруг рта и глаз)"
+    },
+    {
+      "id": 5,
+      "scene": "Та же Джилл под дождём, бежит к двери, промокшая",
+      "ip_adapter": "panel-1-reference.png",
+      "prompt": "1girl, solo, young woman, purple hair in two round buns wet, white shirt translucent from rain, black vest, running through rain, motion blur, dramatic lighting, anime coloring, masterpiece, best quality, dynamic pose",
+      "controlnet": "pose (поза бега, фото референс)",
+      "inpaint": "сделать рубашку мокрой/прозрачной (выделить торс, inpaint)"
+    },
+    {
+      "id": 6,
+      "scene": "Джилл дома, в свитере, спит на диване",
+      "ip_adapter": "panel-1-reference.png",
+      "prompt": "1girl, sleeping, young woman, purple hair in two round buns, wearing oversized cozy sweater, sleeping on couch, evening warm light, peaceful, anime coloring, masterpiece, best quality",
+      "controlnet": "depth (от фотки дивана)",
+      "inpaint": "заменить рабочую одежду на свитер (выделить торс)"
+    }
+  ]
+}
