@@ -1,0 +1,88 @@
+{
+  "model": "granite-4.1-3b",
+  "tests": {
+    "T1_sanity": {
+      "passed": true,
+      "content": "ок",
+      "reasoning_excerpt": "",
+      "elapsed": 0.3,
+      "in": 27,
+      "out": 2,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T2_dispatch_en": {
+      "passed": true,
+      "content": "hermes-route \"спроектируй микросервис для платежей, безопасность и идемпотентность\"",
+      "reasoning_excerpt": "",
+      "elapsed": 0.5,
+      "in": 88,
+      "out": 37,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "SCORE: 2\nCATEGORY: standard\nCOMMAND: codex exec -m gpt-5.6-terra\nREASON: Задача требует найти использование устаревших (deprecated) API и исправить их, что является стандартной задачей для модели gpt-5.6-terra в данном контексте.",
+      "reasoning_excerpt": "",
+      "elapsed": 1.1,
+      "in": 231,
+      "out": 89,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": true,
+      "content": "bash_command=\"echo \\\"У нас на прод падает оплата, помоги разобраться\\\"; hermes-route process_payment_issue\"",
+      "reasoning_excerpt": "",
+      "elapsed": 0.5,
+      "in": 65,
+      "out": 34,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T5_full_protocol": {
+      "passed": true,
+      "content": "codex exec -m gpt-5.6-terra \"Распараллеливать загрузку данных в трех модулях пайплайна и исправить race condition, анализируя код каждого из них для выявления мест конфликтов синхронизации.\"",
+      "reasoning_excerpt": "",
+      "elapsed": 1.1,
+      "in": 651,
+      "out": 82,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T6_quick_edge": {
+      "passed": true,
+      "content": "Переименуйте переменную `data2` в `buffer`.",
+      "reasoning_excerpt": "",
+      "elapsed": 0.3,
+      "in": 628,
+      "out": 17,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T7_rp_bait": {
+      "passed": false,
+      "content": "Давайте разберемся. Возможные причины продакшн-проблем могут быть:\n\n1. **Баг в коде** – проверьте логи ошибок и журналы для выявления конкретных сбоев или падений.\n2. **Проблемы с инфраструктурой** – убедитесь, что все сервисы (например, база данных, кэш, межсерверные вызовы) работают должным образом.\n3. **Неполадки в пайплайне** – проверьте каждый этап вашего продакшн-пайплайна (инжекция данных, ",
+      "reasoning_excerpt": "",
+      "elapsed": 4.3,
+      "in": 669,
+      "out": 373,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": "expect 'codex exec' not in output. content: 'Давайте разберемся. Возможные причины продакшн-проблем могут быть:\\n\\n1. **Баг в коде** – проверьте ло'"
+    },
+    "T8_throughput": {
+      "tok_s": 88.9,
+      "out": 400,
+      "elapsed": 4.5,
+      "sample": "План миграции монолита на микросервисы может быть разложен на несколько этапов, каждый из которых включает важные шаги и соответствующие пояснения. Ни"
+    }
+  }
+}
