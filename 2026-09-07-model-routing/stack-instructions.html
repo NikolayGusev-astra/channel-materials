@@ -114,7 +114,7 @@
         <li><code>graphify &lt;repo&gt; --yes --backend openai</code> с env (ниже)</li>
         <li><code>graphify query "auth flow" --graph graphify-out/graph.json</code></li>
       </ul>
-      <div class="warn">Обязательный env: <code>OLLAMA_HOST=127.0.0.1:11434</code> + <code>OPENAI_BASE_URL=http://127.0.0.1:1234/v1 OPENAI_API_KEY=lm-studio</code>. Глобальный <code>OLLAMA_HOST=0.0.0.0</code> ломает запуск.</div>
+      <div class="warn">Обязательный env для graphify: <code>OLLAMA_HOST=127.0.0.1:11434</code> + <code>OPENAI_BASE_URL=http://127.0.0.1:1234/v1 OPENAI_API_KEY=&lt;placeholder&gt;</code>. Глобальный <code>OLLAMA_HOST=0.0.0.0</code> ломает запуск. Для LM Studio ключ — любая непустая строка.</div>
     </div>
 
     <div class="card">
@@ -195,11 +195,11 @@
   <h2>Цепочки по категориям</h2>
   <table>
     <tr><th>Категория</th><th>Тип задач</th><th>Цепочка</th></tr>
-    <tr><td class="m"><b>quick</b></td><td>однострочники, ренеймы, форматы</td><td class="mono">zcode/glm-flash → codex/luna → nous/free</td></tr>
+    <tr><td class="m"><b>quick</b></td><td>однострочники, ренеймы, форматы</td><td class="mono">kilo:ling-3.0-flash:free (мой прямой)</td></tr>
     <tr><td class="m"><b>standard</b></td><td>код 1–2 файла, багфиксы</td><td class="mono">zcode/glm-5.3 → codex/luna → codex/terra</td></tr>
     <tr><td class="m"><b>deep</b></td><td>многофайловые правки, диагностика</td><td class="mono">codex/terra → zcode/glm-5.3 → codex/sol</td></tr>
     <tr><td class="m"><b>architect</b></td><td>архитектура, ADR, security-аудит</td><td class="mono">codex/sol → zcode/glm-5.3 → codex/terra</td></tr>
-    <tr><td class="m"><b>writing</b></td><td>доки, проза, переводы</td><td class="mono">nous/free → openrouter/:free → zcode/glm-5.3</td></tr>
+    <tr><td class="m"><b>writing</b></td><td>доки, проза, переводы</td><td class="mono">kilo:gemma-4-26b:free (мой прямой)</td></tr>
     <tr><td class="m"><b>ultrabrain</b></td><td>тяжелейший анализ</td><td class="mono">codex/sol (xhigh) → codex/terra → спросить юзера</td></tr>
   </table>
 
