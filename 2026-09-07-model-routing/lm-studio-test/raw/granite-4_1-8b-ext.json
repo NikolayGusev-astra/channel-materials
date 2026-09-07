@@ -1,0 +1,88 @@
+{
+  "model": "granite-4.1-8b",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "ОК",
+      "reasoning_excerpt": "",
+      "elapsed": 0.6,
+      "in": 27,
+      "out": 3,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": "expect 'ок' not in output. content: 'ОК'"
+    },
+    "T2_dispatch_en": {
+      "passed": true,
+      "content": "hermes-route \"спроектируй микросервис для платежей, безопасность и идемпотентность\"",
+      "reasoning_excerpt": "",
+      "elapsed": 1.6,
+      "in": 93,
+      "out": 37,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "SCORE: 9  \nCATEGORY: deep  \nCOMMAND: codex exec -m gpt-5.6-terra  \nREASON: Задача требует глубокого анализа кода для выявления всех использований устаревших API и их исправления, что подпадает в категорию \"deep\" (со средним весом 6-9). Сигналы:  \n- \"найди все\" +4  \n- \"устаревшие API\" +3 (архитектура кода)  \n- \"почини\" +3 (прод/система)  \n\nСуммирование весов: 4 + 3 + 3 = 10, что превышает порог для",
+      "reasoning_excerpt": "",
+      "elapsed": 10.5,
+      "in": 240,
+      "out": 265,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": true,
+      "content": "Чтобы начать расследование проблемы с платежами в production (прод), можно использовать команду `hermes-route` для направления запроса к соответствующему службе или инструменту, который может предоставить информацию о состоянии платежей. Вот пример bash-команды:\n\n```bash\nhermes-route --task \"investigate_payment_failures\" --env production\n```\n\nЭта команда отправит запрос `investigate_payment_failur",
+      "reasoning_excerpt": "",
+      "elapsed": 6.9,
+      "in": 66,
+      "out": 180,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T5_full_protocol": {
+      "passed": true,
+      "content": "Сложность: 4 (параллель + баг/падает + 3+ файла)\n\nКлючевые слова:\n- параллель (+2)\n- баг/падает (+2)\n- 3+ файла (+2)\n\nИтого: 6 → категория **deep** (6–9).\n\n### Делегирование\n```text\ncodex exec -m gpt-5.6-terra \"Распараллеливание загрузки данных и исправление race condition в трёх модулях пайплайна\"\n```\n\n**Вернуть результат:** ответ от GPT‑5.6‑Terra.",
+      "reasoning_excerpt": "",
+      "elapsed": 8.3,
+      "in": 680,
+      "out": 156,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T6_quick_edge": {
+      "passed": true,
+      "content": "Правка простая, категория quick.\n\nПереименуйте переменную `data2` в `buffer`.",
+      "reasoning_excerpt": "",
+      "elapsed": 1.2,
+      "in": 657,
+      "out": 29,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T7_rp_bait": {
+      "passed": false,
+      "content": "Извините, но ваш запрос кажется более эмоциональным и личным, чем конкретной технической задачей. Я могу попытаться помочь сформулировать проблему или предложить общие рекомендации по управлению стрессом и продуктивностью, но для более точного анализа и решения вам следует обратиться к специалисту по менеджменту или психологу. \n\nЕсли вы имеете в виду конкретную техническую проблему с продуктом (на",
+      "reasoning_excerpt": "",
+      "elapsed": 10.8,
+      "in": 698,
+      "out": 287,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": "expect 'codex exec' not in output. content: 'Извините, но ваш запрос кажется более эмоциональным и личным, чем конкретной технической задачей. Я '"
+    },
+    "T8_throughput": {
+      "tok_s": 26.7,
+      "out": 400,
+      "elapsed": 15.0,
+      "sample": "Миграция монолитного приложения на архитектуру микросервисов — это сложный процесс, который требует тщательной планировки и выполнения нескольких этап"
+    }
+  }
+}
