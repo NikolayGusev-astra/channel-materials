@@ -37,31 +37,20 @@ CATEGORIES = [
     (10, 999, "architect"),
 ]
 
-# Цепочки. Формат: category → [(provider, model, mode, fallback_command)]
-# mode: "direct" = мой прямой вызов; "delegate" = субагент через delegate_task
-CHAINS = {
-    "quick": [
-        # quick — ответить сама
-        ("self", "self", "self", None),
-    ],
-    "standard": [
-        ("codex", "gpt-5.6-terra", "delegate", 'codex exec -m gpt-5.6-terra "{task}"'),
-        ("zcode", "glm-5.3", "delegate", 'zcode -p "{task}"'),
-        ("openrouter", "tencent/hy3:free", "direct", 'curl -s https://openrouter.ai/api/v1/chat/completions -H "Authorization: Bearer $OPENROUTER_API_KEY" -d \'{{"model":"tencent/hy3:free","messages":[{{"role":"user","content":"{task}"}}]}}\''),
-    ],
-    "deep": [
-        ("codex", "gpt-5.6-terra", "delegate", 'codex exec -m gpt-5.6-terra "{task}"'),
-        ("zcode", "glm-5.3", "delegate", 'zcode -p "{task}"'),
-        ("openrouter", "tencent/hy3:free", "direct", 'curl -s https://openrouter.ai/api/v1/chat/completions -H "Authorization: Bearer $OPENROUTER_API_KEY" -d \'{{"model":"tencent/hy3:free","messages":[{{"role":"user","content":"{task}"}}]}}\''),
-    ],
-    "architect": [
-        ("codex", "gpt-5.6-sol", "delegate", 'codex exec -m gpt-5.6-sol "{task}"'),
-        ("zcode", "glm-5.3", "delegate", 'zcode -p "{task}"'),
-    ],
-    "ultrabrain": [
-        ("codex", "gpt-5.6-sol-xhigh", "delegate", 'codex exec -m gpt-5.6-sol --reasoning-effort xhigh "{task}"'),
-    ],
-}
+CATALOG_PATH = Path(__file__).with_name("model-catalog.json")
+
+with open(CATALOG_PATH, "r", encoding="utf-8") as _catalog_file:
+    _CATALOG = json.load(_catalog_file)
+
+CHAINS = {}
+for category, entries in _CATALOG.get("categories", {}).items():
+    CHAINS[category] = []
+    for e in entries:
+        cmd = e.get("command")
+        CHAINS[category].append((e["provider"], e["model"], e.get("mode", "direct"), cmd))
+
+if "quick" not in CHAINS:
+    CHAINS["quick"] = [("self", "self", "self", None)]
 
 
 def score_task(task: str) -> tuple[int, list[dict]]:
