@@ -1,0 +1,49 @@
+{
+  "model": "google/gemma-4-e4b",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "Thinking Process:\n\n1.  **Analyze the Request:** The user asks me to say \"ок\" (ok) if I am alive (\"если живой\"). They specify \"Одним словом\" (In one word).\n2.  **Determine Status:** As an AI, I do not ",
+      "elapsed": 2.9,
+      "in": 30,
+      "out": 100,
+      "reasoning_tokens": 97,
+      "error": "",
+      "fail_reason": "expect 'одно слово' not in output. content: ''"
+    },
+    "T2_dispatch_en": {
+      "passed": true,
+      "content": "hermes-route \"спроектируй микросервис для платежей, безопасность и идемпотентность\"",
+      "reasoning_excerpt": "The user wants me to act as a dispatcher and generate a specific bash command format for the given task: \"спроектируй микросервис для платежей, безопасность и идемпотентность\" (design a payment micros",
+      "elapsed": 4.3,
+      "in": 82,
+      "out": 114,
+      "reasoning_tokens": 84,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "SCORE: 18\nCATEGORY: architect\nCOMMAND: codex exec -m gpt-5.6-sol\nREASON: Задача по поиску и исправлению устаревших API является высокоуровневой системной задачей (прод/система, архитектура). Она требует не только поиска всех инстансов (\"найди все\" +4), но и разработки плана миграции и рефакторинга к",
+      "reasoning_excerpt": "Here's a thinking process to arrive at the desired output format:\n\n1.  **Analyze the Request:** The user wants me to \"find all uses of deprecated APIs and fix them.\" This is a common software maintena",
+      "elapsed": 22.2,
+      "in": 195,
+      "out": 840,
+      "reasoning_tokens": 694,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "Thinking Process:\n\n1.  **Analyze the Request:** The user is asking for help with a production issue (\"на прод падает оплата\" - payment is failing in production).\n2.  **Analyze the Constraint/Instructi",
+      "elapsed": 5.3,
+      "in": 53,
+      "out": 200,
+      "reasoning_tokens": 197,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: ''"
+    }
+  }
+}

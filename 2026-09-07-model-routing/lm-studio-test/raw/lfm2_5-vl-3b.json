@@ -1,0 +1,49 @@
+{
+  "model": "lfm2.5-vl-3b",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "Ок",
+      "reasoning_excerpt": "",
+      "elapsed": 0.3,
+      "in": 24,
+      "out": 3,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": "expect 'одно слово' not in output. content: 'Ок'"
+    },
+    "T2_dispatch_en": {
+      "passed": true,
+      "content": "hermes-route \"payment_service\"",
+      "reasoning_excerpt": "",
+      "elapsed": 0.1,
+      "in": 89,
+      "out": 10,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "SCORE: 10\nCATEGORY: architect\nCOMMAND: codex exec -m gpt-5.6-sol\nREASON: Исправление депрецированных API является задачей высокого уровня, требующей глубокого понимания архитектуры и оптимизации кода.",
+      "reasoning_excerpt": "",
+      "elapsed": 0.7,
+      "in": 210,
+      "out": 70,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": false,
+      "content": "Для решения проблемы с платежным сервисом **Hermes** (обычно это платформа для оплаты заработка или бонусов) нужно проверить, не сломался ли сам сервис, а также настроения вашего клиента.\n\nВот пошаговая инструкция:\n\n### 1. Проверьте статус Hermes\nСначала убедитесь, что сервис действительно работает.",
+      "reasoning_excerpt": "",
+      "elapsed": 1.8,
+      "in": 56,
+      "out": 200,
+      "reasoning_tokens": 0,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: 'Для решения проблемы с платежным сервисом **Hermes** (обычно это платформа для оплаты заработка или '"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "model": "apollo-v0.1-4b-thinking",
+  "tests": {
+    "T1_sanity": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "Хорошо, пользователь прислал сообщение. Начало диалога. Он попросил сказать \"ок\" если я живой. Это проверка на то, что я не бот или автомат. Мне нужно ответить одним словом. \"Ок\". Это подходит по всем",
+      "elapsed": 3.3,
+      "in": 23,
+      "out": 100,
+      "reasoning_tokens": 98,
+      "error": "",
+      "fail_reason": "expect 'одно слово' not in output. content: ''"
+    },
+    "T2_dispatch_en": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "The user has asked for a technical solution: to design a microservice for payments with security and idempotency. This is a complex task that requires deep knowledge of distributed systems, cryptograp",
+      "elapsed": 6.3,
+      "in": 80,
+      "out": 200,
+      "reasoning_tokens": 198,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: ''"
+    },
+    "T3_dispatch_ru": {
+      "passed": true,
+      "content": "SCORE: 2\nCATEGORY: quick\nCOMMAND: сама\nREASON: Задача на поиск и исправление устаревших API относится к категории \"quick\", что требует использования самой модели.\n",
+      "reasoning_excerpt": "Хорошо, получил задачу. Нужно посчитать сигналы и выбрать модель.\n\nСначала разберу сигналы.\n1. \"разбей/план\" - это не входит в список, значит, 0.\n2. \"найди все\" - это соответствует \"найди все +4\". Зна",
+      "elapsed": 15.1,
+      "in": 212,
+      "out": 396,
+      "reasoning_tokens": 342,
+      "error": "",
+      "fail_reason": ""
+    },
+    "T4_natural": {
+      "passed": false,
+      "content": "",
+      "reasoning_excerpt": "Пользователь сообщает о проблеме с оплатой на продакшене. Это критично и требует немедленного анализа. Я должен понять, что именно происходит: не поступают платежи, или они поступают, но не обрабатыва",
+      "elapsed": 6.2,
+      "in": 57,
+      "out": 200,
+      "reasoning_tokens": 198,
+      "error": "",
+      "fail_reason": "expect 'hermes-route' not in output. content: ''"
+    }
+  }
+}
