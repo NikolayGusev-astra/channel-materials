@@ -4,8 +4,8 @@
 import subprocess, time, json, os, requests
 
 BASH = 'C:/Program Files/Git/usr/bin/bash.exe'
-LMS = 'lms'
-OUT = r"<user-home>\AppData\Local\Temp\lm_test\quant_final.json"
+LMS = '/c/Users/redacted/.lmstudio/bin/lms'
+OUT = r"C:\Users\redacted\AppData\Local\Temp\lm_test\quant_final.json"
 
 TOOLS = [
     {"type": "function", "function": {
