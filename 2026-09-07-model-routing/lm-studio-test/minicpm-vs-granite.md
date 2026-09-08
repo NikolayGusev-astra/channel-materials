@@ -61,6 +61,62 @@ granite-4.1-3b остаётся валидным запасным диспетч
 если MiniCPM5 недоступна. Обе модели проходят rp-bait одинаково плохо
 (линейки вежливые) - правило 6 протокола обязательно для обеих.
 
+## Дуэль квантов MiniCPM5-2B (2026-09-08, финал)
+
+**Методология:** изоляция (unload после каждого), `--gpu max`, контекст 65536,
+max_tokens=1500, temperature=0, байт-точные тулы. A/B с draft-моделью сорвался:
+спекулятивный draft в LM Studio падает с `invalid vector subscript` при Q4_K_M
+как draft для Q8/F16 этой модели (зафиксировано как баг связки).
+
+**Матрица (4 категории tool-call, правильные descriptions):**
+
+| Категория | Q4_K_M | Q8_0 | F16 |
+|---|---|---|---|
+| quick (→answer_self) | OK | OK | OK |
+| standard (→delegate, hint=standard) | OK | FAIL (answer_self!) | FAIL (answer_self!) |
+| deep (→delegate, hint=deep) | OK | FAIL (hint=standard) | FAIL (hint=standard) |
+| architect (→delegate, hint=architect) | FAIL (hint=deep) | OK | OK |
+| **Итог** | **3/4** | 2/4 | 2/4 |
+| **Throughput, tok/s** | **121.1** | 80.6 | 30.0 |
+
+**Выводы:**
+1. **Q4_K_M - лучший квант для диспетчера**: лучшая дисциплина (3/4), скорость
+   в 4 раза выше F16. Дискретная ошибка одна: architect получил hint=deep
+   (грейд категории, не выбор инструмента).
+2. **Большие кванты НЕ улучшают диспетчеризацию**: Q8 и F16 одинаково
+   ошибаются на standard/deep - отправляют задачи себе вместо делегации
+   (answer_self на "найди все API"!). Чат-шаблон один, веса разные -
+   дисциплина tool-call у этой модели деградирует с ростом точности кванта.
+3. **Хрупкость к descriptions тулов** (нашёлся при отладке): сокращение
+   description у answer_self с "Use ONLY for trivial tasks (rename, typo,
+   one-liner)" до "ONLY for trivial tasks" сломало дискриминацию quick:
+   модель перестала распознавать trivial и всё отдавала делегации.
+   Возврат примеров в description = мгновенное восстановление. Малая модель
+   читает примеры в описаниях буквально. Вывод: не "оптимизируй" описания
+   тулов без A/B-теста на той же модели.
+4. **Draft-механизм LM Studio** для этой модели не работает (Q4-draft для
+   Q8/F16: invalid vector subscript). Спекулятивное ускорение недоступно.
+
+**Рекомендация:** MiniCPM5-2B **Q4_K_M**, `--gpu max -c 65536`, оригинальные
+описания тулов (с примерами), max_tokens >= 800 для reasoning-запаса.
+
+**Итоговая архитектура (закрытый вопрос):**
+
+```
+Юзер -> Hermes (MiniCPM5-2B Q4_K_M локально, диспетчер)
+         |- quick -> answer_self (сам, 0 руб)
+         |- standard/deep -> delegate_task -> free-канал (hy3 и др.)
+         `- architect -> delegate_task -> подписка (codex/zcode)
+```
+
+Полный цикл подтверждён в живых сессиях:
+- granite-3b: skill_manage + delegate_task -> субагент на hy3 -> отчёт
+  (сессия 20260908_122906_2ff6b5)
+- MiniCPM5: скоринг deep (8/9) -> 2 субагента параллельно -> 2 файла-артефакта
+  (payment-microservice-arch.md 128 строк + design doc)
+  (сессия 20260908_131351_4bea3f)
+- Стоимость обеих цепочек: 0.00 USD (диспетчер локальный, субагенты free)
+
 ## Артефакты
 
 - minicpm5 T1-T8: Temp/lm_test/minicpm5-2b-ext.json
