@@ -1,0 +1,110 @@
+{
+  "q4": {
+    "passed": 3,
+    "quick": {
+      "ok": true,
+      "fn": "answer_self",
+      "hint": null,
+      "text": "переименуйте переменную data2 в buffer",
+      "elapsed": 3.9,
+      "out": 460
+    },
+    "standard": {
+      "ok": true,
+      "fn": "delegate_task",
+      "hint": "standard",
+      "text": "Find all usages of deprecated APIs in the codebase and fix them. The user wants to identif",
+      "elapsed": 3.0,
+      "out": 352
+    },
+    "deep": {
+      "ok": true,
+      "fn": "delegate_task",
+      "hint": "deep",
+      "text": "нужно распараллелить загрузку данных и починить race condition в трёх модулях пайплайна",
+      "elapsed": 7.0,
+      "out": 824
+    },
+    "architect": {
+      "ok": false,
+      "fn": "delegate_task",
+      "hint": "deep",
+      "text": "спроектируй архитектуру платежного микросервиса с безопасностью и идемпотентностью. Нужно ",
+      "elapsed": 2.8,
+      "out": 327
+    },
+    "throughput": 121.1
+  },
+  "q8": {
+    "passed": 2,
+    "quick": {
+      "ok": true,
+      "fn": "answer_self",
+      "hint": null,
+      "text": "I don't have enough context about what the new variable name should be for `data2` in `buf",
+      "elapsed": 5.8,
+      "out": 458
+    },
+    "standard": {
+      "ok": false,
+      "fn": "answer_self",
+      "hint": null,
+      "text": "Невозможно выполнить задачу без доступа к репозиторию кода. Пожалуйста, предоставьте путь ",
+      "elapsed": 1.2,
+      "out": 93
+    },
+    "deep": {
+      "ok": false,
+      "fn": "delegate_task",
+      "hint": "standard",
+      "text": "Explore the codebase to find the three pipeline modules that need race condition fixes and",
+      "elapsed": 1.3,
+      "out": 104
+    },
+    "architect": {
+      "ok": true,
+      "fn": "delegate_task",
+      "hint": "architect",
+      "text": "Проектируй архитектуру платежного микросервиса с безопасностью и идемпотентностью. Нужно п",
+      "elapsed": 4.5,
+      "out": 356
+    },
+    "throughput": 80.6
+  },
+  "f16": {
+    "passed": 2,
+    "quick": {
+      "ok": true,
+      "fn": "answer_self",
+      "hint": null,
+      "text": "I can rename the variable `data2` to something else (e.g., `buffer_data2`) within the `buf",
+      "elapsed": 17.3,
+      "out": 487
+    },
+    "standard": {
+      "ok": false,
+      "fn": "answer_self",
+      "hint": null,
+      "text": "Невозможно выполнить задачу без доступа к репозиторию кода. Пожалуйста, предоставьте путь ",
+      "elapsed": 3.2,
+      "out": 93
+    },
+    "deep": {
+      "ok": false,
+      "fn": "delegate_task",
+      "hint": "standard",
+      "text": "Explore the codebase to find the three pipeline modules that need race condition fixes and",
+      "elapsed": 3.4,
+      "out": 104
+    },
+    "architect": {
+      "ok": true,
+      "fn": "delegate_task",
+      "hint": "architect",
+      "text": "спроектируй архитектуру платежного микросервиса с безопасностью и идемпотентностью",
+      "elapsed": 9.6,
+      "out": 293
+    },
+    "throughput": 30.0
+  }
+}
