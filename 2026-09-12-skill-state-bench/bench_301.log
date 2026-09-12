@@ -1,0 +1,5 @@
+=== SEED 301: REACT ===
+react tail: {"turn": 25, "prompt": 3712, "completion": 5, "s": 0.5, "finish": "stop", "hit": false, "ans": "9311A268"}
+=== SEED 301: STATE ===
+state probe: {"probe_hit_answer": "5654A540", "probe_hit_state": false, "n_codes": 4}
+DONE

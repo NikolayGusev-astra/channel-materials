@@ -1,0 +1,7 @@
+=== SEED 301: HERMES_SIM ===
+{"mode": "hermes_sim", "seed": 301, "search_hit": true, "probe_answer": null, "final_turn": "{\"turn\": 25, \"prompt\": 354, \"completion\": 512, \"s\": 7.5, \"finish\": \"length\", \"hit\": false}"}
+=== SEED 302: HERMES_SIM ===
+{"mode": "hermes_sim", "seed": 302, "search_hit": true, "probe_answer": null, "final_turn": "{\"turn\": 25, \"prompt\": 354, \"completion\": 512, \"s\": 7.4, \"finish\": \"length\", \"hit\": false}"}
+=== SEED 303: HERMES_SIM ===
+{"mode": "hermes_sim", "seed": 303, "search_hit": true, "probe_answer": null, "final_turn": "{\"turn\": 25, \"prompt\": 354, \"completion\": 512, \"s\": 7.4, \"finish\": \"length\", \"hit\": false}"}
+C DONE
