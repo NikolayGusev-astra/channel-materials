@@ -1,0 +1,5 @@
+=== SEED 303: REACT ===
+react tail: {"turn": 25, "prompt": 3712, "completion": 9, "s": 0.5, "finish": "stop", "hit": true, "ans": "Код 8747A908."}
+=== SEED 303: STATE ===
+state probe: {"probe_hit_answer": "3762A376", "probe_hit_state": false, "n_codes": 4}
+DONE
