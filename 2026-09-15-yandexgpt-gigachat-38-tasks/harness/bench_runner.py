@@ -60,7 +60,7 @@ def gigachat_chat(model, prompt, token, max_tokens=None):
 def go_chat(model, prompt, mt=700, session='giga-bench-1'):
     base = 'https://opencode.ai/zen/go/v1'
     key = None
-    for line in open(r'C:\Users\<user>\AppData\Local\hermes\.env', encoding='utf-8', errors='replace'):
+    for line in open(r'<hermes-env-file>', encoding='utf-8', errors='replace'):
         if line.startswith('OPENCODE_GO_API_KEY='):
             key = line.split('=', 1)[1].strip().strip('"').strip("'")
     headers = {'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json',

@@ -5,8 +5,8 @@
 import subprocess, time, json, os
 
 BASH = 'C:/Program Files/Git/usr/bin/bash.exe'
-LMS = '/c/Users/<user>/.lmstudio/bin/lms'
-OUT_DIR = r"C:\Users\<user>\AppData\Local\Temp\lm_test"
+LMS = 'lms'
+OUT_DIR = r"<user-home>\AppData\Local\Temp\lm_test"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # Конфиги: (тег, load-команда args)

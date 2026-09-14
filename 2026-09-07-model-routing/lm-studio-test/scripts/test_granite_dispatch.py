@@ -63,5 +63,5 @@ if __name__ == "__main__":
         r = dispatch(model, task)
         results[cat] = r
         print(f"[{cat:>9}] {r['verdict']} ({r['elapsed']}s): {r.get('fn', '')} | {r.get('args') or r.get('content', '')[:150]}", flush=True)
-    with open(r"C:\Users\<user>\AppData\Local\Temp\granite_tc_dispatch.json", "w", encoding="utf-8") as f:
+    with open(r"<user-home>\AppData\Local\Temp\granite_tc_dispatch.json", "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)

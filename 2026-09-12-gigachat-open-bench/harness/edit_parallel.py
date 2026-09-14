@@ -53,7 +53,7 @@ def giga_edit(part_file, out_file, model='GigaChat-3-Ultra'):
 def codex_edit(part_file, out_file, workdir):
     prompt = INSTR.replace('Выведи ПОЛНЫЙ исправленный текст статьи, ничего не сокращая, без вступлений и пояснений.',
         f'Прочитай файл "{os.path.basename(part_file)}" в текущем каталоге. Отредактируй его СОГЛАСНО правилам выше и сохрани ИСПРАВЛЕННУЮ версию в файл "{os.path.basename(out_file)}". Не переписывай данные.')
-    cmd = ['C:/Users/<user>/AppData/Roaming/npm/codex.cmd','exec','--dangerously-bypass-approvals-and-sandbox','-m','gpt-5.6-terra',prompt]
+    cmd = ['<codex-cli>','exec','--dangerously-bypass-approvals-and-sandbox','-m','gpt-5.6-terra',prompt]
     t0 = time.time()
     r = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8',
         errors='replace', cwd=workdir, timeout=900)
