@@ -121,6 +121,12 @@ GigaChat-3-Ultra        303         верно
 
 Цены проверены на 15 сентября 2026: [прайс AI Studio](https://aistudio.yandex.ru/ru/docs/ai-studio/pricing), [тарифы GigaChat для физлиц](https://developers.sber.ru/docs/ru/gigachat/tariffs/individual-tariffs), [стартовый грант Yandex Cloud](https://yandex.cloud/ru/docs/getting-started/usage-grant).
 
+## Материалы и замеры
+
+Харнессы, сырые результаты и текст статьи - в открытом репозитории: [GitHub](https://github.com/NikolayGusev-astra/channel-materials/tree/master/2026-09-15-yandexgpt-gigachat-38-tasks) | [GitFlic](https://gitflic.ru/manve-sulimo2/channel-materials/tree/master/2026-09-15-yandexgpt-gigachat-38-tasks). Внутри `bench_tasks.json` с 38 задачами, раннеры для обоих API и JSON со всеми прогонами - можно пересчитать любую таблицу из этой статьи самому.
+
+Первая часть замера - [Живой замер API: 38 задач, 14 моделей и одна несуществующая статья ТК](https://telegra.ph/ZHivoj-zamer-API-38-zadach-14-modelej-i-odna-nesushchestvuyushchaya-statya-TK-09-13): те же задачи против открытых моделей, там же полный разбор ловушки 74.1.1 у восьми зарубежных и открытых участников.
+
 ## FAQ: что брать под задачу
 
 ```
