@@ -10,7 +10,7 @@ OUT = r'<local-path>\Work\Assist\gigachat-vs-free\results\opencode-go-catchup.js
 SESSION = 'giga-bench-catchup'
 
 def get_key():
-    for line in open(r'<local-path>\Users\<user>\AppData\Local\hermes\.env', encoding='utf-8', errors='replace'):
+    for line in open(r'<hermes-env-file>', encoding='utf-8', errors='replace'):
         if line.startswith('OPENCODE_GO_API_KEY='):
             return line.split('=', 1)[1].strip().strip('"').strip("'")
 
