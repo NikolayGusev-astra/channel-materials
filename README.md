@@ -19,6 +19,7 @@
 | 2026-09-07 | bonus4: Нук аэропорт-бутлег-бандл (не статья) | сборное: character/, nova/, prompts/, styles/, download-bonus4-bundle.py + README-install.md |
 | 2026-09-05 | [Бенчмарки врут красиво: 6 локальных моделей под 8 GB VRAM](./2026-09-05-local-models-8gb/) | статья + мини-харнесс: 7 карточек моделей (Ling-3.0-tiny, Ornith-1.5-9B, Aion-RP, AgentFlow planner, CogEvol-4B, Apollo-4B-Thinking + бонус LFM2.5-VL-3B / Granite-4.1-3B) с ссылками на кванты, параметрами LM Studio и заданиями с критериями прохода |
 | 2026-09-05 | bonus2: комикс-исходники (не статья) | панели и постеры: neznaika-strip-v2/v3, bonus3-* сравнения, canon.jpg |
+| 2026-09-19 | [Bonsai 2 в пайплайне: история одного разочарования](./2026-09-18-bonsai2-27b-4060/article_part2.md) | вторая часть: prefill-предел агентского хода, роли в пайплайне |
 
 ## Формат папки
 
