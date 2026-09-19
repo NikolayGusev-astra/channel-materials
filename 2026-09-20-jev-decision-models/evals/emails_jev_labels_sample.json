@@ -1,0 +1,107 @@
+[
+ {
+  "subject": "💪 Пора усилить выигрыш",
+  "from_domain": "sub.stoloto.ru",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.11,
+  "i_jev": 0.08
+ },
+ {
+  "subject": "[[ci-project]] Run fa",
+  "from_domain": "github.com",
+  "quadrant_jev": "?_человеку",
+  "u_jev": 0.6,
+  "i_jev": 0.05
+ },
+ {
+  "subject": "[[ci-project]] Run fa",
+  "from_domain": "github.com",
+  "quadrant_jev": "?_человеку",
+  "u_jev": 0.58,
+  "i_jev": 0.05
+ },
+ {
+  "subject": "How This AI Agent Got a 48% Reply Rate o",
+  "from_domain": "gojiberry-news.com",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.05,
+  "i_jev": 0.04
+ },
+ {
+  "subject": "Кухня и гостиная в одном помещении",
+  "from_domain": "discover.pinterest.com",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.04,
+  "i_jev": 0.05
+ },
+ {
+  "subject": "[[ci-project]] Run fa",
+  "from_domain": "github.com",
+  "quadrant_jev": "?_человеку",
+  "u_jev": 0.59,
+  "i_jev": 0.05
+ },
+ {
+  "subject": "Classic RPG legends, now up to 90% off ⚔",
+  "from_domain": "email3.gog.com",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.12,
+  "i_jev": 0.03
+ },
+ {
+  "subject": "[[ci-project]] Run fa",
+  "from_domain": "github.com",
+  "quadrant_jev": "Q3_срочно-неважно",
+  "u_jev": 0.7,
+  "i_jev": 0.06
+ },
+ {
+  "subject": "🌠 Мечталлион: Выигрывает каждый 3-й биле",
+  "from_domain": "nationallottery.ru",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.12,
+  "i_jev": 0.15
+ },
+ {
+  "subject": "Штраф за нарушение ПДД",
+  "from_domain": "gosuslugi.ru",
+  "quadrant_jev": "Q2_запланировать",
+  "u_jev": 0.35,
+  "i_jev": 0.86
+ },
+ {
+  "subject": "AI Bros vs. World Governments: Why is ev",
+  "from_domain": "substack.com",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.03,
+  "i_jev": 0.06
+ },
+ {
+  "subject": "[[ci-project]] Run fa",
+  "from_domain": "github.com",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.68,
+  "i_jev": 0.06
+ },
+ {
+  "subject": "✅Доступно обновление твоего мозга! [3 дн",
+  "from_domain": "zerocoder.ru",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.14,
+  "i_jev": 0.04
+ },
+ {
+  "subject": "[[ci-project]] Run fa",
+  "from_domain": "github.com",
+  "quadrant_jev": "?_человеку",
+  "u_jev": 0.56,
+  "i_jev": 0.05
+ },
+ {
+  "subject": "Кухня с деревянным островом",
+  "from_domain": "discover.pinterest.com",
+  "quadrant_jev": "Q4_мусор",
+  "u_jev": 0.05,
+  "i_jev": 0.05
+ }
+]
