@@ -1,0 +1,6 @@
+{
+  "chat_id": -1003712049089,
+  "text": "<b>Qwen-Image-2.1 на RTX 4060: текст в кадре, прозрачность и референсы вместо IP-Adapter</b>\n\nСложность: средняя\n\nAlibaba выложила 7B-модель с нативной прозрачностью и до 10 референсов. Проверил на 8 ГБ VRAM за вечер: текст пишет верно (int4 - уже нет), стикер с альфа-каналом без вырезания, правка за 5.5 минут вместо 33 у LLaDA. Персонаж с референса - без IP-Adapter и обвеса.\n\n→ Читать на Telegra.ph: https://telegra.ph/Qwen-Image-21-na-RTX-4060-tekst-prozrachnost-referensy-09-21-2\n\n🌐 hermes-agent.ru\n📦 Материалы и харнессы: <a href=\"https://github.com/NikolayGusev-astra/channel-materials\">GitHub</a> | <a href=\"https://gitflic.ru/manve-sulimo2/channel-materials\">GitFlic</a>\nℹ️ Хотите попробовать, но нет времени разбираться? Напишите в контакты на сайте - поможем с настройкой и подбором сценария под ваши задачи.\n🛠 Наши сервисы: pii-guard.ru | llm.pii-guard.ru | hermes-agent.ru | shturman.ai - сотрудничество и вопросы: TG @sneg1313",
+  "parse_mode": "HTML",
+  "link_preview_options": {"url": "https://telegra.ph/Qwen-Image-21-na-RTX-4060-tekst-prozrachnost-referensy-09-21-2", "prefer_large_media": true}
+}
