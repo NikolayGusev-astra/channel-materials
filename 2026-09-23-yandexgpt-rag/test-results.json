@@ -1,0 +1,66 @@
+[
+ {
+  "n": 1,
+  "pipeline": "RAG (lodestone+aa-docs чанки)",
+  "q": "репликация ALD Pro",
+  "result": "полный ответ с атрибуцией источника",
+  "prompt_tok": 193,
+  "time_s": 6.5
+ },
+ {
+  "n": 2,
+  "pipeline": "RAG",
+  "q": "LDAP-порт (факта в контексте нет)",
+  "result": "честный отказ: 'в приведённом контексте нет ответа'",
+  "prompt_tok": null,
+  "time_s": 11.8
+ },
+ {
+  "n": 3,
+  "pipeline": "gateway RAG (searxng+lodestone)",
+  "q": "переустановка реплики ALD Pro",
+  "result": "пошаговая инструкция + источник [lodestone:kb-ald-pro]",
+  "prompt_tok": 193,
+  "time_s": 6.5
+ },
+ {
+  "n": 4,
+  "pipeline": "Web search сниппеты",
+  "q": "FreeRDP 3.20 (в выдаче нет ответа)",
+  "result": "отказ: 'в источниках нет информации' [1]",
+  "prompt_tok": 488,
+  "time_s": 5.3
+ },
+ {
+  "n": 5,
+  "pipeline": "Web search сниппеты",
+  "q": "Python 3.14 (сниппеты дают версию без деталей)",
+  "result": "версия названа [1][2], честно: 'конкретные особенности не указаны'",
+  "prompt_tok": 435,
+  "time_s": 1.6
+ },
+ {
+  "n": 6,
+  "pipeline": "Web+extract",
+  "q": "фичи Python 3.14 (статья proglib НЕ про 3.14)",
+  "result": "отказ - модель поймала нерелевантность статьи",
+  "prompt_tok": 868,
+  "time_s": 1.1
+ },
+ {
+  "n": 7,
+  "pipeline": "Web+extract",
+  "q": "отладка regex (релевантная статья)",
+  "result": "точный ответ: re.DEBUG в re.compile [1]",
+  "prompt_tok": 722,
+  "time_s": 1.2
+ },
+ {
+  "n": 8,
+  "pipeline": "Синтетика",
+  "q": "противоречивые источники (даты релиза)",
+  "result": "оба варианта в хронологии, противоречие показано",
+  "prompt_tok": null,
+  "time_s": 1.4
+ }
+]

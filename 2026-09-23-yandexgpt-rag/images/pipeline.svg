@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0e1a"/><stop offset="1" stop-color="#12182a"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5070ff"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <g stroke="#1A2240" stroke-width="1" opacity="0.6">
+    <path d="M0 60 H1200 M0 120 H1200 M0 180 H1200 M0 240 H1200 M0 300 H1200 M0 360 H1200"/>
+    <path d="M60 0 V420 M120 0 V420 M180 0 V420 M240 0 V420 M300 0 V420 M360 0 V420 M420 0 V420 M480 0 V420 M540 0 V420 M600 0 V420 M660 0 V420 M720 0 V420 M780 0 V420 M840 0 V420 M900 0 V420 M960 0 V420 M1020 0 V420 M1080 0 V420 M1140 0 V420"/>
+  </g>
+  <text x="600" y="52" text-anchor="middle" fill="#e8ecff" font-size="26" font-weight="700">Пайплайн: лёгкий генератор в агентском контуре</text>
+
+  <g>
+    <rect x="40" y="110" width="240" height="120" rx="12" fill="#1A2240" stroke="#506090" stroke-width="1.5"/>
+    <text x="160" y="148" text-anchor="middle" fill="#8090bb" font-size="15">RETRIEVAL</text>
+    <text x="160" y="178" text-anchor="middle" fill="#e8ecff" font-size="18" font-weight="650">векторный поиск</text>
+    <text x="160" y="204" text-anchor="middle" fill="#8090bb" font-size="14">bge-m3, чанки базы знаний</text>
+  </g>
+  <line x1="280" y1="170" x2="360" y2="170" stroke="#5070ff" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <g>
+    <rect x="365" y="110" width="240" height="120" rx="12" fill="#1A2240" stroke="#5070ff" stroke-width="2"/>
+    <text x="485" y="148" text-anchor="middle" fill="#5070ff" font-size="15">GENERATOR 8B</text>
+    <text x="485" y="178" text-anchor="middle" fill="#e8ecff" font-size="18" font-weight="650">YandexGPT-5-Lite</text>
+    <text x="485" y="204" text-anchor="middle" fill="#8090bb" font-size="14">чанки → текст с цитатами</text>
+  </g>
+  <line x1="605" y1="170" x2="685" y2="170" stroke="#5070ff" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <g>
+    <rect x="690" y="110" width="240" height="120" rx="12" fill="#1A2240" stroke="#506090" stroke-width="1.5"/>
+    <text x="810" y="148" text-anchor="middle" fill="#8090bb" font-size="15">MAIN MODEL</text>
+    <text x="810" y="178" text-anchor="middle" fill="#e8ecff" font-size="18" font-weight="650">модель агента</text>
+    <text x="810" y="204" text-anchor="middle" fill="#8090bb" font-size="14">проверка, решение, следующий шаг</text>
+  </g>
+  <line x1="930" y1="170" x2="1010" y2="170" stroke="#5070ff" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <g>
+    <rect x="1015" y="130" width="150" height="80" rx="12" fill="#3050ff" opacity="0.15"/>
+    <rect x="1015" y="130" width="150" height="80" rx="12" fill="none" stroke="#5070ff" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="1090" y="165" text-anchor="middle" fill="#e8ecff" font-size="16" font-weight="650">ответ</text>
+    <text x="1090" y="188" text-anchor="middle" fill="#8090bb" font-size="13">с атрибуцией</text>
+  </g>
+
+  <rect x="365" y="280" width="240" height="86" rx="10" fill="none" stroke="#5070ff" stroke-width="1" stroke-dasharray="4 4" opacity="0.7"/>
+  <text x="485" y="308" text-anchor="middle" fill="#5070ff" font-size="14" font-weight="650">дёшево и локально</text>
+  <text x="485" y="330" text-anchor="middle" fill="#8090bb" font-size="13">4.6 GB VRAM, ~29 tok/s</text>
+  <text x="485" y="350" text-anchor="middle" fill="#8090bb" font-size="13">контекст не тратится у main-модели</text>
+
+  <text x="600" y="405" text-anchor="middle" fill="#506090" font-size="13">hermes-agent.ru · третья часть цикла «Домашний Perplexity»</text>
+</svg>
