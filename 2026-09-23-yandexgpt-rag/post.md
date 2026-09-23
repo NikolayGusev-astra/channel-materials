@@ -1,10 +1,10 @@
-**YandexGPT-5-Lite-8B как генератор над выдачей: третья часть цикла про домашний Perplexity**
+**YandexGPT-5-Lite-8B над выдачей: часть 3**
 
 Сложность: средняя
 
-Серия: <a href="https://hermes-agent.ru/news/kak-sobrat-svoj-domashnij-perplexity-na/">часть 1 - сборка домашнего Perplexity</a> | <a href="https://hermes-agent.ru/news/domashnij-perplexity-chast-2-kto-dumaet/">часть 2 - кто думает над выдачей</a>
+Серия: <a href="https://hermes-agent.ru/news/kak-sobrat-svoj-domashnij-perplexity-na/">1</a> | <a href="https://hermes-agent.ru/news/domashnij-perplexity-chast-2-kto-dumaet/">2</a>
 
-В части 2 сравнивали пять универсальных моделей над поисковой выдачей. Теперь вопрос: зачем мучиться с переводными токенизаторами, если есть модель, которую русский корпус учили с нуля? Замерил плотность токенизации, прогнал через оба пайплайна и собрал восемь тестов на честность: из восьми модель ни разу не галлюцинировала факт сверх контекста.
+Восемь тестов на честность - ни одной галлюцинации сверх контекста.
 
 #хинт_дня
 
