@@ -1,3 +1,8 @@
+---
+site:
+  slug: local-models-8gb
+  tags: [local-models, benchmarks, vram]
+---
 # Бенчмарки врут красиво: 6 локальных моделей на выходные под 8 GB VRAM
 
 *Гусев Николай · сентябрь 2026*

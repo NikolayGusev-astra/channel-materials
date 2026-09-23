@@ -1,3 +1,8 @@
+---
+site:
+  slug: bonsai2-27b-4060
+  tags: [local-models, benchmarks, gpu]
+---
 # Bonsai 2 27B на RTX 4060: замер скорости, качества и контекста
 
 **Сложность: средняя**

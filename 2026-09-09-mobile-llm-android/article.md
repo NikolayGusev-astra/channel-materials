@@ -1,3 +1,8 @@
+---
+site:
+  slug: mobile-llm-android
+  tags: [local-models, android, on-device]
+---
 # Локальные LLM на Android: что и зачем реально можно гонять на телефоне
 
 Сложность: низкая

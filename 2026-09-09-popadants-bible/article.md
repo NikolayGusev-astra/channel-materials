@@ -1,3 +1,8 @@
+---
+site:
+  slug: popadants-bible
+  tags: [popadantsy, local-models, science]
+---
 # Библия попаданца: влезет ли вся наука в телефон
 
 Сложность: средняя

@@ -1,3 +1,8 @@
+---
+site:
+  slug: omen-alpha-glm55-fingerprint
+  tags: [llm-api, glm, stealth-models]
+---
 # На opencode раздают GLM-5.5? Аноним за $0.20/$0.66 за 1M токенов
 
 Сложность: средняя

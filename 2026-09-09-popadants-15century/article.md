@@ -1,3 +1,8 @@
+---
+site:
+  slug: popadants-15century
+  tags: [popadantsy, hardware, diy]
+---
 # Библия попаданца, часть 4: зарядить телефон из 15 века
 
 Сложность: высокая
