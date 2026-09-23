@@ -1,9 +1,3 @@
----
-site:
-  slug: enterprise-ai-fails
-  tags: [ai-fails, enterprise, case-study]
-  cover: cover.png
----
 # Первый блин - комом. В энтерпрайзе
 
 Сложность: низкая
