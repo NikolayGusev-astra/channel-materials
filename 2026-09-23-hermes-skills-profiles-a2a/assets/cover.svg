@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1526"/>
+      <stop offset="1" stop-color="#19244a"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff385c"/>
+      <stop offset="1" stop-color="#ff8a3d"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#2a3a66" stroke-opacity="0.35" stroke-width="1"/>
+    </pattern>
+  <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L9,3 L0,6 Z" fill="#ff8a3d"/>
+      </marker>
+      <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L9,3 L0,6 Z" fill="#ff385c"/>
+      </marker>
+  </defs>
+  <rect width="1200" height="628" fill="url(#bg)"/>
+  <rect width="1200" height="628" fill="url(#grid)"/>
+
+  <text x="80" y="112" font-family="Arial" font-weight="bold" font-size="52" fill="#ffffff">Профили, скиллы и A2A</text>
+  <text x="80" y="166" font-family="Arial" font-size="26" fill="#9db3e0">один эталон навыков вместо дюжины копий</text>
+
+  <rect x="80" y="196" width="1040" height="4" fill="url(#acc)"/>
+
+  <!-- три профиля слева -->
+  <g font-family="Arial">
+    <rect x="80" y="260" width="240" height="84" rx="10" fill="#1c2749" stroke="#2a3a66"/>
+    <text x="200" y="296" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">Профиль A</text>
+    <text x="200" y="324" text-anchor="middle" font-size="17" fill="#9db3e0">writer v2.1.0</text>
+
+    <rect x="80" y="372" width="240" height="84" rx="10" fill="#1c2749" stroke="#2a3a66"/>
+    <text x="200" y="408" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">Профиль B</text>
+    <text x="200" y="436" text-anchor="middle" font-size="17" fill="#9db3e0">writer v2.2.0</text>
+
+    <rect x="80" y="484" width="240" height="84" rx="10" fill="#1c2749" stroke="#2a3a66"/>
+    <text x="200" y="520" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">Профиль C</text>
+    <text x="200" y="548" text-anchor="middle" font-size="17" fill="#9db3e0">writer v2.1.0 + правки</text>
+
+    <!-- стрелки к центру -->
+    <path d="M330 302 C 420 302, 420 380, 470 380" stroke="#ff8a3d" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+    <path d="M330 414 L 470 404" stroke="#ff8a3d" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+    <path d="M330 526 C 420 526, 420 430, 470 428" stroke="#ff8a3d" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+
+    <!-- центральный эталон -->
+    <rect x="480" y="330" width="280" height="150" rx="14" fill="#231d3f" stroke="url(#acc)" stroke-width="3"/>
+    <text x="620" y="382" text-anchor="middle" font-size="24" font-weight="bold" fill="#ffffff">Эталон скиллов</text>
+    <text x="620" y="412" text-anchor="middle" font-size="18" fill="#ff8a3d">git + external_dirs</text>
+    <text x="620" y="444" text-anchor="middle" font-size="16" fill="#9db3e0">одна версия навыка</text>
+    <text x="620" y="466" text-anchor="middle" font-size="16" fill="#9db3e0">для всех профилей</text>
+
+    <!-- A2A наружу -->
+    <path d="M760 405 L 900 405" stroke="#ff385c" stroke-width="3" marker-end="url(#arr2)"/>
+
+    <rect x="920" y="330" width="200" height="150" rx="14" fill="#1c2749" stroke="#ff385c" stroke-width="3"/>
+    <text x="1020" y="384" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">A2A</text>
+    <text x="1020" y="412" text-anchor="middle" font-size="16" fill="#9db3e0">Agent Card:</text>
+    <text x="1020" y="436" text-anchor="middle" font-size="16" fill="#9db3e0">30 скиллов внутри,</text>
+    <text x="1020" y="460" text-anchor="middle" font-size="16" fill="#9db3e0">3 наружу</text>
+  </g>
+
+  <text x="80" y="608" font-family="Arial" font-size="18" fill="#9db3e0">hermes-agent.ru</text>
+</svg>
