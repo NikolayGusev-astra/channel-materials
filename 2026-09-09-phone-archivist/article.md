@@ -1,3 +1,8 @@
+---
+site:
+  slug: phone-archivist
+  tags: [local-models, android, utilities]
+---
 # Модель в кармане как архивариус: мелкие LLM для порядка в телефоне
 
 Сложность: средняя

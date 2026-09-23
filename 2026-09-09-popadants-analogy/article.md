@@ -1,3 +1,8 @@
+---
+site:
+  slug: popadants-analogy
+  tags: [popadantsy, hardware, design]
+---
 # Библия попаданца, часть 3: анализ аналогов и дизайн телефона-справочника
 
 Сложность: средняя

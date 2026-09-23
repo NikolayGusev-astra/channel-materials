@@ -1,3 +1,8 @@
+---
+site:
+  slug: gigachat-open-bench
+  tags: [gigachat, tokenizers, benchmarks]
+---
 # Русский токенизатор GigaChat против open-моделей: замер на 519 живых запросах
 
 Все измерения выполнялись 12 сентября 2026 через реальные API: GigaChat PERS Freemium (6 моделей) и OpenCode Go подписка (8 моделей). Никаких бумажных цифр из пресс-релизов: только usage-поля из ответов на одинаковые промпты. Полный код и сырые данные опубликованы в [channel-materials](https://github.com/NikolayGusev-astra/channel-materials).
