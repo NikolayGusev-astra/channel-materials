@@ -1,0 +1,9 @@
+/* gpu-lexer palette: 9 классов модели */
+.gl-comment { color: #7c88a8; font-style: italic; }
+.gl-string { color: #9ece8a; }
+.gl-number { color: #e8a860; }
+.gl-keyword { color: #6f9fff; }
+.gl-type { color: #5fd0d0; }
+.gl-function { color: #e0d080; }
+.gl-constant { color: #d08ee0; }
+.gl-operator { color: #a0b0d8; }
