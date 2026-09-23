@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0e1a"/><stop offset="1" stop-color="#12182a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="420" fill="url(#bg2)"/>
+  <g stroke="#1A2240" stroke-width="1" opacity="0.6">
+    <path d="M0 70 H1200 M0 130 H1200 M0 190 H1200 M0 250 H1200 M0 310 H1200 M0 370 H1200"/>
+  </g>
+  <text x="600" y="48" text-anchor="middle" fill="#e8ecff" font-size="24" font-weight="700">Плотность токенизации русского текста</text>
+  <text x="600" y="74" text-anchor="middle" fill="#8090bb" font-size="14">символов на токен · больше = экономнее · один текст 356 символов</text>
+  
+  <text x="330" y="122" text-anchor="end" fill="#8090bb" font-size="16" font-weight="400">smollm3-3b</text>
+  <rect x="345" y="100" width="651" height="30" rx="6" fill="#506090" opacity="0.55"/>
+  <text x="1010" y="122" fill="#8090bb" font-size="16" font-weight="400">6.98</text>
+  <text x="330" y="170" text-anchor="end" fill="#e8ecff" font-size="16" font-weight="700">YandexGPT-5-Lite-8B</text>
+  <rect x="345" y="148" width="518" height="30" rx="6" fill="#5070ff" opacity="1"/>
+  <text x="877" y="170" fill="#e8ecff" font-size="16" font-weight="700">5.56</text>
+  <text x="330" y="218" text-anchor="end" fill="#8090bb" font-size="16" font-weight="400">granite-4.1-8b</text>
+  <rect x="345" y="196" width="455" height="30" rx="6" fill="#506090" opacity="0.55"/>
+  <text x="814" y="218" fill="#8090bb" font-size="16" font-weight="400">4.88</text>
+  <text x="330" y="266" text-anchor="end" fill="#8090bb" font-size="16" font-weight="400">qwen3.8-4b (ч.2)</text>
+  <rect x="345" y="244" width="420" height="30" rx="6" fill="#8090bb" opacity="0.55"/>
+  <text x="779" y="266" fill="#8090bb" font-size="16" font-weight="400">4.51</text>
+  <text x="330" y="314" text-anchor="end" fill="#8090bb" font-size="16" font-weight="400">LFM2.5-8b (ч.2)</text>
+  <rect x="345" y="292" width="325" height="30" rx="6" fill="#8090bb" opacity="0.55"/>
+  <text x="684" y="314" fill="#8090bb" font-size="16" font-weight="400">3.49</text>
+  <text x="345" y="346" fill="#506090" font-size="12">выше = меньше токенов на тот же текст = длиннее контекст и быстрее генерация</text>
+  <text x="600" y="408" text-anchor="middle" fill="#506090" font-size="12">hermes-agent.ru · YandexGPT-5-Lite-8B: +23% к qwen3.8, +59% к LFM2.5</text>
+</svg>
