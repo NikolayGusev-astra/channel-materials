@@ -1,6 +1,6 @@
 ---
 slug: cloudflare-agents-money
-title: Cloudflare для агентов, часть 2: у агента появились деньги
+title: "Cloudflare для агентов, часть 2: у агента появились деньги"
 tags: [cloudflare, agents, x402, payments]
 difficulty: средняя
 ---

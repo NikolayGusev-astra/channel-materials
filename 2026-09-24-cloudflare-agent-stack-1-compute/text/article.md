@@ -1,6 +1,6 @@
 ---
 slug: cloudflare-agents-compute-observability
-title: Cloudflare для агентов, часть 1: каждый агент - микросервер
+title: "Cloudflare для агентов, часть 1: каждый агент - микросервер"
 tags: [cloudflare, agents, durable-objects, observability]
 difficulty: средняя
 ---

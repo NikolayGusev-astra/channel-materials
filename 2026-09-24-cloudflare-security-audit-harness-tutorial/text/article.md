@@ -1,6 +1,6 @@
 ---
 slug: cloudflare-security-audit-harness-tutorial
-title: Превращаем агента в аудитора безопасности: настраиваем харнесс Cloudflare
+title: "Превращаем агента в аудитора безопасности: настраиваем харнесс Cloudflare"
 tags: [cloudflare, security, agents, tutorial]
 difficulty: высокая
 ---

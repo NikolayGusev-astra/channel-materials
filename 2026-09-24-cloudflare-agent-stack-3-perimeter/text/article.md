@@ -1,6 +1,6 @@
 ---
 slug: cloudflare-agents-perimeter-email
-title: Cloudflare для агентов, часть 3: впускать своих, не пускать чужих
+title: "Cloudflare для агентов, часть 3: впускать своих, не пускать чужих"
 tags: [cloudflare, agents, web-bot-auth, email]
 difficulty: средняя
 ---
