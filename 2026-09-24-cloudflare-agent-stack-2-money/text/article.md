@@ -1,10 +1,9 @@
 ---
-slug: cloudflare-agents-money
-title: "Cloudflare для агентов, часть 2: у агента появились деньги"
-tags: [cloudflare, agents, x402, payments]
-difficulty: средняя
+site:
+  slug: cloudflare-agents-money
+  tags: [cloudflare, agents, x402, payments]
+  cover: cf-money-cover.png
 ---
-
 # Cloudflare для агентов, часть 2: у агента появились деньги
 
 Агент без платёжного инструмента - стажёр без корпоративной карты: всё интересное упирается в "попроси человека". Cloudflare строит финансовый слой агентного веба с двух сторон: как агенты платят и как сайты берут плату.

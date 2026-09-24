@@ -1,10 +1,9 @@
 ---
-slug: cloudflare-agents-perimeter-email
-title: "Cloudflare для агентов, часть 3: впускать своих, не пускать чужих"
-tags: [cloudflare, agents, web-bot-auth, email]
-difficulty: средняя
+site:
+  slug: cloudflare-agents-perimeter-email
+  tags: [cloudflare, agents, web-bot-auth, email]
+  cover: cf-perimeter-cover.png
 ---
-
 # Cloudflare для агентов, часть 3: боты с паспортом
 
 У агента есть вычисления и деньги. Осталось две вещи: сайт должен понимать, кто к нему пришёл и можно ли ему платить за контент, а агент должен уметь читать почту - самый старый интерфейс интернета.
