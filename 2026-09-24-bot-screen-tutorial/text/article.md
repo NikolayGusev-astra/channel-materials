@@ -1,6 +1,6 @@
 ---
 slug: bot-screen-tutorial
-title: Bot Screen: рабочий стол агента на VPS и перехват управления из Hermes Desktop
+title: "Bot Screen: рабочий стол агента на VPS и перехват управления из Hermes Desktop"
 tags: [hermes, bot-screen, computer-use, vps, tutorial]
 difficulty: средняя
 site:
