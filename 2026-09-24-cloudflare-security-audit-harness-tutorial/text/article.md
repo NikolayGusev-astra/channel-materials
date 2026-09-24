@@ -1,10 +1,9 @@
 ---
-slug: cloudflare-security-audit-harness-tutorial
-title: "Превращаем агента в аудитора безопасности: настраиваем харнесс Cloudflare"
-tags: [cloudflare, security, agents, tutorial]
-difficulty: высокая
+site:
+  slug: cloudflare-security-audit-harness-tutorial
+  tags: [cloudflare, security, agents, tutorial]
+  cover: cf-harness-cover.png
 ---
-
 # Превращаем агента в аудитора безопасности: настраиваем харнесс Cloudflare
 
 В сентябре Cloudflare открыла security-audit-skill - скилл, из которого вырос их внутренний vulnerability harness по проекту Glasswing. Шесть фаз, изолированные агенты-охотники, независимая верификация находок. Разбираем установку и выпуск токена, которым агент будет ходить в API.

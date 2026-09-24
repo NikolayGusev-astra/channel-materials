@@ -1,10 +1,9 @@
 ---
-slug: cloudflare-agents-compute-observability
-title: "Cloudflare для агентов, часть 1: каждый агент - микросервер"
-tags: [cloudflare, agents, durable-objects, observability]
-difficulty: средняя
+site:
+  slug: cloudflare-agents-compute-observability
+  tags: [cloudflare, agents, durable-objects, observability]
+  cover: cf-compute-cover.png
 ---
-
 # Cloudflare для агентов, часть 1: каждый агент - микросервер
 
 Cloudflare за два Agents Week (апрель и август 2026) собрала полный стек для агентов, и первая его часть - вычисления и наблюдаемость. Главная идея проста и непривычна: агент - не функция на сервере, а персистентный микросервер, по одному на пользователя.
