@@ -10,6 +10,7 @@
 
 | Дата | Материал | Что внутри |
 |------|----------|------------|
+| 2026-09-25 | [Бартовски за неделю упаковал девять моделей. Две уже стали хитами](./2026-09-25-bartowski-gguf-week/) | разбор девяти новых GGUF-упаковок: MiMo, Hemmingway, LensVLM, MiMo-Ornith, Ling, Swift, JetBrains Blend, Tev1 и When2Think; критерии локального теста, лицензии, VRAM и области применения; статья + 3 иллюстрации |
 | 2026-09-18 | [Bonsai 2 27B на RTX 4060: замер скорости, качества и контекста](./2026-09-18-bonsai2-27b-4060/) | замер тернарной 27B (PrismML) на 8 ГБ VRAM: 38 задач, 64к контекст, статья + харнесс (bench_local.py, grade_local.py) + инструкция запуска llama-server от PrismML + сырые результаты; вторая часть - в [пайплайн-статье](./2026-09-18-bonsai2-27b-4060/article_part2_pipeline.md) ниже |
 | 2026-09-15 | [YandexGPT и GigaChat: 38 задач в одном замере](./2026-09-15-yandexgpt-gigachat-38-tasks/) | замер 8 русских моделей (YandexGPT-5-Lite/5.1-Pro + 6 GigaChat), 76 яндексовских прогонов, статья + харнессы (yandex_bench.py, bench_runner.py) + сырые результаты всех моделей |
 | 2026-09-12 | [SKILL.state vs ReAct vs compress+search](./2026-09-12-skill-state-bench/) | замер управления контекстом на LFM2.5-8B-A1B: bench-скрипты, логи прогонов |
