@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(r"C:\Work\Assist\channel-materials\2026-09-25-bartowski-gguf-week")
 ARTICLE = ROOT / "article.md"
 SCRIPT = Path(r"C:\Users\n.gusev\AppData\Local\hermes\skills\content\writer\scripts\telegraph-publish-direct.py")
-TITLE = "Бартовски за неделю упаковал девять моделей. Две уже стали хитами - ЧЕРНОВИК для вычитки"
+TITLE = "Бартовски за неделю упаковал девять моделей. Две уже стали хитами"
 AUTHOR = "Гусев Николай"
 PATH = "Bartovski-za-nedelyu-upakoval-devyat-modelej-Dve-uzhe-stali-hitami-09-25"
 
@@ -57,6 +57,12 @@ def main():
     text = ARTICLE.read_text(encoding="utf-8")
     if not ARTICLE.exists():
         raise RuntimeError("article.md missing")
+    # Site frontmatter is build metadata, not article content.
+    if text.startswith("---\n"):
+        end = text.find("\n---\n", 4)
+        if end < 0:
+            raise RuntimeError("Unclosed site frontmatter")
+        text = text[end + 5:].lstrip()
     checks = {
         "em_dash": text.count("\u2014"),
         "guillemets": text.count("\u00ab") + text.count("\u00bb"),
@@ -65,16 +71,19 @@ def main():
     if any(checks.values()):
         raise RuntimeError(f"Blocked glyphs: {checks}")
 
-    # Markdown images are converted to Telegraph img nodes with absolute HTTPS URLs.
+    # Markdown images become Telegraph img nodes backed by the permanent site CDN.
     token = get_token(Path.home() / ".hermes" / ".env")
     lines = []
     image_nodes = []
     for line in text.splitlines():
-        match = re.fullmatch(r"!\[([^\]]*)\]\((https://[^)]+)\)\s*", line.strip())
+        match = re.fullmatch(r"!\[([^\]]*)\]\((https://[^)]+|/[^)]+)\)\s*", line.strip())
         if match:
             if image_nodes:
                 lines.append("")
-            image_nodes.append({"tag": "img", "attrs": {"src": match.group(2)}})
+            src = match.group(2)
+            if src.startswith("/"):
+                src = "https://hermes-agent.ru" + src
+            image_nodes.append({"tag": "img", "attrs": {"src": src}})
         else:
             lines.append(line)
     md = "\n".join(lines)
