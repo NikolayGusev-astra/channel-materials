@@ -117,10 +117,8 @@ def md_to_dom(md):
                 raise SystemExit(
                     "img src must be absolute http(s) URL, got: " + url
                 )
-            node = {"tag": "figure", "children": [{"tag": "img", "attrs": {"src": url}}]}
-            if alt:
-                node["children"].append({"tag": "figcaption", "children": [alt]})
-            dom.append(node)
+            # Telegra.ph: no figcaption by design - channel style is bare images.
+            dom.append({"tag": "img", "attrs": {"src": url}})
             i += 1
             continue
 
@@ -183,11 +181,12 @@ def main():
     c = json.dumps(chk.get("result", {}).get("content", ""), ensure_ascii=False)
     print("URL:", url)
     print(
-        "Verify: em_dashes=%d, guillemets=%d, img_nodes=%d, abs_img_urls=%d"
+        "Verify: em_dashes=%d, guillemets=%d, img_nodes=%d, figcaptions=%d, abs_img_urls=%d"
         % (
             c.count("\u2014"),
             c.count("\u00ab") + c.count("\u00bb"),
             c.count('"tag": "img"'),
+            c.count("figcaption"),
             c.count("https://hermes-agent.ru/project-profiles"),
         )
     )
