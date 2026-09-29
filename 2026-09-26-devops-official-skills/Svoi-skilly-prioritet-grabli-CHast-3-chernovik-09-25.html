@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Свои скиллы, приоритет, грабли. Часть 3 (черновик) – Telegraph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Свои скиллы, приоритет, грабли. Часть 3 (черновик)">
+    <meta property="og:description" content="Часть 1 Часть 2 Часть 3
+docker-iac-skills - единственный скилл в папке, который ничего не знает про Docker, Terraform и Grafana по существу. Его работа - маршрутизация. Какой скилл грузить и в каком порядке, привязка к соседним нашим скиллам, где лежат обновления.
+Название осталось историческим: называть его devops-skill-dispatcher было бы честнее, но сломало бы ссылки в существующих скиллах. Зато в описании теперь написано честно: Docker, Terraform, Observability, CI.
+Что важно понимать про устройство всей…">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="Telegraph">
+    <meta property="article:published_time" content="2026-09-25T20:33:10+0000">
+    <meta property="article:modified_time" content="2026-09-25T20:33:11+0000">
+    <meta property="article:author" content="Гусев Николай">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Свои скиллы, приоритет, грабли. Часть 3 (черновик)">
+    <meta name="twitter:description" content="Часть 1 Часть 2 Часть 3
+docker-iac-skills - единственный скилл в папке, который ничего не знает про Docker, Terraform и Grafana по существу. Его работа - маршрутизация. Какой скилл грузить и в каком порядке, привязка к соседним нашим скиллам, где лежат обновления.
+Название осталось историческим: называть его devops-skill-dispatcher было бы честнее, но сломало бы ссылки в существующих скиллах. Зато в описании теперь написано честно: Docker, Terraform, Observability, CI.
+Что важно понимать про устройство всей…">
+    <meta name="twitter:image" content="">
+    <link rel="canonical" href="https://telegra.ph/Svoi-skilly-prioritet-grabli-CHast-3-chernovik-09-25" />
+    <link rel="shortcut icon" href="/favicon.ico?1" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/images/favicon.png?1" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon_2x.png?1" sizes="32x32">
+    <link href="/css/quill.core.min.css" rel="stylesheet">
+    <link href="/css/core.min.css?47" rel="stylesheet">
+  </head>
+  <body>
+    <div class="tl_page_wrap">
+      <div class="tl_page">
+        <main class="tl_article">
+          <header class="tl_article_header" dir="auto">
+            <h1>Свои скиллы, приоритет, грабли. Часть 3 (черновик)</h1>
+            <address>
+              <a rel="author" href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><!--
+           --><time datetime="2026-09-25T20:33:10+0000">September 25, 2026</time>
+            </address>
+          </header>
+          <article id="_tl_editor" class="tl_article_content"><h1>Свои скиллы, приоритет, грабли. Часть 3 (черновик)<br></h1><address><a href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><br></address><p><a href="/DevOps-skilly-dlya-agenta-35-oficialnyh-111-svoih-CHast-1-chernovik-09-25" rel="nofollow">Часть 1</a> <a href="/Pustota-pod-Kubernetes-CHast-2-chernovik-09-25-2" rel="nofollow">Часть 2</a> Часть 3</p><p><code>docker-iac-skills</code> - единственный скилл в папке, который ничего не знает про Docker, Terraform и Grafana по существу. Его работа - маршрутизация. Какой скилл грузить и в каком порядке, привязка к соседним нашим скиллам, где лежат обновления.</p><p>Название осталось историческим: называть его <code>devops-skill-dispatcher</code> было бы честнее, но сломало бы ссылки в существующих скиллах. Зато в описании теперь написано честно: Docker, Terraform, Observability, CI.</p><p>Что важно понимать про устройство всей схемы: 147 каталогов <strong>не означают</strong>, что агент грузит их все. Загружается минимальный набор под задачу. Вендорские 35 скиллов - это библиотека, а не промпт. Именно поэтому один скилл на 10 КБ, покрывающий маршрутизацию, экономит больше контекста, чем 35 файлов, загруженных подряд.</p><h3 id="Грабля,-на-которую-я-потратил-час">Грабля, на которую я потратил час</h3><p>Отдельный вид граблей, специфичный для агентских скиллов, и он стоит описания, потому что симптом выглядит не как ошибка.</p><p>Имя скилла в <code>name:</code> в frontmatter обязано совпадать с именем каталога. Не похоже на него, а совпадать. Если каталог называется <code>grafana-promql</code>, а в <code>name:</code> стоит <code>promql</code> - скилл молча не попадёт в индекс. Ни ошибки, ни предупреждения. Просто не сработает, когда понадобится, и агент скажет &quot;у меня нет такого скилла&quot;.</p><p>При переносе вендорских скиллов это происходит автоматически, потому что у HashiCorp скилл про Terraform лежит в каталоге <code>terraform-style-guide</code> и называется <code>terraform-style-guide</code>, а у Grafana скилл про PromQL лежит в <code>grafana-lgtm/prometheus</code> и называется <code>promql</code>. Ни один не совпадает с тем, под чем я их положил. Понадобилось 24 переименования каталогов плюс правка frontmatter в каждом.</p><p>Проверяется так:</p><pre>python -c &quot;import os,re,glob
+S=os.path.expandvars(r&#39;%LOCALAPPDATA%&#092;hermes&#092;skills&#092;devops&#39;)
+bad=[]
+for d in glob.glob(S+&#39;&#092;*&#39;):
+    p=os.path.join(d,&#39;SKILL.md&#39;)
+    if not os.path.exists(p): continue
+    m=re.search(r&#39;(?m)^name:&#092;s*(&#092;S+)&#39;, open(p,encoding=&#39;utf-8&#39;).read())
+    if not m or m.group(1)&#33;=os.path.basename(d): bad.append(d)
+print(&#39;mismatch:&#39;,bad)&quot;</pre><p>Должно быть <code>mismatch: []</code>.</p><p>Вторая грабля того же класса: <code>agents/</code> внутри вендорских скиллов. В Docker это каталоги, дублирующие <code>skill.yaml</code>. В других наборах встречаются директории с тестами и eval-скриптами, которые Hermes не читает, но индексирует. Чистить надо руками, сразу при установке.</p><h3 id="Обновление">Обновление</h3><p>Все четыре репозитория живут и коммитятся - последние изменения за 1-2 дня до того, как я писал статью. Это не заброшенные архивы, с ними можно работать.</p><p>Процедура:</p><pre>cd &#036;LOCALAPPDATA/Temp/docker-skills &amp;&amp; git pull
+# скопировать skills/* в hermes/skills/devops/
+# проверить: имя каталога == name: во frontmatter</pre><p>Для HashiCop путь другой - <code>plugins/terraform/skills/*</code>, и после копирования каталог переименовывается в <code>hcp-&lt;имя&gt;</code>, а <code>name:</code> правится на <code>hcp-&lt;имя&gt;</code>. Грабли те же самые.</p><p>Для Grafana путь - <code>skills/&lt;группа&gt;/&lt;имя&gt;</code>, каталог переименовывается в <code>grafana-&lt;имя&gt;</code> с правкой <code>name:</code>. Тот же случай.</p><p>Clones оставил в <code>%LOCALAPPDATA%&#092;Temp</code> именно ради этого: обновление - это <code>git pull</code> плюс копирование каталогов, а не поиск заново.</p><p>Но есть правило, которое я поставил выше любого удобства: обновление не должно молча ломать наши правила. Если вендорский скилл после <code>git pull</code> начинает противоречить нашему <code>sre-agent</code> - правим свой, а не их, и фиксируем это в диспетчере. Текст вендора мы переписывать не будем, но порядок загрузки и приоритет держим.</p><h3 id="Конкретный-пример:-что-это-даёт-DevOps-инженеру">Конкретный пример: что это даёт DevOps-инженеру</h3><p>Абстракции типа &quot;пусть агент знает вашу сеть&quot; ничего не значат, пока не показать на задаче.</p><p>Задача: поднять на стенде новый стенд ALD Pro и проверить синкер.</p><p>Сценарий без скиллов. Агент получает задачу, ищет документацию ALD Pro, находит, что нужно сделать <code>aldproctl</code> install, разворачивает контроллер, настраивает синкер, запускает проверку, видит расхождение между очередью и LDAP, и пишет отчёт: &quot;часть объектов отсутствует, ETA рассчитан с допущением&quot;. Отчёт уходит заказчику.</p><p>Что происходит без скиллов:</p><ul><li>он не знает, что проверять надо через <code>aldproctl</code>, а не через <code>ipa</code> напрямую, и половину проверок не делает;</li><li>он не знает про Windows-подвохку с провайдером и применяет конфигурацию не полностью, не замечая этого;</li><li>он не знает, что расхождение очередь/LDAP надо помечать как условное, и даёт в отчёте уверенную цифру, которая не подтверждается;</li><li>он пишет домены и адреса стендов прямо в отчёт.</li></ul><p>Тот же сценарий с нашими скиллами. Агент грузит скилл развёртывания ALD Pro на стенде (порядок доступа и развёртывания), затем <code>aldpro-syncer-ssot-verification</code> (сверка с живым источником истины, а не по вики), затем <code>aldpro-pmi-verification</code> (форма отчёта по шагам), плюс <code>remote-stand-access</code> для транспорта и <code>infra-verification</code> для сверки живого состояния.</p><p>Результат тот же по объёму работы, но отчёт становится проверяемым: каждая цифра помечена источником и датой сверки, расхождение очередь/LDAP помечено как условное, инфраструктурные детали обезличены, а вендорские скиллы Docker и Terraform подтягиваются только если задача дошла до написания compose или HCL.</p><p>Разница не в том, что агент стал умнее. Разница в том, что он не выдумывает там, где у нас есть точное знание.</p><h3 id="Ложка-дёгтя">Ложка дёгтя</h3><p>Три вещи, которые надо понимать про официальные наборы, прежше чем ими пользоваться.</p><p>Первое. Лицензии неоднородны. Apache-2.0 у Docker и Grafana, MIT у GitHub, MPL-2.0 у HashiCorp. Последняя - file-level copyleft: если вы правите их скилл под свой проект, ваши правки нужно публиковать. Один каталог от HashiCorp мы переименовали и поправили <code>name:</code> - это уже модификация. Формально это не тянет на проблему, потому что меняется метаданные, а не содержимое, но если вы будете править содержимое - читайте MPL.</p><p>Второе. Официальный не значит актуальный для вашей версии. Вендор выкладывает скилл под свою документацию. У вас может стоять другая мажорная версия, где флаг переименовали. Проверяйте по своей версии.</p><p>Третье, и это самое неприятное. Вендорские скиллы устаревают молча. Никто не придёт и не скажет &quot;этот скилл больше не нужен&quot;. Он просто будет лежать в индексе, и агент будет к нему тянуться, пока контекст не кончится. Это не повод скиллы выбрасывать, это повод их пересматривать. У нас есть еженедельная ревизия артефактов, и вендорские скиллы в её списке.</p><p>И последнее, отдельно про <code>skills.sh</code>. Там можно поставить что угодно от кого угодно, и агент будет выполнять это наравне с нашими. Публичный реестр - это не trusted registry. Он ничем не отличается от установки npm-пакета от неизвестного автора по имени, набранному с подсказки.</p><h3 id="Что-взять-под-задачу">Что взять под задачу</h3><p>Если пишете Dockerfile впервые в проекте - берите <code>docker-project-foundations</code>, потом <code>docker-build-strategies</code>. Если образ уже собирается и надо докрутить compose - только <code>docker-compose-patterns</code>. Перед любым <code>docker system prune</code> или удалением volumes - <code>docker-destructive-guardrails</code>, без исключений.</p><p>Если пишете HCL - <code>hcp-terraform-style-guide</code> обязателен, он экономит больше всего времени на ревью. Если добавляете ресурс в уже существующий state - <code>hcp-terraform-search-import</code>, ручной поиск id по консоли провайдера занимает минуты, импорт делает это же за секунды. Если тестируете логику модуля - <code>hcp-terraform-test</code>.</p><p>Если пишете запрос к метрикам - <code>grafana-promql</code>. Если настраиваете алерты - <code>grafana-prometheus</code>. Если разбираете, куда ушла память - <code>grafana-profilecli-insights</code>.</p><p>Если ревьюите пайплайн - <code>gha-hardening</code> до <code>gha-efficiency</code>: сначала безопасность, потом скорость, иначе ускорите уязвимый пайплайн.</p><p>Если разбираете аварию - <code>incident-postmortem</code> плюс <code>zotov</code> для проверки самого отчёта. Один пишет разбор, второй проверяет, что в разборе нет дыр.</p><h3 id="Premortem">Premortem</h3><p>Статья опубликована, через неделю в комментариях негатив. Откуда.</p><p><strong>Первое: &quot;это подборка ссылок, а не инженерная статья&quot;.</strong> Справедливое возражение наполовину. Разбор действительно идёт по репозиториям, а не по инциденту. Ответ признанием: да, это обзор с проверкой, и я не открывал эти наборы на живой инфраструктуре, кроме Docker и Terraform. Статья нигде не утверждает обратного, и читателю, который ждал кейса с разбором прод-аварии, будет чуть меньше. Меня это устраивает: обзор с измеримыми числами полезнее кейса, который я бы вспоминал по памяти.</p><p><strong>Второе: цифры разъедутся.</strong> Репозитории живые, их коммитят. К моменту чтения у Docker может быть не 11 скиллов, а 13, и у Grafana не 52, а 58. Ответ: цифры датированы, ссылки ведут на репозитории, а не на наш срез, и читатель может пересчитать. Статичное утверждение было бы враньём.</p><p><strong>Третье: &quot;а где ваши 111 собственных, покажите хоть один&quot;.</strong> Самая большая цифра в статье не подтверждена ничем в тексте. Сейчас это исправлено: в разделе про приоритет и в примере разобран скилл развёртывания ALD Pro на стенде и <code>aldpro-syncer-ssot-verification</code>, но сами файлы у вас закрыты. Если хотите это проверить - они в вашем же каталоге devops, имена указаны.</p><p><strong>Четвёртое, самое вероятное: &quot;а зачем мне это, у меня нет агента с DevOps&quot;.</strong> Набор может оказаться не про вашу роль. Честный ответ: скиллы нужны не инженеру, а агенту, который работает у этого инженера. Если агента нет, статья бесполезна, и я не буду делать вид, что она нужна всем.</p><h3 id="Сколько-это-стоит">Сколько это стоит</h3><p>Текст, который не жгёт токены и не зовёт API. Весь набор - 4,8 МБ на диске, из них 1,2 МБ вендорские. Ни одного платного вызова при установке и ни одного при использовании, если не брать AWS-скиллы (а их я не взял именно поэтому).</p><p>Время на установку - около часа, из которого половина ушла на согласование имён. Чтение и отбор - дольше, чем сама установка. Вендорских скиллов, которые я открыл перед решением, было 539 - все, что нашлось в шести клонах.</p><p>Обновление - <code>git pull</code> плюс копирование. Минуты.</p><p>Что дороже всего - написать свой скилл. Там нет готового референса, и качество целиком на вас: если в скилле про ALD Pro написано &quot;проверить состояние сервисов&quot;, это не скилл, а напоминание. Полезный скилл про ALD Pro говорит, какую именно команду выполнить и что делать, если она вернула такой-то код.</p><h3 id="Смежные-альтернативы">Смежные альтернативы</h3><p>Раз обсуждаем официальные скиллы, стоит сказать, что лежит рядом.</p><p>Классические подходы без агентских скиллов: документация плюс runbook в репозитории. Работает, но требует, чтобы агент сам догадался, что runbook нужно прочитать. Скилл прочитывается по триггеру, без всякой догадки.</p><p>Prometheus-тулы, готовые пайплайны проверок вроде Terratest, ansible-lint, Hadolint. Они ловят конкретные классы ошибок в коде, но не знают про вашу сеть. Хорошее дополнение, не замена.</p><p>Свои скрипты обёртки. Работают не хуже, но агент про них не узнает, если не увидит в описании проекта. Скилл - это ровно описание проекта, которое агент читает сам.</p><h3 id="Безопасность-и-приватность">Безопасность и приватность</h3><p>Скилл - это инструкция, исполняемая моделью. Отсюда три требования, которые мы держим.</p><p>Первое, содержимое скиллов не должно утекать. В наших скиллах есть внутренние домены, адреса стендов, имена хостов и имена людей. Это не публикуется никуда и не отправляется в наружные API без необходимости. Проверка перед публикацией: grep по финальному тексту на реальные домены, IP, email, пароли, токены - ноль вхождений.</p><p>Второе, скачивание скилла из интернета выполняется нами, а не агентом. Агент не должен ходить в сеть за инструкциями, если ему сказали, что пора. Установка - операция человека.</p><p>Третье, самый неприятный момент, про MCP. Официальный скилл Ansible требует сервер MCP для AAP. Подключение такого сервера - это фактически выдача агенту прав на вашу платформу. Read-only режим снижает риск, но не обнуляет его. Скилл, требующий внешнего сервера, - это всегда точка, где кончается &quot;просто прочитал текст&quot;.</p><h3 id="Материалы">Материалы</h3><ul><li><a href="https://github.com/docker/skills" target="_blank" rel="nofollow">docker/skills</a> - 11 скиллов, Apache-2.0, каталог и порядок загрузки в README</li><li><a href="https://github.com/hashicorp/agent-skills" target="_blank" rel="nofollow">hashicorp/agent-skills</a> - 20 скиллов, MPL-2.0</li><li><a href="https://github.com/grafana/skills" target="_blank" rel="nofollow">grafana/skills</a> - 52 скилла, Apache-2.0, разбивка по 7 группам</li><li><a href="https://github.com/github/awesome-copilot" target="_blank" rel="nofollow">github/awesome-copilot</a> - 423 сообщества, MIT</li><li><a href="https://github.com/pulumi/agent-skills" target="_blank" rel="nofollow">pulumi/agent-skills</a> - 17 скиллов, не взят</li><li><a href="https://github.com/aws/agent-toolkit-for-aws" target="_blank" rel="nofollow">aws/agent-toolkit-for-aws</a> - 177 скиллов, не взят</li><li><a href="https://github.com/microsoft/skills" target="_blank" rel="nofollow">microsoft/skills</a> - 205, не взят</li><li><a href="https://github.com/ansible/aap-skills" target="_blank" rel="nofollow">ansible/aap-skills</a> - 1 скилл, не взят</li><li><a href="https://skills.sh/" target="_blank" rel="nofollow">skills.sh</a> - публичный агрегатор, не источник доверия</li></ul><p>Наш диспетчер с полной картой загрузки, лицензиями, процедурой обновления и приоритетом наших правил лежит в скилле <code>docker-iac-skills</code> в каталоге devops. Все вендорские скиллы - в соседних каталогах с префиксами <code>docker-</code>, <code>hcp-</code>, <code>grafana-</code>.</p><h3 id="Что-из-этого-следует">Что из этого следует</h3><p>Скиллы вендоров полезны ровно настолько, насколько вы понимаете, где их граница. Для общего понимания инструмента - берите, и берите официальные, они пишутся теми, кто эти инструменты чинит. Для вашей сети - пишите сами, и тут вы заменяем вендора только там, где вендора нет.</p><p>Граница, которую я у себя поставил, звучит так: вендорский скилл объясняет, как устроен инструмент; наш скилл объясняет, что именно здесь делать. Скиллов из второй категории у меня больше, чем из первой, и это не потому что вендорские плохие.</p><p>И последнее, что стоит сказать прямо, потому что это самая частая ошибка: наличие 147 скиллов в папке не означает, что агент всё это знает. Означает, что у него есть выбор, когда придёт задача. Скилл, который не загружен, в контексте не участвует, и агент не может по нему ошибиться. Поэтому диспетчер важнее количества.</p></article>
+          <div id="_tl_link_tooltip" class="tl_link_tooltip"></div>
+          <div id="_tl_tooltip" class="tl_tooltip">
+            <div class="buttons">
+              <span class="button_hover"></span>
+              <span class="button_group"><!--
+             --><button id="_bold_button"></button><!--
+             --><button id="_italic_button"></button><!--
+             --><button id="_link_button"></button><!--
+           --></span><!--
+           --><span class="button_group"><!--
+             --><button id="_header_button"></button><!--
+             --><button id="_subheader_button"></button><!--
+             --><button id="_quote_button"></button><!--
+           --></span>
+            </div>
+            <div class="prompt">
+              <span class="close"></span>
+              <div class="prompt_input_wrap"><input type="url" class="prompt_input" /></div>
+            </div>
+          </div>
+          <div id="_tl_blocks" class="tl_blocks">
+            <div class="buttons">
+              <button id="_image_button"></button><!--
+           --><button id="_embed_button"></button>
+            </div>
+          </div>
+          <aside class="tl_article_buttons">
+            <div class="account account_top"></div>
+            <button id="_edit_button" class="button edit_button">Edit</button><!--
+         --><button id="_publish_button" class="button publish_button">Publish</button>
+            <div class="account account_bottom"></div>
+            <div id="_error_msg" class="error_msg"></div>
+          </aside>
+        </main>
+      </div>
+          <div class="tl_page_footer">
+      <div id="_report_button" class="tl_footer_button">Report content on this page</div>
+    </div>
+    </div>
+      <div class="tl_popup tl_popup_hidden" id="_report_popup">
+    <main class="tl_popup_body tl_report_popup">
+      <form id="_report_form" method="post">
+        <section>
+          <h2 class="tl_popup_header">Report Page</h2>
+          <div class="tl_radio_items">
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="violence">
+              <span class="tl_radio_item_label">Violence</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="childabuse">
+              <span class="tl_radio_item_label">Child Abuse</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="copyright">
+              <span class="tl_radio_item_label">Copyright</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="illegal_drugs">
+              <span class="tl_radio_item_label">Illegal Drugs</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="personal_details">
+              <span class="tl_radio_item_label">Personal Details</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="other">
+              <span class="tl_radio_item_label">Other</span>
+            </label>
+          </div>
+          <div class="tl_textfield_item tl_comment_field">
+            <input type="text" class="tl_textfield" name="comment" value="" placeholder="Add Comment…">
+          </div>
+          <div class="tl_copyright_field">
+            Please submit your DMCA takedown request to <a href="mailto:dmca@telegram.org?subject=Report%20to%20Telegraph%20page%20%22%D0%A1%D0%B2%D0%BE%D0%B8%20%D1%81%D0%BA%D0%B8%D0%BB%D0%BB%D1%8B%2C%20%D0%BF%D1%80%D0%B8%D0%BE%D1%80%D0%B8%D1%82%D0%B5%D1%82%2C%20%D0%B3%D1%80%D0%B0%D0%B1%D0%BB%D0%B8.%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%203%20%28%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%29%22&body=Reported%20page%3A%20https%3A%2F%2Ftelegra.ph%2FSvoi-skilly-prioritet-grabli-CHast-3-chernovik-09-25%0A%0A%0A" target="_blank">dmca@telegram.org</a>
+          </div>
+        </section>
+        <aside class="tl_popup_buttons">
+          <button type="reset" class="button" id="_report_cancel">Cancel</button>
+          <button type="submit" class="button submit_button">Report</button>
+        </aside>
+      </form>
+    </main>
+  </div>
+    
+    <script>var T={"apiUrl":"https:\/\/edit.telegra.ph","uploadEnabled":false,"datetime":1790368390,"pageId":"06f651e43b6158277bd62","editable":true};(function(){var b=document.querySelector('time');if(b&&T.datetime){var a=new Date(1E3*T.datetime),d='January February March April May June July August September October November December'.split(' ')[a.getMonth()],c=a.getDate();b.innerText=d+' '+(10>c?'0':'')+c+', '+a.getFullYear()}})();</script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.selection.min.js"></script>
+    <script src="/js/autosize.min.js"></script>
+    <script src="/js/load-image.all.min.js?1"></script>
+    <script src="/js/quill.min.js?10"></script>
+    <script src="/js/core.min.js?67"></script>
+    <script async src="https://t.me/_websync_?path=Svoi-skilly-prioritet-grabli-CHast-3-chernovik-09-25&hash=0654a230aa20b02bb7"></script>
+  </body>
+</html>

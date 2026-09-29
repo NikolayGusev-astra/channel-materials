@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Пустота под Kubernetes. Часть 2 (черновик) – Telegraph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Пустота под Kubernetes. Часть 2 (черновик)">
+    <meta property="og:description" content="Часть 1 Часть 2 Часть 3
+Это отдельная и, на мой взгляд, самая интересная часть разведки. Проверял предполагаемые репозитории напрямую через GitHub API: kubernetes/*, kubernetes-sigs/*, helm/helm, cilium/*, argoproj-labs/*, vaultproject/*, openbao/*, traefik/*, tailscale/*, datadog/*.
+Результат: скиллов от этих проектов нет. В kubernetes/community файлов SKILL.md не найдено вовсе.
+Это странно, если задуматься. Kubernetes - самый популярный инструмент в DevOps, у него огромное сообщество, и при этом официального…">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="Telegraph">
+    <meta property="article:published_time" content="2026-09-25T20:33:10+0000">
+    <meta property="article:modified_time" content="2026-09-25T20:33:11+0000">
+    <meta property="article:author" content="Гусев Николай">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Пустота под Kubernetes. Часть 2 (черновик)">
+    <meta name="twitter:description" content="Часть 1 Часть 2 Часть 3
+Это отдельная и, на мой взгляд, самая интересная часть разведки. Проверял предполагаемые репозитории напрямую через GitHub API: kubernetes/*, kubernetes-sigs/*, helm/helm, cilium/*, argoproj-labs/*, vaultproject/*, openbao/*, traefik/*, tailscale/*, datadog/*.
+Результат: скиллов от этих проектов нет. В kubernetes/community файлов SKILL.md не найдено вовсе.
+Это странно, если задуматься. Kubernetes - самый популярный инструмент в DevOps, у него огромное сообщество, и при этом официального…">
+    <meta name="twitter:image" content="">
+    <link rel="canonical" href="https://telegra.ph/Pustota-pod-Kubernetes-CHast-2-chernovik-09-25-2" />
+    <link rel="shortcut icon" href="/favicon.ico?1" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/images/favicon.png?1" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon_2x.png?1" sizes="32x32">
+    <link href="/css/quill.core.min.css" rel="stylesheet">
+    <link href="/css/core.min.css?47" rel="stylesheet">
+  </head>
+  <body>
+    <div class="tl_page_wrap">
+      <div class="tl_page">
+        <main class="tl_article">
+          <header class="tl_article_header" dir="auto">
+            <h1>Пустота под Kubernetes. Часть 2 (черновик)</h1>
+            <address>
+              <a rel="author" href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><!--
+           --><time datetime="2026-09-25T20:33:10+0000">September 25, 2026</time>
+            </address>
+          </header>
+          <article id="_tl_editor" class="tl_article_content"><h1>Пустота под Kubernetes. Часть 2 (черновик)<br></h1><address><a href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><br></address><p><a href="/DevOps-skilly-dlya-agenta-35-oficialnyh-111-svoih-CHast-1-chernovik-09-25" rel="nofollow">Часть 1</a> Часть 2 <a href="/Svoi-skilly-prioritet-grabli-CHast-3-chernovik-09-25" rel="nofollow">Часть 3</a></p><p>Это отдельная и, на мой взгляд, самая интересная часть разведки. Проверял предполагаемые репозитории напрямую через GitHub API: <code>kubernetes/*</code>, <code>kubernetes-sigs/*</code>, <code>helm/helm</code>, <code>cilium/*</code>, <code>argoproj-labs/*</code>, <code>vaultproject/*</code>, <code>openbao/*</code>, <code>traefik/*</code>, <code>tailscale/*</code>, <code>datadog/*</code>.</p><p>Результат: скиллов от этих проектов нет. В <code>kubernetes/community</code> файлов <code>SKILL.md</code> не найдено вовсе.</p><p>Это странно, если задуматься. Kubernetes - самый популярный инструмент в DevOps, у него огромное сообщество, и при этом официального набора агент-скиллов не существует. При этом Helm, у которого аудитория на порядок меньше, тоже ничего не выложил.</p><p>Отсюда практический вывод: если вы работаете с Kubernetes и хотите агента, который знает эту платформу, - официального ответа на рынке нет. Считайте, что эти знания придётся добавлять самому. Это не страшно, но это работа.</p><p>Единственное исключение - Ansible, у которого официальный набор есть, и он состоит ровно из одного скилла: проверка здоровья платформы автоматизации. Он делает осмотр состояния сервисов, очереди заданий, топологии и лицензий, работает только на чтение и требует сервер MCP для AAP 2.5 и новее. Подключать есть к чему - когда появится работающий сервер MCP. Сейчас держать скилл, который нельзя запустить, смысла нет.</p><h3 id="Нашёл-официальное,-но-не-взял">Нашёл официальное, но не взял</h3><p>Три больших набора я скачал, прочитал и положил в сторону. Не потому что плохие, а потому что не наш профиль.</p><p>| Репозиторий | Скиллов | Лицензия | Почему не взял |</p><p>|---|---|---|---|</p><p>| <a href="https://github.com/pulumi/agent-skills" target="_blank" rel="nofollow">pulumi/agent-skills</a> | 17 | Apache-2.0 | Другая система управления инфраструктурой. У нас Terraform, менять это из-за скиллов смысла нет |</p><p>| <a href="https://github.com/aws/agent-toolkit-for-aws" target="_blank" rel="nofollow">aws/agent-toolkit-for-aws</a> | 177 | Apache-2.0 | Агент будет платить за запросы к API. AWS-профиля у нас нет |</p><p>| <a href="https://github.com/microsoft/skills" target="_blank" rel="nofollow">microsoft/skills</a> | 205 | MIT | Azure и .NET. Не наш профиль |</p><p>Про Pulumi стоит сказать отдельно, потому что там есть скилл миграции с Terraform на Pulumi. Любопытный, качественный, но это противоположность нашей задачи. Мы Terraform наоборот внедряем на стендах, и миграция с него нам не грозит.</p><p>Про AWS стоит сказать ещё жёстче. Набор большой и хороший, но каждый его скилл - это вызов AWS API. Агент с доступом к живым ключам AWS и скиллами, которые пошагово создают ресурсы, это очень дорогой способ читать документацию. Если бы у нас был AWS-профиль, я бы ставил выборочно, по одному скиллу на задачу, и сначала переписал бы их на чтение.</p><h3 id="Свои-скиллы:-почему-их-больше-и-почему-они-важнее">Свои скиллы: почему их больше и почему они важнее</h3><p>Своих скиллов 111, вендорских 35. Не потому что вендорские хуже, а потому что они отвечают на другой вопрос.</p><p>Вендорский скилл отвечает на вопрос &quot;как правильно пользоваться инструментом&quot;. Наш скилл отвечает на вопрос &quot;как правильно сделать это в нашей сети, на наших стендах, с нашими ограничениями&quot;. Второй вопрос агент вообще никогда не решит из документации.</p><p>Что в наших скиллах, чего нет ни в одном вендорском наборе:</p><p><strong>Правило Windows и провайдера OpenNebula.</strong> Провайдер OpenNebula 1.5.0 на Windows молча ломает refresh. <code>terraform plan</code> показывает изменения, которые не применятся, или наоборот - скрывает те, что применятся. Поэтому у нас <code>apply</code> разрешён только на Linux и только с <code>-target=</code>. Это написано в <code>sre-agent</code> и в скилле развёртывания ALD Pro на стенде. Ни один вендорский скилл про это не знает и не узнает, потому что это не баг HashiCorp, а наша договорённость.</p><p><strong>Порядок доступа к стендам.</strong> SSH из git-bash на стенды не ходит, только через PowerShell, только с определёнными ключами, только с определённого хоста. Это описано в <code>remote-stand-access</code>. Агент, который не прочитал этот скилл, потратит 40 минут на то, чтобы упереться в таймаут, и после этого напишет в отчёт &quot;стенд недоступен&quot;.</p><p><strong>Специфика ALD Pro.</strong> Проверять надо через <code>aldproctl</code> и никак иначе. Отчёт по программе и методике испытаний пишется по шагам, а не свободным текстом. Это в <code>aldpro-pmi-verification</code>.</p><p><strong>Живая сверка вместо документации.</strong> Синкер надо проверять против реального источника истины, а не по вики-странице. Статусы задач - живым запросом, с датой сверки в отчёте. Это правило из <code>aldpro-syncer-ssot-verification</code> и из проверочного скилла <code>zotov</code>.</p><p><strong>Наши сервисы и шлюзы.</strong> <code>pii-guard-gateway-ops</code>, <code>llm-gateway-plugin-migration</code>, <code>shturman</code>, <code>projectlens-ops</code> - это описание конкретных систем, которые мы сами и делаем, и чиним. Никакого вендора тут быть не может по определению.</p><p><strong>Доступ и обезличивание.</strong> Внутренние домены, адреса стендов, имена хостов. Агент должен знать, что их нельзя писать в отчёты, и знать заранее, а не после того, как текст ушёл получателю.</p><h3 id="Приоритет:-наше-правило-важнее-вендорского">Приоритет: наше правило важнее вендорского</h3><p>Работает просто. Есть наш скилл - грузим наш. Нет нашего - грузим вендорский. И если они противоречат друг другу - побеждает наш, без обсуждения.</p><p>Пример: HashiCorp рекомендует определять зависимости через <code>terraform graph</code> и работать с whole-state. Наш <code>sre-agent</code> говорит: на Windows не запускать refresh, apply только с <code>-target=</code>. Вендорское правило тут просто неприменимо, и агент должен это понимать без объяснений.</p><p>Второй пример: <code>docker-destructive-guardrails</code> от Docker предлагает tier-уровни очистки, где tier 1 можно делать без вопроса. Наш контекст может содержать volumes с данными, которых больше нигде нет, и мы про это знаем из своих скиллов, а вендор - нет. Значит, вопрос задаём.</p><p>Третий: <code>gha-hardening</code> от GitHub говорит, что нужно пинить действия по SHA и ограничивать права токена. Верно для публичного репозитория. Наши внутренние пайплайны в закрытом репозитории могут читать секреты из своего же хранилища, и часть правил там неприменима. Агент должен это взвесить, а не применить механически.</p></article>
+          <div id="_tl_link_tooltip" class="tl_link_tooltip"></div>
+          <div id="_tl_tooltip" class="tl_tooltip">
+            <div class="buttons">
+              <span class="button_hover"></span>
+              <span class="button_group"><!--
+             --><button id="_bold_button"></button><!--
+             --><button id="_italic_button"></button><!--
+             --><button id="_link_button"></button><!--
+           --></span><!--
+           --><span class="button_group"><!--
+             --><button id="_header_button"></button><!--
+             --><button id="_subheader_button"></button><!--
+             --><button id="_quote_button"></button><!--
+           --></span>
+            </div>
+            <div class="prompt">
+              <span class="close"></span>
+              <div class="prompt_input_wrap"><input type="url" class="prompt_input" /></div>
+            </div>
+          </div>
+          <div id="_tl_blocks" class="tl_blocks">
+            <div class="buttons">
+              <button id="_image_button"></button><!--
+           --><button id="_embed_button"></button>
+            </div>
+          </div>
+          <aside class="tl_article_buttons">
+            <div class="account account_top"></div>
+            <button id="_edit_button" class="button edit_button">Edit</button><!--
+         --><button id="_publish_button" class="button publish_button">Publish</button>
+            <div class="account account_bottom"></div>
+            <div id="_error_msg" class="error_msg"></div>
+          </aside>
+        </main>
+      </div>
+          <div class="tl_page_footer">
+      <div id="_report_button" class="tl_footer_button">Report content on this page</div>
+    </div>
+    </div>
+      <div class="tl_popup tl_popup_hidden" id="_report_popup">
+    <main class="tl_popup_body tl_report_popup">
+      <form id="_report_form" method="post">
+        <section>
+          <h2 class="tl_popup_header">Report Page</h2>
+          <div class="tl_radio_items">
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="violence">
+              <span class="tl_radio_item_label">Violence</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="childabuse">
+              <span class="tl_radio_item_label">Child Abuse</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="copyright">
+              <span class="tl_radio_item_label">Copyright</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="illegal_drugs">
+              <span class="tl_radio_item_label">Illegal Drugs</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="personal_details">
+              <span class="tl_radio_item_label">Personal Details</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="other">
+              <span class="tl_radio_item_label">Other</span>
+            </label>
+          </div>
+          <div class="tl_textfield_item tl_comment_field">
+            <input type="text" class="tl_textfield" name="comment" value="" placeholder="Add Comment…">
+          </div>
+          <div class="tl_copyright_field">
+            Please submit your DMCA takedown request to <a href="mailto:dmca@telegram.org?subject=Report%20to%20Telegraph%20page%20%22%D0%9F%D1%83%D1%81%D1%82%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%D0%B4%20Kubernetes.%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%202%20%28%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%29%22&body=Reported%20page%3A%20https%3A%2F%2Ftelegra.ph%2FPustota-pod-Kubernetes-CHast-2-chernovik-09-25-2%0A%0A%0A" target="_blank">dmca@telegram.org</a>
+          </div>
+        </section>
+        <aside class="tl_popup_buttons">
+          <button type="reset" class="button" id="_report_cancel">Cancel</button>
+          <button type="submit" class="button submit_button">Report</button>
+        </aside>
+      </form>
+    </main>
+  </div>
+    
+    <script>var T={"apiUrl":"https:\/\/edit.telegra.ph","uploadEnabled":false,"datetime":1790368390,"pageId":"0b44b94136a40065fa8ae","editable":true};(function(){var b=document.querySelector('time');if(b&&T.datetime){var a=new Date(1E3*T.datetime),d='January February March April May June July August September October November December'.split(' ')[a.getMonth()],c=a.getDate();b.innerText=d+' '+(10>c?'0':'')+c+', '+a.getFullYear()}})();</script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.selection.min.js"></script>
+    <script src="/js/autosize.min.js"></script>
+    <script src="/js/load-image.all.min.js?1"></script>
+    <script src="/js/quill.min.js?10"></script>
+    <script src="/js/core.min.js?67"></script>
+    <script async src="https://t.me/_websync_?path=Pustota-pod-Kubernetes-CHast-2-chernovik-09-25-2&hash=4032569e92395ef364"></script>
+  </body>
+</html>
