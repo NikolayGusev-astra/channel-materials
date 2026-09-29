@@ -4,7 +4,6 @@ site:
   tags: [mcp, agents, devops]
   cover: aomg-demo.gif
 ---
-
 # Тринадцать MCP-серверов, один порт: трей-гейтвей AOMG
 
 Сложность: средняя
