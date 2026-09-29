@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>А Kubernetes не нашёлся. Часть 2 (черновик) – Telegraph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="А Kubernetes не нашёлся. Часть 2 (черновик)">
+    <meta property="og:description" content="Первая часть: что взяли у поставщиков
+В первой части разбор того, что нашлось у поставщиков инструментов: Docker, HashiCorp, Grafana, GitHub.
+А дальше начинается пустота
+35 официальных DevOps-скиллов: что взяли, а Kubernetes не нашёлся
+Собрал дежурный набор DevOps-скиллов для агента. Слово &quot;дежурный&quot; здесь ключевое. Набор нужен такой, чтобы агент не сочинял инструкции с нуля, а опирался на то, что уже проверено и поддерживается поставщиком инструмента.
+Поэтому поход был не за &quot;скиллами вообще&quot;, а по вендорам.…">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="Telegraph">
+    <meta property="article:published_time" content="2026-09-25T19:56:39+0000">
+    <meta property="article:modified_time" content="2026-09-25T19:56:40+0000">
+    <meta property="article:author" content="Гусев Николай">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="А Kubernetes не нашёлся. Часть 2 (черновик)">
+    <meta name="twitter:description" content="Первая часть: что взяли у поставщиков
+В первой части разбор того, что нашлось у поставщиков инструментов: Docker, HashiCorp, Grafana, GitHub.
+А дальше начинается пустота
+35 официальных DevOps-скиллов: что взяли, а Kubernetes не нашёлся
+Собрал дежурный набор DevOps-скиллов для агента. Слово &quot;дежурный&quot; здесь ключевое. Набор нужен такой, чтобы агент не сочинял инструкции с нуля, а опирался на то, что уже проверено и поддерживается поставщиком инструмента.
+Поэтому поход был не за &quot;скиллами вообще&quot;, а по вендорам.…">
+    <meta name="twitter:image" content="">
+    <link rel="canonical" href="https://telegra.ph/A-Kubernetes-ne-nashyolsya-CHast-2-chernovik-09-25" />
+    <link rel="shortcut icon" href="/favicon.ico?1" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/images/favicon.png?1" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon_2x.png?1" sizes="32x32">
+    <link href="/css/quill.core.min.css" rel="stylesheet">
+    <link href="/css/core.min.css?47" rel="stylesheet">
+  </head>
+  <body>
+    <div class="tl_page_wrap">
+      <div class="tl_page">
+        <main class="tl_article">
+          <header class="tl_article_header" dir="auto">
+            <h1>А Kubernetes не нашёлся. Часть 2 (черновик)</h1>
+            <address>
+              <a rel="author" href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><!--
+           --><time datetime="2026-09-25T19:56:39+0000">September 25, 2026</time>
+            </address>
+          </header>
+          <article id="_tl_editor" class="tl_article_content"><h1>А Kubernetes не нашёлся. Часть 2 (черновик)<br></h1><address><a href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><br></address><p>Первая часть: <a href="/35-oficialnyh-DevOps-skillov-chto-vzyali-CHast-1-chernovik-09-25" rel="nofollow">что взяли у поставщиков</a></p><p>В первой части разбор того, что нашлось у поставщиков инструментов: Docker, HashiCorp, Grafana, GitHub.</p><h3 id="А-дальше-начинается-пустота">А дальше начинается пустота</h3><h3 id="35-официальных-DevOps-скиллов:-что-взяли,-а-Kubernetes-не-нашёлся">35 официальных DevOps-скиллов: что взяли, а Kubernetes не нашёлся</h3><p>Собрал дежурный набор DevOps-скиллов для агента. Слово &quot;дежурный&quot; здесь ключевое. Набор нужен такой, чтобы агент не сочинял инструкции с нуля, а опирался на то, что уже проверено и поддерживается поставщиком инструмента.</p><p>Поэтому поход был не за &quot;скиллами вообще&quot;, а по вендорам. Список длинный получился, и добрая половина строк в нём - про то, чего нет.</p><p>Один разбор для DevOps и SRE. Второй раз, когда что-то упало посреди ночи и никто не помнит, зачем в compose.yaml был этот том.</p><h3 id="Что-мы-вообще-ищем">Что мы вообще ищем</h3><p>Скилл - это каталог с файлом SKILL.md. Внутри инструкция для агента: когда применять, как делать, какие грабли. Формат открытый, описан как стандарт Agent Skills, читается десятком клиентов, от Claude Code до Cursor.</p><p>Правило отбора я сформулировал сразу, иначе нашлось бы четыреста каталогов, а толку ноль:</p><pre>1. Официальный автор = владелец инструмента
+   Docker, HashiCorp, Grafana Labs, Ansible. Не &quot;12 блогеров
+   скопировали друг у друга&quot;.
+2. Скилл работает против нашего стека, а не против облака,
+   которого у нас нет.
+3. Лицензия позволяет использовать.</pre><p>Третий пункт отдельно, потому что лицензии разные. У Docker и Grafana это Apache-2.0, у HashiCorp - MPL-2.0 с файловым ограничением, у GitHub - MIT. В MPL-2.0 изменённый файл обязан остаться под той же лицензией. Мы файлы вендоров не правим, поэтому ограничение не срабатывает, но если какой-то скилл придётся чинить, дописывать придётся в отдельный каталог.</p><h3 id="Docker:-11-скиллов,-беру-все">Docker: 11 скиллов, беру все</h3><p>Первый и самый аккуратный набор. Репозиторий docker/skills, 11 каталогов, 531 КБ.</p><p>Порядок применения там прописан, и он не выдуманный:</p><pre>docker-project-foundations
+  -&gt; docker-build-strategies
+    -&gt; docker-compose-patterns
+
+docker-sandboxes-lifecycle
+  -&gt; docker-sandboxes-network-credentials
+    -&gt; docker-sandboxes-env | docker-sandboxes-kits
+
+docker-agent-config
+  -&gt; docker-agent-run
+    -&gt; docker-agent-deploy</pre><p>Первый скилл отвечает на вопрос &quot;в проекте нет вообще никакого Docker&quot;. Второй - как написать Dockerfile, чтобы образ был меньше, а сборка быстрее. Третий - как связать сервисы в compose.yaml.</p><p>Отдельно стоит <code>docker-destructive-guardrails</code>. Это поведенческий скилл, а не справочник: перед любой командой удаления он требует явно назвать, что именно потеряется, и получить подтверждение. Узкое исключение - уборка очереди контейнеров первого уровня, там можно не спрашивать.</p><p>При установке пришлось выкинуть каталоги <code>agents/</code>. В них манифесты для конкретных клиентов, для Hermes они бесполезны. Файлы <code>skill.yaml</code> с версиями оставил: по ним видно, из какой сборки взят скилл.</p><h3 id="HashiCorp:-16-Terraform-и-4-Packer,-беру-6">HashiCorp: 16 Terraform и 4 Packer, беру 6</h3><p>Репозиторий называется hashicorp/agent-skills, 875 звёзд, лицензия MPL-2.0. И сразу деталь: половина скиллов совсем не про применение Terraform.</p><pre>Взял (пользовательские):
+  terraform-style-guide     генерация и ревью HCL
+  terraform-test            тесты .tftest.hcl, моки провайдеров
+  terraform-search-import   загон существующих ресурсов в состояние
+  refactor-module           рефакторинг модулей
+  terraform-stacks          Terraform Stacks: компоненты и деплои
+  terraform-policy          политики as code, OPA и Sentinel
+
+Не взял (разработка провайдеров):
+  provider-actions
+  provider-configuration
+  provider-docs
+  provider-ephemeral-resources
+  provider-framework-migration
+  provider-resources
+  provider-test-patterns
+  new-terraform-provider
+  run-acceptance-tests
+  azure-verified-modules
+
+Packer целиком:
+  aws-ami-builder
+  azure-image-builder
+  push-to-registry
+  windows-builder</pre><p>Разница принципиальная. <code>provider-resources</code> - это скилл для человека, который пишет новый ресурс внутри провайдера HashiCorp: как устроено описание ресурса, когда нужна рамка миграции состояния, как это тестировать. Нам не нужно, потому что мы провайдеры не пишем. Мы их потребляем.</p><p>А вот <code>terraform-search-import</code> и <code>terraform-policy</code> про другое. Первый отвечает на вопрос &quot;у меня четыреста ресурсов в облаке, они никем не управляются, как загнать их в состояние&quot;. Это ровно наша боль на стендах. Второй - правила как код, проверяемые до применения.</p><p>Весит набор 953 КБ, и три четверти веса - terraform-policy с готовыми примерами правил и набором тестов.</p><h3 id="Grafana:-51-скилл-в-7-группах,-беру-15">Grafana: 51 скилл в 7 группах, беру 15</h3><p>Grafana Labs, Apache-2.0, 1,7 МБ. Раскладка по группам:</p><pre>grafana-core         8
+grafana-cloud       20
+grafana-k6           7
+grafana-lgtm         6
+grafana-plugins      5
+grafana-app-sdk      4
+grafana-datasources  1</pre><p>Группа cloud - это двадцать скиллов, больше трети набора. Продажи, биллинг, управление расходами, внутренние интеграции с их облаком. У нас Grafana Cloud нет вообще, всё считается локально. Отбросил все двадцать.</p><p>app-sdk - разработка плагинов на Go. Плагины мы не пишем. Группа grafana-plugins - разработка плагинов и миграция на React 19. Тоже не наш профиль.</p><p>Остаток разложился так:</p><pre>grafana-promql                     запросы PromQL
+grafana-prometheus                 метрики, алерты, recording rules
+grafana-loki                       логи и LogQL
+grafana-tempo                      трассировки
+grafana-mimir                      долговременное хранилище метрик
+grafana-pyroscope                  профилирование
+grafana-opentelemetry              инструментация приложений
+grafana-alloy                      конфигурация сборщика
+grafana-grafana-oss                администрирование
+grafana-dashboarding               дашборды через API
+grafana-alerting-irm               алерты и SLO
+grafana-datasources-provisioning   источники данных как код
+grafana-k6-perf-test-website       нагрузочный тест сайта
+grafana-k6-test-maintenance        поддержка тестов k6
+grafana-profilecli-insights        разбор профилей</pre><p>Скилл promql я бы выделил отдельно. Там не пересказ документации, а рабочая шпаргалка: чем rate отличается от irate, почему histogram_quantile возвращает NaN без группировки по le, как перенести медленный запрос дашборда в recording rule, как ловить источник взрыва кардинальности, как считать скорость сжигания бюджета ошибок. Это ровно те вещи, которые иначе пришлось бы гуглить в третий раз.</p><h3 id="GitHub:-из-423-беру-3">GitHub: из 423 беру 3</h3><p>awesome-copilot - не совсем набор скиллов в строгом смысле. Это сборка инструкций, агентов, промптов и конфигураций от сообщества, MIT, больше 39 тысяч звёзд. Скиллов внутри 423.</p><p>Брать всё подряд нельзя: там и миграции Oracle в PostgreSQL, и инструменты разметки данных, и приложения для локального запуска. Отобрал по ключевым словам DevOps, получил 65 кандидатов, из которых три имеют смысл:</p><pre>gha-hardening        безопасность .github/workflows
+gha-efficiency       ускорение пайплайнов
+incident-postmortem  разбор аварии без поиска виноватых</pre><p>Первый закрывает класс атак, которых не видно в обычном линтере. Скриптовая инъекция через <code>&#036;{{ }}</code> в GitHub Actions выглядит в YAML как обычная строка, а разворачивается в командную строку до того, как исполнитель прочитает ваш код. Плюс подъём привилегий через <code>pull_request_target</code> и <code>workflow_run</code>, подключение сторонних действий по тегу вместо SHA, избыточные права GITHUB_TOKEN. Для инженера это полезнее любого справочника по Docker, потому что в CI мы всё это и так ломаем.</p><p>Третий - про методику. Он требует, чтобы у каждого пункта постмортема был владелец-человек и дата, и запрещает формулировку &quot;человек забыл&quot;. Формулировка &quot;система не проверила конфигурацию перед применением&quot; правильная, &quot;Вася забыл проверить&quot; - нет.</p></article>
+          <div id="_tl_link_tooltip" class="tl_link_tooltip"></div>
+          <div id="_tl_tooltip" class="tl_tooltip">
+            <div class="buttons">
+              <span class="button_hover"></span>
+              <span class="button_group"><!--
+             --><button id="_bold_button"></button><!--
+             --><button id="_italic_button"></button><!--
+             --><button id="_link_button"></button><!--
+           --></span><!--
+           --><span class="button_group"><!--
+             --><button id="_header_button"></button><!--
+             --><button id="_subheader_button"></button><!--
+             --><button id="_quote_button"></button><!--
+           --></span>
+            </div>
+            <div class="prompt">
+              <span class="close"></span>
+              <div class="prompt_input_wrap"><input type="url" class="prompt_input" /></div>
+            </div>
+          </div>
+          <div id="_tl_blocks" class="tl_blocks">
+            <div class="buttons">
+              <button id="_image_button"></button><!--
+           --><button id="_embed_button"></button>
+            </div>
+          </div>
+          <aside class="tl_article_buttons">
+            <div class="account account_top"></div>
+            <button id="_edit_button" class="button edit_button">Edit</button><!--
+         --><button id="_publish_button" class="button publish_button">Publish</button>
+            <div class="account account_bottom"></div>
+            <div id="_error_msg" class="error_msg"></div>
+          </aside>
+        </main>
+      </div>
+          <div class="tl_page_footer">
+      <div id="_report_button" class="tl_footer_button">Report content on this page</div>
+    </div>
+    </div>
+      <div class="tl_popup tl_popup_hidden" id="_report_popup">
+    <main class="tl_popup_body tl_report_popup">
+      <form id="_report_form" method="post">
+        <section>
+          <h2 class="tl_popup_header">Report Page</h2>
+          <div class="tl_radio_items">
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="violence">
+              <span class="tl_radio_item_label">Violence</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="childabuse">
+              <span class="tl_radio_item_label">Child Abuse</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="copyright">
+              <span class="tl_radio_item_label">Copyright</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="illegal_drugs">
+              <span class="tl_radio_item_label">Illegal Drugs</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="personal_details">
+              <span class="tl_radio_item_label">Personal Details</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="other">
+              <span class="tl_radio_item_label">Other</span>
+            </label>
+          </div>
+          <div class="tl_textfield_item tl_comment_field">
+            <input type="text" class="tl_textfield" name="comment" value="" placeholder="Add Comment…">
+          </div>
+          <div class="tl_copyright_field">
+            Please submit your DMCA takedown request to <a href="mailto:dmca@telegram.org?subject=Report%20to%20Telegraph%20page%20%22%D0%90%20Kubernetes%20%D0%BD%D0%B5%20%D0%BD%D0%B0%D1%88%D1%91%D0%BB%D1%81%D1%8F.%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%202%20%28%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%29%22&body=Reported%20page%3A%20https%3A%2F%2Ftelegra.ph%2FA-Kubernetes-ne-nashyolsya-CHast-2-chernovik-09-25%0A%0A%0A" target="_blank">dmca@telegram.org</a>
+          </div>
+        </section>
+        <aside class="tl_popup_buttons">
+          <button type="reset" class="button" id="_report_cancel">Cancel</button>
+          <button type="submit" class="button submit_button">Report</button>
+        </aside>
+      </form>
+    </main>
+  </div>
+    
+    <script>var T={"apiUrl":"https:\/\/edit.telegra.ph","uploadEnabled":false,"datetime":1790366199,"pageId":"08f8ec320c384c9ad2a21","editable":true};(function(){var b=document.querySelector('time');if(b&&T.datetime){var a=new Date(1E3*T.datetime),d='January February March April May June July August September October November December'.split(' ')[a.getMonth()],c=a.getDate();b.innerText=d+' '+(10>c?'0':'')+c+', '+a.getFullYear()}})();</script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.selection.min.js"></script>
+    <script src="/js/autosize.min.js"></script>
+    <script src="/js/load-image.all.min.js?1"></script>
+    <script src="/js/quill.min.js?10"></script>
+    <script src="/js/core.min.js?67"></script>
+    <script async src="https://t.me/_websync_?path=A-Kubernetes-ne-nashyolsya-CHast-2-chernovik-09-25&hash=5efc7057d3a63ae52c"></script>
+  </body>
+</html>
