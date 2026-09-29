@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DevOps-скиллы для агента: 35 официальных, 111 своих. Часть 1 (черновик) – Telegraph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="DevOps-скиллы для агента: 35 официальных, 111 своих. Часть 1 (черновик)">
+    <meta property="og:description" content="Часть 1 Часть 2 Часть 3
+DevOps-скиллы для агента: 35 официальных, 111 своих и пустота под Kubernetes
+У любого агента, который работает с инфраструктурой, есть папка со скиллами. И почти у всех она выглядит одинаково: либо пустая, либо набитая всем подряд, что нашлось на публичном реестре. Третий вариант, когда в папке лежит ровно то, что нужно, и лежит по понятному принципу, встречается редко.
+У меня в каталоге devops сейчас 147 рабочих скиллов. 35 из них приехали из официальных репозиториев вендоров, 111 написаны…">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="Telegraph">
+    <meta property="article:published_time" content="2026-09-25T20:33:10+0000">
+    <meta property="article:modified_time" content="2026-09-25T20:33:10+0000">
+    <meta property="article:author" content="Гусев Николай">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="DevOps-скиллы для агента: 35 официальных, 111 своих. Часть 1 (черновик)">
+    <meta name="twitter:description" content="Часть 1 Часть 2 Часть 3
+DevOps-скиллы для агента: 35 официальных, 111 своих и пустота под Kubernetes
+У любого агента, который работает с инфраструктурой, есть папка со скиллами. И почти у всех она выглядит одинаково: либо пустая, либо набитая всем подряд, что нашлось на публичном реестре. Третий вариант, когда в папке лежит ровно то, что нужно, и лежит по понятному принципу, встречается редко.
+У меня в каталоге devops сейчас 147 рабочих скиллов. 35 из них приехали из официальных репозиториев вендоров, 111 написаны…">
+    <meta name="twitter:image" content="">
+    <link rel="canonical" href="https://telegra.ph/DevOps-skilly-dlya-agenta-35-oficialnyh-111-svoih-CHast-1-chernovik-09-25" />
+    <link rel="shortcut icon" href="/favicon.ico?1" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/images/favicon.png?1" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon_2x.png?1" sizes="32x32">
+    <link href="/css/quill.core.min.css" rel="stylesheet">
+    <link href="/css/core.min.css?47" rel="stylesheet">
+  </head>
+  <body>
+    <div class="tl_page_wrap">
+      <div class="tl_page">
+        <main class="tl_article">
+          <header class="tl_article_header" dir="auto">
+            <h1>DevOps-скиллы для агента: 35 официальных, 111 своих. Часть 1 (черновик)</h1>
+            <address>
+              <a rel="author" href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><!--
+           --><time datetime="2026-09-25T20:33:10+0000">September 25, 2026</time>
+            </address>
+          </header>
+          <article id="_tl_editor" class="tl_article_content"><h1>DevOps-скиллы для агента: 35 официальных, 111 своих. Часть 1 (черновик)<br></h1><address><a href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><br></address><p>Часть 1 <a href="/Pustota-pod-Kubernetes-CHast-2-chernovik-09-25-2" rel="nofollow">Часть 2</a> <a href="/Svoi-skilly-prioritet-grabli-CHast-3-chernovik-09-25" rel="nofollow">Часть 3</a></p><h3 id="DevOps-скиллы-для-агента:-35-официальных,-111-своих-и-пустота-под-Kubernetes">DevOps-скиллы для агента: 35 официальных, 111 своих и пустота под Kubernetes</h3><p>У любого агента, который работает с инфраструктурой, есть папка со скиллами. И почти у всех она выглядит одинаково: либо пустая, либо набитая всем подряд, что нашлось на публичном реестре. Третий вариант, когда в папке лежит ровно то, что нужно, и лежит по понятному принципу, встречается редко.</p><p>У меня в каталоге devops сейчас 147 рабочих скиллов. 35 из них приехали из официальных репозиториев вендоров, 111 написаны под нашу инфраструктуру, плюс один диспетчер. Разница между этими двумя половинами - это и есть вся статья. Не &quot;какие скиллы хорошие&quot;, а почему граница проходит именно здесь и что делать, если у вас свой ландшафт.</p><p>Начну с цифр, чтобы дальше не спорить о вкусе.</p><h3 id="Сколько-чего-в-папке-devops">Сколько чего в папке devops</h3><p>Проверяется одной командой, не верьте на слово:</p><pre>ls &#036;LOCALAPPDATA/hermes/skills/devops | wc -l</pre><p>147 каталогов с <code>SKILL.md</code>, из них два - мусор (<code>artifact-verification.rollback-broken</code> и <code>shturman.rollback-broken</code>, остатки от неудачных откатов, лежат как напоминание). С ними 149.</p><p>Разбивка:</p><ul><li>35 скиллов из официальных репозиториев вендоров: 295 КБ у Docker, 487 КБ у HashiCorp, 423 КБ у Grafana, 42 КБ у GitHub;</li><li>111 наших собственных скиллов;</li><li>плюс диспетчер <code>docker-iac-skills</code>, который сам ничего не знает про Docker и Terraform, а только решает, что грузить.</li></ul><p>Весит папка целиком 4,8 МБ, из них на вендорские наборы приходится 1,2 МБ. Остальное - наши скиллы, они крупнее, потому что описывают конкретные системы.</p><h3 id="Официальные-скиллы:-кто-что-выложил">Официальные скиллы: кто что выложил</h3><p>Вендорские наборы появились в 2026 году, и это меняет дело. Раньше про скиллы для DevOps можно было только мечтать - вместо них были ссылки в README и плагины для одной IDE. Сейчас есть четыре репозитория, которые ведут сами поставщики инструментов.</p><p>| Репозиторий | Звёзд | Скиллов | Лицензия | Последний коммит |</p><p>|---|---|---|---|---|</p><p>| <a href="https://github.com/docker/skills" target="_blank" rel="nofollow">docker/skills</a> | 179 | 11 | Apache-2.0 | 2026-09-25 |</p><p>| <a href="https://github.com/hashicorp/agent-skills" target="_blank" rel="nofollow">hashicorp/agent-skills</a> | 875 | 20 | MPL-2.0 | 2026-09-24 |</p><p>| <a href="https://github.com/grafana/skills" target="_blank" rel="nofollow">grafana/skills</a> | 271 | 52 | Apache-2.0 | 2026-09-24 |</p><p>| <a href="https://github.com/github/awesome-copilot" target="_blank" rel="nofollow">github/awesome-copilot</a> | 39 394 | 423 | MIT | 2026-09-25 |</p><p>Звёзды и даты - с GitHub API на 26 сентября 2026, не на память.</p><p>Общий признак всех четырёх: это не маркетинговые лендинги про &quot;ИИ меняет DevOps&quot;. Это инструкции, написанные инженерами, которые сами пишут эти инструменты и устали объяснять новичку, почему опять сломалось. Это главный критерий отбора. Никаких других критериев я не придумывал.</p><p>Чего у этих наборов нет: они не знают про вашу сеть. Совсем. Скилл от Docker не знает, что у вас два стенда, три VPN-ноды и Windows, на котором нельзя запускать apply. Скилл от HashiCorp не знает, что ваш провайдер OpenNebula версии 1.5.0 молча падает в refresh на Windows и вам приходится это обходить. Скилл от Grafana не знает, что у вас нет Grafana Cloud и никогда не будет.</p><p>Об этом ниже, в разделе про свои скиллы. Сначала - что конкретно взято.</p><h3 id="Docker:-11-скиллов,-беру-все">Docker: 11 скиллов, беру все</h3><p>Самый чистый набор из четырёх. Каждый скилл - один узкий сценарий, ничего лишнего, и в репозитории есть <code>catalog.yaml</code>, из которого генерируется таблица.</p><p>Взяты все 11:</p><pre>docker-project-foundations
+docker-build-strategies
+docker-compose-patterns
+docker-destructive-guardrails
+docker-sandboxes-lifecycle
+docker-sandboxes-network-credentials
+docker-sandboxes-env
+docker-sandboxes-kits
+docker-agent-config
+docker-agent-run
+docker-agent-deploy</pre><p>Порядок загрузки задан их же каталогом, и он не произвольный:</p><pre>docker-project-foundations
+  -&gt; docker-build-strategies
+    -&gt; docker-compose-patterns
+docker-destructive-guardrails          (перед любым rm/prune/reset)
+docker-sandboxes-lifecycle
+  -&gt; docker-sandboxes-network-credentials
+    -&gt; (docker-sandboxes-env | docker-sandboxes-kits)
+docker-agent-config
+  -&gt; docker-agent-run
+    -&gt; docker-agent-deploy</pre><p>Смысл цепочек: нельзя запускать агента до того, как написан конфиг. Нельзя трогать volumes до того, как прочитан <code>destructive-guardrails</code>, который объясняет, что именно ты сейчас потеряешь. Нельзя настраивать окружение песочницы до того, как создана сама песочница.</p><p>При установке удалил каталоги <code>agents/</code> из каждого скилла. Они дублируют <code>skill.yaml</code>, а для Hermes это шум: агент не смотрит в них, но они занимают место в индексе. <code>skill.yaml</code> оставил, там версии и provenance.</p><p>Пять из одиннадцати - это Docker Sandboxes, то есть продукт, которого у нас нет. Поставил всё равно. Стоимость - 5 КБ текста, выигрыш - если продукт доедет до нашего стенда, скилл уже на месте и проверен на синтаксис. Это осознанная ставка на будущее, а не ошибка отбора.</p><h3 id="HashiCorp:-20-скиллов,-беру-6">HashiCorp: 20 скиллов, беру 6</h3><p>Здесь первая настоящая развилка. В репозитории 16 Terraform-скиллов и 4 Packer-скилла, и 10 из 20 корень своей ценности имеют в том, что мы не делаем.</p><p>Взяты 6 пользовательских:</p><pre>hcp-terraform-style-guide       генерация и ревью HCL по официальному style guide
+hcp-terraform-test             terraform test, mock providers, assertions
+hcp-terraform-search-import    поиск и импорт существующих ресурсов в state
+hcp-refactor-module            рефакторинг модулей, интерфейсы, миграция вызовов
+hcp-terraform-stacks           Terraform Stacks: components, orchestration
+hcp-terraform-policy           политики as code на OPA и Sentinel</pre><p>Не взяты 14:</p><pre>provider-*                     7 скиллов про разработку Terraform-провайдера
+new-terraform-provider         1 скилл, тот же профиль
+run-acceptance-tests           приёмочные тесты провайдера
+azure-verified-modules         генерация AVMS-модулей
+packer/*                       4 скилла про сборку образов</pre><p><code>provider-new-terraform-provider</code>, <code>provider-framework-migration</code>, <code>provider-test-patterns</code> - это про написание собственного провайдера на Go. Мы применяем Terraform, а не пишем провайдеры. <code>packer-*</code> - про инструмент, которого в нашем стеке нет.</p><p>Правило отбора звучит так: если скилл про то, как <strong>использовать</strong> инструмент, он идёт в набор. Если про то, как <strong>разрабатывать</strong> инструмент, не идёт, пока у нас нет такой задачи. Простой тест, но он сразу отсёк половину.</p><p>Лицензия MPL-2.0 у HashiCorp - file-level copyleft. Если вы пишете свой код, а не модифицируете их скилл, это не накладывает на вас никаких обязательств. Но если будете править скилл под себя, правки придётся публиковать. Имейте в виду.</p><h3 id="Grafana:-52-скилла,-беру-15">Grafana: 52 скилла, беру 15</h3><p>Самый большой набор и самая тяжёлая развилка. Разложен по 7 группам:</p><pre>grafana-cloud        20    SaaS, биллинг, продакты, метры потребления
+grafana-core          8    метрики, логи, трейсы, профили, алерты
+grafana-k6            7    нагрузочные тесты
+grafana-lgtm          6    observability-стек
+grafana-plugins       5    разработка плагинов
+grafana-app-sdk       4    разработка приложений на Go
+grafana-datasources   1    provisioning источников данных</pre><p>20 скиллов из группы <code>grafana-cloud</code> - это биллинг, FinOps, продакты-практики и Cloud-specific алерты. У нас self-hosted, Grafana Cloud мы не покупали и не собираемся. Взять 20 скиллов про чужой SaaS, чтобы они лежали мёртвым грузом, смысла нет.</p><p>4 скилла <code>app-sdk</code> - это разработка плагинов на Go с бандлером и сгенерированным кодом. Наш Grafana - это несколько дашбордов, плагины под наши нужды мы не пишем.</p><p>Взяты 15 self-hosted:</p><pre>grafana-promql                  написание запросов PromQL
+grafana-prometheus              метрики, алерты, recording rules
+grafana-loki                    логи, LogQL
+grafana-tempo                   трейсы
+grafana-mimir                   распределённое хранилище метрик
+grafana-pyroscope               профилирование
+grafana-opentelemetry           OTel-конвейер в Grafana
+grafana-alloy                   конфигурация сборщика
+grafana-grafana-oss             администрирование OSS-инстанса
+grafana-dashboarding            дашборды
+grafana-alerting-irm            алерты и SLO
+grafana-datasources-provisioning
+grafana-k6-perf-test-website    нагрузочный тест сайта
+grafana-k6-test-maintenance     поддержка тестов k6
+grafana-profilecli-insights     разбор профилей</pre><p>Обратите внимание на <code>grafana-promql</code> и <code>grafana-prometheus</code>. Это разные скиллы: первый - как написать запрос, второй - как построить систему алертинга поверх метрик. Не любой набор даёт такое разделение, и для агента это существенно: узкий скилл грузится, когда нужен синтаксис запроса, широкий - когда проектируется правило.</p><h3 id="GitHub:-423-сообщества,-беру-3">GitHub: 423 сообщества, беру 3</h3><p><code>awesome-copilot</code> - это не скиллы от вендора инструмента в строгом смысле. Это 423 набора от сообщества, в том числе от инженеров GitHub. Формально они официальные, потому что репозиторий принадлежит GitHub, но качество варьируется.</p><p>Отбор по ключевым словам дал 5 кандидатов:</p><pre>create-github-action-workflow-specification
+github-actions-efficiency
+github-actions-hardening
+github-actions-runtime-upgrade-conventions
+incident-postmortem</pre><p>Взяты 3. Первые два - ровно то, что нужно любому, у кого в репозитории лежат пайплайны: один рассказывает про script injection через <code>&#036;{{ }}</code> и про <code>pull_request_target</code>, второй - про то, как не ждать 20 минут на каждом коммите.</p><p>Не взят <code>create-github-action-workflow-specification</code>: он про написание спецификации для нового экшена, то есть про разработку, а не про использование. По правилу из раздела про HashiCorp - мимо.</p><p><code>github-actions-runtime-upgrade-conventions</code> - узкий скилл про конвенции обновления рантайма. Полезно, но задача возникает раз в год, а места в контексте он занимает столько же, сколько hardening.</p><p>Третий взятый, <code>incident-postmortem</code>, вообще не про GitHub. Это шаблон разбора аварии без поиска виноватых: таймлайн, первопричина, действия с владельцами и сроками. Живёт он в <code>awesome-copilot</code> случайно, но методология правильная и нужная.</p><h3 id="Неофициальные:-что-лежит-на-публичном-реестре">Неофициальные: что лежит на публичном реестре</h3><p>Кроме репозиториев вендоров есть агрегатор <code>skills.sh</code>, где любой может выложить свой набор. Там тысячи скиллов, в том числе под Kubernetes, Helm, Cilium, Argo CD, Vault, Traefik, Tailscale, Datadog, Proxmox и Crossplane - всё, по чему официального набора нет.</p><p>Правило простое: неофициальное читать можно, ставить вслепую - нет. И вот почему это не снобизм и не паранойя.</p><p>Скилл - это инструкция, которую агент принимает за системную. Если в ней устаревший флаг, агент не усомнится: он выполнит. Автор самописного набора не отвечает за работоспособность вашей версии инструмента, тем более через полгода. К тому же у самописного скилла обычно не ведётся история изменений, никто не проверяет его вторым ревьюером, и вендору, которому можно пожаловаться, просто нет.</p><p>Часть таких скиллов сделана настолько хорошо, что их действительно стоит читать. Но ставить в рабочий набор я их не буду.</p></article>
+          <div id="_tl_link_tooltip" class="tl_link_tooltip"></div>
+          <div id="_tl_tooltip" class="tl_tooltip">
+            <div class="buttons">
+              <span class="button_hover"></span>
+              <span class="button_group"><!--
+             --><button id="_bold_button"></button><!--
+             --><button id="_italic_button"></button><!--
+             --><button id="_link_button"></button><!--
+           --></span><!--
+           --><span class="button_group"><!--
+             --><button id="_header_button"></button><!--
+             --><button id="_subheader_button"></button><!--
+             --><button id="_quote_button"></button><!--
+           --></span>
+            </div>
+            <div class="prompt">
+              <span class="close"></span>
+              <div class="prompt_input_wrap"><input type="url" class="prompt_input" /></div>
+            </div>
+          </div>
+          <div id="_tl_blocks" class="tl_blocks">
+            <div class="buttons">
+              <button id="_image_button"></button><!--
+           --><button id="_embed_button"></button>
+            </div>
+          </div>
+          <aside class="tl_article_buttons">
+            <div class="account account_top"></div>
+            <button id="_edit_button" class="button edit_button">Edit</button><!--
+         --><button id="_publish_button" class="button publish_button">Publish</button>
+            <div class="account account_bottom"></div>
+            <div id="_error_msg" class="error_msg"></div>
+          </aside>
+        </main>
+      </div>
+          <div class="tl_page_footer">
+      <div id="_report_button" class="tl_footer_button">Report content on this page</div>
+    </div>
+    </div>
+      <div class="tl_popup tl_popup_hidden" id="_report_popup">
+    <main class="tl_popup_body tl_report_popup">
+      <form id="_report_form" method="post">
+        <section>
+          <h2 class="tl_popup_header">Report Page</h2>
+          <div class="tl_radio_items">
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="violence">
+              <span class="tl_radio_item_label">Violence</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="childabuse">
+              <span class="tl_radio_item_label">Child Abuse</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="copyright">
+              <span class="tl_radio_item_label">Copyright</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="illegal_drugs">
+              <span class="tl_radio_item_label">Illegal Drugs</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="personal_details">
+              <span class="tl_radio_item_label">Personal Details</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="other">
+              <span class="tl_radio_item_label">Other</span>
+            </label>
+          </div>
+          <div class="tl_textfield_item tl_comment_field">
+            <input type="text" class="tl_textfield" name="comment" value="" placeholder="Add Comment…">
+          </div>
+          <div class="tl_copyright_field">
+            Please submit your DMCA takedown request to <a href="mailto:dmca@telegram.org?subject=Report%20to%20Telegraph%20page%20%22DevOps-%D1%81%D0%BA%D0%B8%D0%BB%D0%BB%D1%8B%20%D0%B4%D0%BB%D1%8F%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%3A%2035%20%D0%BE%D1%84%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%2C%20111%20%D1%81%D0%B2%D0%BE%D0%B8%D1%85.%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%201%20%28%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%29%22&body=Reported%20page%3A%20https%3A%2F%2Ftelegra.ph%2FDevOps-skilly-dlya-agenta-35-oficialnyh-111-svoih-CHast-1-chernovik-09-25%0A%0A%0A" target="_blank">dmca@telegram.org</a>
+          </div>
+        </section>
+        <aside class="tl_popup_buttons">
+          <button type="reset" class="button" id="_report_cancel">Cancel</button>
+          <button type="submit" class="button submit_button">Report</button>
+        </aside>
+      </form>
+    </main>
+  </div>
+    
+    <script>var T={"apiUrl":"https:\/\/edit.telegra.ph","uploadEnabled":false,"datetime":1790368390,"pageId":"fdd05a575a1f0a71f2002","editable":true};(function(){var b=document.querySelector('time');if(b&&T.datetime){var a=new Date(1E3*T.datetime),d='January February March April May June July August September October November December'.split(' ')[a.getMonth()],c=a.getDate();b.innerText=d+' '+(10>c?'0':'')+c+', '+a.getFullYear()}})();</script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.selection.min.js"></script>
+    <script src="/js/autosize.min.js"></script>
+    <script src="/js/load-image.all.min.js?1"></script>
+    <script src="/js/quill.min.js?10"></script>
+    <script src="/js/core.min.js?67"></script>
+    <script async src="https://t.me/_websync_?path=DevOps-skilly-dlya-agenta-35-oficialnyh-111-svoih-CHast-1-chernovik-09-25&hash=9df9e553f59fd24807"></script>
+  </body>
+</html>

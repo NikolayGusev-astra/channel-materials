@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>35 официальных DevOps-скиллов: что взяли. Часть 1 (черновик) – Telegraph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="35 официальных DevOps-скиллов: что взяли. Часть 1 (черновик)">
+    <meta property="og:description" content="Продолжение - вторая часть: А Kubernetes не нашёлся
+Kubernetes, Helm, Cilium, Argo, Crossplane, Datadog, Traefik, Vault и OpenBao, Tailscale, Proxmox.
+Официальных скиллов не существует. Проверял и поиском репозиториев по организациям, и прямой проверкой имён репозиториев:
+поиск &quot;skills&quot; внутри org:kubernetes  = 0 результатов
+поиск &quot;agent-skills&quot; внутри org:kubernetes = 0 результатов
+поиск &quot;skills&quot; внутри org:ansible = 1 результат
+Kubernetes-официальных скиллов нет. Подозреваю, что причина организационная: у…">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="Telegraph">
+    <meta property="article:published_time" content="2026-09-25T19:56:40+0000">
+    <meta property="article:modified_time" content="2026-09-25T19:56:40+0000">
+    <meta property="article:author" content="Гусев Николай">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="35 официальных DevOps-скиллов: что взяли. Часть 1 (черновик)">
+    <meta name="twitter:description" content="Продолжение - вторая часть: А Kubernetes не нашёлся
+Kubernetes, Helm, Cilium, Argo, Crossplane, Datadog, Traefik, Vault и OpenBao, Tailscale, Proxmox.
+Официальных скиллов не существует. Проверял и поиском репозиториев по организациям, и прямой проверкой имён репозиториев:
+поиск &quot;skills&quot; внутри org:kubernetes  = 0 результатов
+поиск &quot;agent-skills&quot; внутри org:kubernetes = 0 результатов
+поиск &quot;skills&quot; внутри org:ansible = 1 результат
+Kubernetes-официальных скиллов нет. Подозреваю, что причина организационная: у…">
+    <meta name="twitter:image" content="">
+    <link rel="canonical" href="https://telegra.ph/35-oficialnyh-DevOps-skillov-chto-vzyali-CHast-1-chernovik-09-25" />
+    <link rel="shortcut icon" href="/favicon.ico?1" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/images/favicon.png?1" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon_2x.png?1" sizes="32x32">
+    <link href="/css/quill.core.min.css" rel="stylesheet">
+    <link href="/css/core.min.css?47" rel="stylesheet">
+  </head>
+  <body>
+    <div class="tl_page_wrap">
+      <div class="tl_page">
+        <main class="tl_article">
+          <header class="tl_article_header" dir="auto">
+            <h1>35 официальных DevOps-скиллов: что взяли. Часть 1 (черновик)</h1>
+            <address>
+              <a rel="author" href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><!--
+           --><time datetime="2026-09-25T19:56:40+0000">September 25, 2026</time>
+            </address>
+          </header>
+          <article id="_tl_editor" class="tl_article_content"><h1>35 официальных DevOps-скиллов: что взяли. Часть 1 (черновик)<br></h1><address><a href="https://hermes-agent.ru/" target="_blank">Гусев Николай</a><br></address><p>Продолжение - вторая часть: <a href="/A-Kubernetes-ne-nashyolsya-CHast-2-chernovik-09-25" rel="nofollow">А Kubernetes не нашёлся</a></p><p>Kubernetes, Helm, Cilium, Argo, Crossplane, Datadog, Traefik, Vault и OpenBao, Tailscale, Proxmox.</p><p>Официальных скиллов не существует. Проверял и поиском репозиториев по организациям, и прямой проверкой имён репозиториев:</p><pre>поиск &quot;skills&quot; внутри org:kubernetes  = 0 результатов
+поиск &quot;agent-skills&quot; внутри org:kubernetes = 0 результатов
+поиск &quot;skills&quot; внутри org:ansible = 1 результат</pre><p>Kubernetes-официальных скиллов нет. Подозреваю, что причина организационная: у Kubernetes нет единого центра, у которого был бы такой продукт, всё размазано по рабочим группам. А скилл по Kubernetes означал бы конвенцию на право написания, и на неё не пошли.</p><p>На публичном реестре по этим инструментам лежат самописные каталоги. Читать - можно. Ставить в рабочий набор вслепую - нет. Качество не проверено, авторы не отвечают за устаревшие команды. Когда в чём-то уберут устаревший флаг, такой скилл станет источником вредных советов, и агент будет уверенно им следовать.</p><p>Единственное исключение - Ansible. Официальный набор есть, и состоит ровно из одного скилла: проверка здоровья платформы автоматизации. Он делает полный осмотр - состояние сервисов, очередь заданий, топология, загрузка лицензий - и отдаёт отчёт. Скилл работает только на чтение и требует сервер MCP для AAP 2.5 и новее, которого у нас пока нет. Подключим, когда появится для нашего aa-controller.</p><h3 id="Pulumi,-AWS-и-Microsoft:-нашёл,-не-взял">Pulumi, AWS и Microsoft: нашёл, не взял</h3><p>Три больных официальных набора, лицензии нас устроили бы:</p><pre>pulumi/agent-skills          17 скиллов   MIT
+aws/agent-toolkit-for-aws   177 скиллов   Apache-2.0
+microsoft/skills             181 скилл    MIT</pre><p>Pulumi закрывает автоматизацию, управление окружениями, миграции из CloudFormation и из Terraform. Всё это про другую систему управления инфраструктурой. У нас Terraform, и менять его на пути к облаку, которого нет, смысла нет.</p><p>Набор AWS - это 177 скиллов, 16 МБ в одном каталоге плюс 19 МБ в плагинах. Вычислительные ресурсы, сети, управление доступом, биллинг, CloudWatch, Bedrock, агенты. Прекрасный набор, и ровно поэтому он опасен: на запрос &quot;подними мне инстанс&quot; агент охотно начнёт писать код для AWS, который мы потом будем вычищать и за который придётся платить. Наш профиль - собственные хосты и корпоративная инфраструктура.</p><p>Microsoft - 12 группы плагинов, 181 скилл: стоимость Azure, Kusto и Graph, и многочисленные обёртки под .NET для каждого сервиса. Профиль не тот.</p><p>Все три записал в своём скилле таблицей с причинами, чтобы поднять за минуту, если профиль сдвинется.</p><h3 id="Сколько-всего-и-как-это-устроено">Сколько всего и как это устроено</h3><pre>Вендорских скиллов поставлено   35
+Зонтичный диспетчер             1
+Объём                           1,26 МБ
+Скиллов в devops               149</pre><p>149 - это 113 наших собственных и 36 новых каталогов. Диспетчер единственный наш, он не дублирует содержание, а говорит, какой скилл грузить и в каком порядке. Без него пришлось бы держать в голове 35 названий.</p><p>Сценарий сборки я взял у поставщиков, потому что там есть всё готовое: у Docker есть catalog.yaml, из которого генерируется таблица. И сразу упёрся в то, что агенты не прощают расхождений.</p><p>Имя в поле name файла SKILL.md обязано совпадать с именем каталога. Не &quot;почти&quot;, а буквально. Когда я положил скиллы HashiCorp в каталоги hcp-terraform-*, они молча перестали определяться. Не с ошибкой, не в журнале - просто исчезли из индекса. Переименовал каталоги и поправил поле name в шести файлах, после чего всё поднялось. Проверил скриптом все 36 каталогов, расхождений ноль.</p><p>Тот же принцип, что с типографикой: правило надо проверять автоматически, а не глазами.</p><h3 id="Правило,-которое-всё-это-заменило">Правило, которое всё это заменило</h3><p>Самое полезное из всей истории - не сами скиллы, а граница между ними и нашими собственными наработками.</p><p>Вендорский скилл описывает инструмент так, как его видит автор инструмента. Наш - как этот инструмент ведёт себя в нашей сети. Когда описания расходятся, побеждает наш.</p><p>Конкретный случай. У нас Terraform работает через провайдер OpenNebula 1.5.0. На Windows этот провайдер падает при инициализации канала, и падает молча: plan показывает &quot;изменений нет&quot; при пустом состоянии и новом ресурсе, а в журнале отладки - &quot;получен конец файла, остановлен приём&quot;. Ни один скилл HashiCorp об этом не знает, и не должен.</p><p>Правило у нас: применять только на Linux и только с указанием конкретного ресурса, потому что состояние расходится с ручной правкой в веб-интерфейсе.</p><p>Если бы я доверился скиллу, я бы сделал apply в основном каталоге, и это уронило бы работающие контроллеры домена. Ноль пользы от официальной рекомендации, ноль риска без неё.</p><h3 id="Ложка-дёгтя:-что-это-меняет-в-реальной-работе">Ложка дёгтя: что это меняет в реальной работе</h3><p>Честный перечень того, что в наборе не работает или работает не так.</p><p><strong>Вендорские скиллы устаревают быстрее, чем наши.</strong> Docker пишет в каждом скилле проверенную версию, HashiCorp - актуальный статус. Но номер версии в файле skill.yaml - это снимок на дату сборки. Проверять надо дату, а не наличие файла.</p><p><strong>MPL-2.0 - тихая ловушка на будущее.</strong> Мы файлы не правим, поэтому ограничение не срабатывает. Но если завтра понадобится починить скилл Grafana, дописывать придётся в отдельный каталог, иначе нарушение лицензии. Стоит записать в наш скилл, чего мы точно не будем делать.</p><p><strong>Пятнадцать скиллов Grafana про профилирование и плагины - это наблюдаемость, а не эксплуатация.</strong> Кто-то посчитает это несоответствием теме. Частично обоснованно: в дежурный набор разбор аварии они напрямую не входят. Но без метрик, логов и трассировок разбор аварии невозможен, а это и есть главная работа дежурного. Я их оставил и объяснил, почему.</p><p><strong>Скиллы про Terraform мы взяли, а про OpenNebula - нет.</strong> Ни у кого нет. Значит, все наши грабли с провайдером OpenNebula живут в одном нашем скилле, и если с ним что-то случится, подстраховки не будет. Это риск, а не преимущество.</p><p><strong>Пятнадцать скиллов из пятьдесяти одного - меньше трети.</strong> Даже у вендора, который про DevOps не думал, есть облачная часть, которая нам не нужна. Отбрасывать придётся и дальше.</p><h3 id="Premortem">Premortem</h3><p>Статья опубликована. Через неделю - негатив. Почему?</p><p><strong>&quot;Заголовок обещает отбор, а это опись.&quot;</strong> Справедливое замечание. Про отборы мы писали раньше, и получилось суше. Ответ: цифры настоящие, каждый скилл взят или не взят по названному правилу, и читатель может проверить любую строку клонированием репозитория. Это проверяемый материал, а не пересказ чужого списка.</p><p><strong>&quot;Пятнадцать скиллов профилирования - это не DevOps.&quot;</strong> Отчасти заслуженно, и я это признал в ложке дёгтя выше. Ответ: см. предыдущий абзац. Наблюдаемость и есть то, без чего разбор аварии невозможен.</p><p><strong>&quot;Через год всё устареет.&quot;</strong> Верно в части номеров версий. Ответ: обновление через git pull в клоне репозитория и копирование каталогов, процедура описана, занимает минуту. Актуальность никогда не была свойством статья, она свойство клона.</p><p><strong>&quot;Утверждение про отсутствие Kubernetes-скиллов окажется неверным.&quot;</strong> Самое вероятное замечание. Возможно, что-то появилось после 26 сентября 2026 года. Ответ: я проверял поиском по организациям и прямыми запросами имён репозиториев, а не перечитывал блог проекта. Появятся - найдутся тем же поиском за десять минут.</p><h3 id="Стоимость,-безопасность,-альтернативы">Стоимость, безопасность, альтернативы</h3><p>Стоимость - ноль. Скиллы лежат локально, 1,26 МБ. Расходуется только диск, обновляется одной командой. Ни один из тридцати пяти сам по себе сетевых запросов не делает: это инструкции, а не код.</p><p>Безопасность - риск не в скиллах, а в источнике. Скилл от неизвестного автора - это инструкции от человека, которого вы не читали, исполняемые с правами вашего агента. Наборы, которые я поставил, проходят известную проверку: владелец инструмента поддерживает их вместе с инструментом. Скиллы про подготовку источников данных, про выкладку в реестр и про оценку качества агента - задачи с побочными эффектами, и такие задачи не выполняются без явного подтверждения.</p><p>Альтернативы. Плагины у конкретных клиентов: у Claude Code есть свой маркетплейс, у Cursor свой. У Hermes свой путь обнаружения, и обычный каталог со SKILL.md работает одинаково везде. Публичный реестр с установкой одной командом - то же самое плюс посредник в виде скрипта на curl. Написать свои скиллы под каждого вендора - 113 скиллов так и появились, но выбрасывать тридцать пять выверенных вендорских в пользу своей версии руководства по HCL - экономия не в том направлении.</p><h3 id="Что-из-этого-следует">Что из этого следует</h3><p>Первое правило: сначала спросить, есть ли скилл у владельца инструмента, и только потом писать свой. Для DevOps ответ нашёлся у четырёх вендоров из примерно двадцати проверенных, и это число, скорее всего, продолжит расти.</p><p>Второе: пустота в скиллах - это не дефект скиллов, это мой пробел. Kubernetes, Helm и общих паттернов Ansible официальных навыков не имеют. Если они понадобятся, писать придётся мне, на своём опыте и свои граблях. А это уже не вендорская правда, а наша, и разница видна по требованию с проверкой.</p><p>И последнее, для всех, кто дочитает до конца. Скиллы созданы, чтобы грузиться по одному под конкретный вопрос, а не читаться подряд. Если нужен не обзор, а разбор - возьмите один реальный инцидент и проведите его через эти тридцать пять. Держать открытым всё сразу - то же самое, что не держать ничего.</p><h3 id="Материалы">Материалы</h3><p>Харнессы и сценарий установки - в репозитории <a href="https://github.com/NikolayGusev-astra/channel-materials" target="_blank" rel="nofollow">channel-materials</a>. Каталог установки и скрипт публикации - в каталоге статьи.</p><p>Список источников:</p><ul><li><a href="https://github.com/docker/skills" target="_blank" rel="nofollow">docker/skills</a> - 11 скиллов, Apache-2.0</li><li><a href="https://github.com/hashicorp/agent-skills" target="_blank" rel="nofollow">hashicorp/agent-skills</a> - 16 Terraform и 4 Packer, MPL-2.0</li><li><a href="https://github.com/grafana/skills" target="_blank" rel="nofollow">grafana/skills</a> - 51 скилл в 7 группах, Apache-2.0</li><li><a href="https://github.com/github/awesome-copilot" target="_blank" rel="nofollow">github/awesome-copilot</a> - 423 сообщества, MIT</li><li><a href="https://github.com/ansible/aap-skills" target="_blank" rel="nofollow">ansible/aap-skills</a> - 1 скилл, требует сервер MCP для AAP 2.5 и новее</li><li><a href="https://github.com/pulumi/agent-skills" target="_blank" rel="nofollow">pulumi/agent-skills</a> - 17 скиллов, не взят</li><li><a href="https://github.com/aws/agent-toolkit-for-aws" target="_blank" rel="nofollow">aws/agent-toolkit-for-aws</a> - 177 скиллов, не взят</li><li><a href="https://github.com/microsoft/skills" target="_blank" rel="nofollow">microsoft/skills</a> - 181 скилл, не взят</li></ul><h3 id="FAQ:-что-взять-под-задачу">FAQ: что взять под задачу</h3><pre>Что делаю                                    Что грузить
+Первый раз поднимаю Docker в проекте          docker-project-foundations
+Образ вышел больше 2 ГБ                        docker-build-strategies
+Сервисы не стартуют по порядку                 docker-compose-patterns
+Хочу снести контейнеры и volumes              docker-destructive-guardrails
+Пишу HCL и не уверен в оформлении            hcp-terraform-style-guide
+Ресурсы в облаке, а в состоянии нет           hcp-terraform-search-import
+Хочу гонять правила до apply                  hcp-terraform-policy
+Медленный запрос в дашборде                   grafana-promql
+Не понимаю, где приложение тормозит          grafana-tempo + grafana-pyroscope
+Ревьюю .github/workflows                      gha-hardening
+Пишу разбор аварии                            incident-postmortem
+Разворачиваю ВМ на OpenNebula из Windows       sre-agent (наш, не вендорский)</pre><p>Продолжение - вторая часть.</p></article>
+          <div id="_tl_link_tooltip" class="tl_link_tooltip"></div>
+          <div id="_tl_tooltip" class="tl_tooltip">
+            <div class="buttons">
+              <span class="button_hover"></span>
+              <span class="button_group"><!--
+             --><button id="_bold_button"></button><!--
+             --><button id="_italic_button"></button><!--
+             --><button id="_link_button"></button><!--
+           --></span><!--
+           --><span class="button_group"><!--
+             --><button id="_header_button"></button><!--
+             --><button id="_subheader_button"></button><!--
+             --><button id="_quote_button"></button><!--
+           --></span>
+            </div>
+            <div class="prompt">
+              <span class="close"></span>
+              <div class="prompt_input_wrap"><input type="url" class="prompt_input" /></div>
+            </div>
+          </div>
+          <div id="_tl_blocks" class="tl_blocks">
+            <div class="buttons">
+              <button id="_image_button"></button><!--
+           --><button id="_embed_button"></button>
+            </div>
+          </div>
+          <aside class="tl_article_buttons">
+            <div class="account account_top"></div>
+            <button id="_edit_button" class="button edit_button">Edit</button><!--
+         --><button id="_publish_button" class="button publish_button">Publish</button>
+            <div class="account account_bottom"></div>
+            <div id="_error_msg" class="error_msg"></div>
+          </aside>
+        </main>
+      </div>
+          <div class="tl_page_footer">
+      <div id="_report_button" class="tl_footer_button">Report content on this page</div>
+    </div>
+    </div>
+      <div class="tl_popup tl_popup_hidden" id="_report_popup">
+    <main class="tl_popup_body tl_report_popup">
+      <form id="_report_form" method="post">
+        <section>
+          <h2 class="tl_popup_header">Report Page</h2>
+          <div class="tl_radio_items">
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="violence">
+              <span class="tl_radio_item_label">Violence</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="childabuse">
+              <span class="tl_radio_item_label">Child Abuse</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="copyright">
+              <span class="tl_radio_item_label">Copyright</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="illegal_drugs">
+              <span class="tl_radio_item_label">Illegal Drugs</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="personal_details">
+              <span class="tl_radio_item_label">Personal Details</span>
+            </label>
+            <label class="tl_radio_item">
+              <input type="radio" class="radio" name="reason" value="other">
+              <span class="tl_radio_item_label">Other</span>
+            </label>
+          </div>
+          <div class="tl_textfield_item tl_comment_field">
+            <input type="text" class="tl_textfield" name="comment" value="" placeholder="Add Comment…">
+          </div>
+          <div class="tl_copyright_field">
+            Please submit your DMCA takedown request to <a href="mailto:dmca@telegram.org?subject=Report%20to%20Telegraph%20page%20%2235%20%D0%BE%D1%84%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20DevOps-%D1%81%D0%BA%D0%B8%D0%BB%D0%BB%D0%BE%D0%B2%3A%20%D1%87%D1%82%D0%BE%20%D0%B2%D0%B7%D1%8F%D0%BB%D0%B8.%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%201%20%28%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%29%22&body=Reported%20page%3A%20https%3A%2F%2Ftelegra.ph%2F35-oficialnyh-DevOps-skillov-chto-vzyali-CHast-1-chernovik-09-25%0A%0A%0A" target="_blank">dmca@telegram.org</a>
+          </div>
+        </section>
+        <aside class="tl_popup_buttons">
+          <button type="reset" class="button" id="_report_cancel">Cancel</button>
+          <button type="submit" class="button submit_button">Report</button>
+        </aside>
+      </form>
+    </main>
+  </div>
+    
+    <script>var T={"apiUrl":"https:\/\/edit.telegra.ph","uploadEnabled":false,"datetime":1790366200,"pageId":"ec0f7db3e09272b9169ee","editable":true};(function(){var b=document.querySelector('time');if(b&&T.datetime){var a=new Date(1E3*T.datetime),d='January February March April May June July August September October November December'.split(' ')[a.getMonth()],c=a.getDate();b.innerText=d+' '+(10>c?'0':'')+c+', '+a.getFullYear()}})();</script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.selection.min.js"></script>
+    <script src="/js/autosize.min.js"></script>
+    <script src="/js/load-image.all.min.js?1"></script>
+    <script src="/js/quill.min.js?10"></script>
+    <script src="/js/core.min.js?67"></script>
+    <script async src="https://t.me/_websync_?path=35-oficialnyh-DevOps-skillov-chto-vzyali-CHast-1-chernovik-09-25&hash=769059e7ac8e95e9f7"></script>
+  </body>
+</html>

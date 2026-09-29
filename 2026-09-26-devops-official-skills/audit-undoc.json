@@ -1,0 +1,235 @@
+[
+ {
+  "skill": "ai/llm-benchmark-vram-isolation",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\ai\\llm-benchmark-vram-isolation",
+  "missing": [
+   "references/dispatcher-orchestrator-eval.md"
+  ]
+ },
+ {
+  "skill": "ai/local-llm-evaluation",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\ai\\local-llm-evaluation",
+  "missing": [
+   "references/lm-studio-tuning.md",
+   "references/model-comparison-table.md"
+  ]
+ },
+ {
+  "skill": "aldpro/aldpro-cert-version",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\aldpro\\aldpro-cert-version",
+  "missing": [
+   "references/troubleshooting-base-3.3-3.2.md"
+  ]
+ },
+ {
+  "skill": "content/channel-registry",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\content\\channel-registry",
+  "missing": [
+   "references/sl1vaker-example.md",
+   "scripts/classify_and_build.py",
+   "scripts/dump_channel.py"
+  ]
+ },
+ {
+  "skill": "content/hermes-article-publishing-protocol",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\content\\hermes-article-publishing-protocol",
+  "missing": [
+   "references/audit-2026-07-21-findings.md",
+   "references/computer-use-topic-notes.md",
+   "references/literature-search-api-patterns.md",
+   "references/llm-model-taxonomy.md",
+   "references/product-launch-research.md",
+   "references/telegraph-publishing-pattern.md",
+   "references/zero-dollar-stack-article.md"
+  ]
+ },
+ {
+  "skill": "content/investigative-article-writer",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\content\\investigative-article-writer",
+  "missing": [
+   "references/telegraph-html-tags.md",
+   "references/telegraph-publishing.md"
+  ]
+ },
+ {
+  "skill": "content/rassvet-starlink-writer",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\content\\rassvet-starlink-writer",
+  "missing": [
+   "references/sample-sourcing-and-delegation.md"
+  ]
+ },
+ {
+  "skill": "dev/marketplace-trading-agents",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\dev\\marketplace-trading-agents",
+  "missing": [
+   "references/mistral-agentic-search-comparison.md"
+  ]
+ },
+ {
+  "skill": "devops/adr-creation",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\adr-creation",
+  "missing": [
+   "scripts/run.sh"
+  ]
+ },
+ {
+  "skill": "devops/alse-stand-deployment",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\alse-stand-deployment",
+  "missing": [
+   "references/langfuse-selfhost-v4.md"
+  ]
+ },
+ {
+  "skill": "devops/confluence-publisher",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\confluence-publisher",
+  "missing": [
+   "references/unified-mcp-jira-life.md"
+  ]
+ },
+ {
+  "skill": "devops/grafana-loki",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\grafana-loki",
+  "missing": [
+   "references/configuration.md",
+   "references/logql.md",
+   "references/send-data.md"
+  ]
+ },
+ {
+  "skill": "devops/hermes-desktop-plugin-ops",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\hermes-desktop-plugin-ops",
+  "missing": [
+   "scripts/deploy-desktop-plugin.sh"
+  ]
+ },
+ {
+  "skill": "devops/hermes-mcp-services-ops",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\hermes-mcp-services-ops",
+  "missing": [
+   "scripts/start-mcp-services.ps"
+  ]
+ },
+ {
+  "skill": "devops/hermes-upstream-pr",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\hermes-upstream-pr",
+  "missing": [
+   "scripts/run_tests.sh"
+  ]
+ },
+ {
+  "skill": "devops/network-reachability-diag",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\network-reachability-diag",
+  "missing": [
+   "references/vpn-infrastructure.md"
+  ]
+ },
+ {
+  "skill": "devops/new-api-pii-guard",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\new-api-pii-guard",
+  "missing": [
+   "references/gitflic-api-notes.md",
+   "scripts/update_disclaimer.py"
+  ]
+ },
+ {
+  "skill": "devops/parsec-ai-assistant-deployment",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\parsec-ai-assistant-deployment",
+  "missing": [
+   "references/astra-linux-deploy.md"
+  ]
+ },
+ {
+  "skill": "devops/parsec-ai-dba",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\parsec-ai-dba",
+  "missing": [
+   "scripts/demo-seed-cron.sh"
+  ]
+ },
+ {
+  "skill": "devops/shturman",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\shturman",
+  "missing": [
+   "references/mcp-2026-07-28-statelss-server.md"
+  ]
+ },
+ {
+  "skill": "devops/shturman.rollback-broken",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\devops\\shturman.rollback-broken",
+  "missing": [
+   "references/mcp-2026-07-28-statelss-server.md"
+  ]
+ },
+ {
+  "skill": "mlops/mlops-workflow",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\mlops\\mlops-workflow",
+  "missing": [
+   "scripts/validate_model.sh",
+   "templates/train_loop.py"
+  ]
+ },
+ {
+  "skill": "mlops/pii-pipeline",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\mlops\\pii-pipeline",
+  "missing": [
+   "references/pii-evaluation-example.md"
+  ]
+ },
+ {
+  "skill": "productivity/html-deck-pdf",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\productivity\\html-deck-pdf",
+  "missing": [
+   "scripts/lint.py"
+  ]
+ },
+ {
+  "skill": "software-development/hermes-agent-skill-authoring",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\software-development\\hermes-agent-skill-authoring",
+  "missing": [
+   "scripts/run_tests.sh"
+  ]
+ },
+ {
+  "skill": "software-development/hermes-meeting-dev",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\software-development\\hermes-meeting-dev",
+  "missing": [
+   "scripts/start_vision_servers.py"
+  ]
+ },
+ {
+  "skill": "software-development/inspecting-hermes-desktop-dom",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\software-development\\inspecting-hermes-desktop-dom",
+  "missing": [
+   "scripts/eval.mjs",
+   "scripts/perf/lib/cdp.mjs"
+  ]
+ },
+ {
+  "skill": "software-development/pmi-acm-preparation",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\software-development\\pmi-acm-preparation",
+  "missing": [
+   "scripts/generate_review_pmi.py"
+  ]
+ },
+ {
+  "skill": "software-development/systematic-debugging",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\software-development\\systematic-debugging",
+  "missing": [
+   "scripts/repro_bug.py"
+  ]
+ },
+ {
+  "skill": "text-analysis/local-llm-text-processing",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\text-analysis\\local-llm-text-processing",
+  "missing": [
+   "scripts/verify-apollo-setup.ps",
+   "templates/text-analysis-prompt.md"
+  ]
+ },
+ {
+  "skill": "web-development/uteka-api-client",
+  "dir": "C:\\Users\\n.gusev\\AppData\\Local\\hermes\\skills\\web-development\\uteka-api-client",
+  "missing": [
+   "scripts/deploy-desktop-plugin.sh"
+  ]
+ }
+]
