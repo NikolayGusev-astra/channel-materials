@@ -150,8 +150,17 @@ def main():
     for w in LEAK_TERMS:
         if w in html:
             sys.exit("LEAK: %r reached the published page" % w)
+    # UUID gate: term lists never cover identifiers, so a working realm or
+    # entity UUID ships unnoticed while the enumeration says "clean". Match the
+    # shape, not a known value.
+    uuids = set(re.findall(
+        r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", html))
+    if uuids:
+        sys.exit("LEAK: %d UUID(s) reached the page: %s"
+                 % (len(uuids), sorted(uuids)[:3]))
     print("nodes:    %d" % len(parsed))
     print("leaks:    %s" % (", ".join(LEAK_TERMS) or "no terms configured"))
+    print("uuids:    0")
     print("\nCorrections must go through editPage on this path, never createPage again.")
     return url
 
