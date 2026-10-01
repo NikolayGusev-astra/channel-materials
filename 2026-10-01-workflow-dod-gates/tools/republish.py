@@ -58,6 +58,8 @@ IMAGE_LINE = re.compile(r"^[ \t]*!\[[^\]]*\]\([^)]*\)[ \t]*\r?\n?", re.M)
 FM_KEYS = ("title:", "slug:", "date:", "tags:", "author:", "site:", "cover:")
 # Признаки того, что фронтматтер всё-таки уехал.
 LEAK_RE = re.compile(r'"(?:title|slug|date|tags|author)":')
+# Сиротский разделитель: строка из одних тире, не часть фронтматтера.
+ORPHAN_RULE = re.compile(r'(?m)^[ \t]*-{3,}[ \t]*$')
 
 
 def need(value, name):
@@ -113,6 +115,11 @@ def prepare(md):
     raw = md.replace("\r\n", "\n")
     raw = FRONTMATTER.sub("", raw, count=1)
     raw = IMAGE_LINE.sub("", raw)
+    # Одиночный --- в теле страницы - остаток фронтматтера, а не
+    # горизонтальная линия. Ни один гейт его не ловил: проверка была
+    # только «начинается ли текст с ---», а сирота стоит в середине.
+    # Читатель видит его как текст.
+    raw = ORPHAN_RULE.sub("", raw)
     return raw.lstrip("\n")
 
 
@@ -163,6 +170,11 @@ def main():
     need(COVER, "COVER_URL")
     need(CAPTION, "COVER_CAPTION")
 
+    # --dry-run обязан быть РЕАЛЬНЫМ. Флаг без разбора аргументов даёт
+    # скрипт, который печатает 'edit ok' и при этом пишет на живую
+    # страницу: гейт, заявленный как сетевой, оказывается сетевым.
+    dry_run = "--dry-run" in sys.argv
+
     raw = prepare(io_read(ARTICLE))
 
     # Гейт на подготовленном тексте: дефекты ловим до похода в сеть.
@@ -179,6 +191,27 @@ def main():
     nodes = converter().md_to_dom(raw)
     print("DOM до обложки: %d узлов" % len(nodes))
     print("обложка: %s" % insert_cover(nodes))
+
+    if dry_run:
+        print("---")
+        print("DRY RUN: сеть не трогаю, editPage не вызван.")
+        print("подготовлено узлов: %d" % len(nodes))
+        blob = json.dumps(nodes, ensure_ascii=False)
+        img_n = blob.count('"tag": "img"')
+        # Считаем figcaption-узлы, а не вхождения строки подписи.
+        # Подпись в подготовленном DOM есть дважды - в alt картинки и
+        # в figcaption, - а Telegra вырезает alt при сохранении. Счётчик
+        # строки на подготовленном DOM даёт ложное 2, на живой странице -
+        # случайное 1. Узел figcaption существует в обоих.
+        cap_n = blob.count('"tag": "figcaption"')
+        md_img = blob.count("](")
+        print("img-нод:       %d  (должна быть 1)" % img_n)
+        print("figcaption:    %d  (должна быть 1)" % cap_n)
+        print("markdown-остаток '](': %d  (должен быть 0)" % md_img)
+        if img_n != 1 or cap_n != 1 or md_img:
+            sys.exit("контроль подготовки не прошёл")
+        print("VERDICT: PASS (структура, без сети)")
+        return
 
     res = call("editPage", {
         "path": PATH,
@@ -205,13 +238,14 @@ def main():
 
     fm_hits = [k for k in FM_KEYS if k in blob]
     img_n = blob.count('"tag": "img"')
-    cap_n = blob.count(CAPTION)
+    # figcaption-узлы, не вхождения строки: см. комментарий в dry_run.
+    cap_n = blob.count('"tag": "figcaption"')
     md_img = blob.count("](")
 
     print("---")
     print("узлов:        %d" % (len(live) if isinstance(live, list) else 0))
     print("img-нод:      %d  (должна быть 1)" % img_n)
-    print("подпись:      %d раз  (должна быть 1)" % cap_n)
+    print("figcaption:   %d  (должна быть 1)" % cap_n)
     print("frontmatter:  %s" % (fm_hits or "нет"))
     print("markdown-остаток '](': %d  (должен быть 0)" % md_img)
     print("title:        %r (%d)" % (title, len(title)))
