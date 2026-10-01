@@ -125,11 +125,16 @@ def main():
     md = content.count("](")
     print("md leftovers: %d  (must be 0)" % md)
 
-    marker_ok = DRAFT_MARKER in title
-    print("draft mark: %s" % ("ok" if marker_ok else "MISSING (page is public and unlabelled)"))
+    # Draft marker: a report, not a verdict. Telegra has no private draft, so
+    # the title marker is how a reader is told this text is still under review.
+    # Which side of the line the page is on depends on where it is being read
+    # from, so FAILING on a missing marker only makes sense while it is still a
+    # review URL. The version-publish gate checks the marker; this DoD reports
+    # it and never fails on it.
+    marker = "есть" if DRAFT_MARKER in title else "снят (финальная версия)"
+    print("draft mark: %s" % marker)
 
-    ok = (em == 0 and gu == 0 and not leaks and not uuids and md == 0
-          and nodes > 20 and marker_ok)
+    ok = (em == 0 and gu == 0 and not leaks and not uuids and md == 0 and nodes > 20)
     print("---")
     print("VERDICT: %s" % ("PASS" if ok else "FAIL"))
     sys.exit(0 if ok else 1)
