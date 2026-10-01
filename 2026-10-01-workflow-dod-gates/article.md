@@ -4,8 +4,10 @@ slug: workflow-dod-gates-hermes
 date: 2026-10-01
 tags: [hermes, ontonet, workflow, dod]
 author: Гусев Николай
+site:
+  slug: workflow-dod-gates
+  tags: [ai-agents, workflow, ontonet]
 ---
-
 # Воркфлоу с DoD и гейтами на Hermes Agent: 4 слоя, один прогон, ноль запретов в промпте
 
 Сложность: высокая
