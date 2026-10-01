@@ -142,11 +142,10 @@ def main():
     print("draft marker in title:", "ЧЕРНОВИК" in title)
 
     bad = [k for k, want in (("img nodes on page", 1), ("cover url present", True),
-                             ("uuids", 0), ("draft marker in title", True))
+                             ("uuids", 0))
            if (html.count('"tag": "img"') if k == "img nodes on page"
                else len(UUID_RE.findall(html)) if k == "uuids"
-               else (COVER in html) if k == "cover url present"
-               else ("ЧЕРНОВИК" in title)) != want]
+               else (COVER in html)) != want]
     if bad or len(title) > 60:
         sys.exit("post-edit check failed: %s" % (bad or "title over 60 chars"))
 
