@@ -26,6 +26,7 @@
 | 2026-09-20 | [Открытая альтернатива Jev: два чекпоинта laya на русских эвалах](./2026-09-20-jev-decision-models/part3b-laya-checkpoints.md) | часть 3: laya 18/20 на инъекциях, докалибровка Platt, эпилог с дообучением; пост 241 |
 | 2026-09-20 | [Любовь - это русские придумали, чтобы денег не платить: добиваем бесплатных Бертов до платного Jev](./2026-09-20-jev-decision-models/part4-protocol_10k.md) | часть 4: дообучение mmBERT на 10k письмах, accuracy 0.427 -> 0.959, finetune_kit/ с полным конвейером; опубликована в канале (msg 242) |
 | 2026-09-20 | [Дообучение модели под свою задачу: что это и зачем](./2026-09-20-jev-decision-models/part3-theory_finetune.md) | теория: промпт/RAG/fine-tune, замер 4 систем на 150 письмах |
+| 2026-10-01 | [Воркфлоу с DoD и гейтами на Hermes Agent](./2026-10-01-workflow-dod-gates/) | статья + 2 скрипта: `public/onto_gate.py` (клиент MemoryArtifact: draft/submit/status/accept, MCP-транспорт, локальный файл состояния), `public/publish-draft.py` (Telegra.ph: лимит 60 символов, маркер черновика в заголовке, editPage вместо повторного createPage). Ключи только из env, realm UUID читается из ONTONET_REALM |
 
 ## Формат папки
 
