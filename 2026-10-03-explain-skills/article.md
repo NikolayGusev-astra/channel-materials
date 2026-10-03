@@ -7,7 +7,7 @@ author: Гусев Николай
 site:
   slug: explain-skills-ladder
   tags: [hermes, teachme, skills]
-  cover: cover.png
+  cover: images/cover.png
 ---
 # Как разбираться в ответах ИИ: 29 скилов на четыре ступени объяснения
 
