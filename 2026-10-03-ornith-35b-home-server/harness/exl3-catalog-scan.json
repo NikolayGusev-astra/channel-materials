@@ -1,0 +1,47 @@
+{
+ "сводка": {
+  "exl3_репозиториев_всего": "1000 (лимит выборки)",
+  "с_скачиваниями_100+": 223,
+  "кодбуки": {
+   "mul1": 124,
+   "mcg": 31,
+   "нет_поля": 68
+  },
+  "mul1_и_MoE": 14
+ },
+ "шортлист": [
+  {
+   "repo": "ultimatechris/Ornith-1.5-35B-A3B-EXL3-4bpw",
+   "gib": 18.4,
+   "total": "35B-A3B (256exp x8)",
+   "bits": 4.0,
+   "dl": 448,
+   "fit_8gb": "влезает: 18.4 - 6.6 VRAM -> 11.8 на CPU, при 32 RAM комфортно"
+  },
+  {
+   "repo": "andrevp/Qwen3.8-Flash-Next-exl3-3.05bpw-heretic",
+   "gib": 79.2,
+   "total": "125B MoE (512x10)",
+   "bits": 3.05,
+   "dl": 104,
+   "fit_8gb": "50 ГиБ в VRAM+RAM: на 8ГБ карте нет"
+  },
+  {
+   "repo": "ghost-actual/Qwen3.8-Flash-Next-Abliterated-EXL3-2.50bpw",
+   "gib": 60.0,
+   "total": "125B MoE",
+   "bits": 2.52,
+   "dl": 912,
+   "fit_8gb": "нет"
+  },
+  {
+   "repo": "Lygodactylus/Qwen3.8-Flash-Next-Uncensored-exl3-3bpw",
+   "gib": 67.3,
+   "total": "125B MoE",
+   "bits": 3.0,
+   "dl": 490,
+   "fit_8gb": "нет"
+  }
+ ],
+ "наблюдение": "Ornith 35B-A3B 4bpw - единственный mul1-MoE, влезающий в сценарий 8ГБ+32RAM целиком с запасом"
+}
