@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Work/Assist/channel-materials/2026-10-03-explain-skills/media/videos/1080p60/partial_movie_files/WhoWrites/3414001777_1080980452_223132457.mp4'
+file 'file:C:/Work/Assist/channel-materials/2026-10-03-explain-skills/media/videos/1080p60/partial_movie_files/WhoWrites/1218308410_1414099042_1543489268.mp4'
+file 'file:C:/Work/Assist/channel-materials/2026-10-03-explain-skills/media/videos/1080p60/partial_movie_files/WhoWrites/1218308410_3379973481_2600948868.mp4'
+file 'file:C:/Work/Assist/channel-materials/2026-10-03-explain-skills/media/videos/1080p60/partial_movie_files/WhoWrites/1218308410_3111077393_1883654551.mp4'
+file 'file:C:/Work/Assist/channel-materials/2026-10-03-explain-skills/media/videos/1080p60/partial_movie_files/WhoWrites/1218308410_2536175139_660258403.mp4'

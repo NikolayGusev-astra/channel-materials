@@ -42,12 +42,15 @@ class RagRebuilds(Scene):
     """RAG: пять файлов и каждый раз заново собирает ответ."""
 
     def construct(self):
-        head = Text("RAG: ответ собирается заново каждый раз", font_size=40, color=WHITE)
+        head = Text("RAG: ответ собирается заново каждый раз", font_size=40, color=WHITE).to_edge(UP, buff=0.55)
+        # заголовок и фигуры должны занимать разные полосы кадра.
+        # Раньше карточки стояли по центру (y -0.95..0.95), а заголовок тоже
+        # по центру (y -0.27..0.27) - текст лежал прямо на карточках.
         docs = VGroup(*[
             RoundedRectangle(
                 corner_radius=0.15, width=1.5, height=1.9,
                 stroke_color=GREY_B, stroke_width=3,
-            ).move_to(LEFT * 5 + RIGHT * i * 2.5)
+            ).move_to(LEFT * 5 + RIGHT * i * 2.5 + DOWN * 0.9)
             for i in range(len(DOCS))
         ])
         labels = VGroup(*[
@@ -92,12 +95,13 @@ class WikiAccumulates(Scene):
     """Wiki: те же пять файлов, между ними появляются связи."""
 
     def construct(self):
-        head = Text("Wiki: файлы связаны между собой", font_size=40, color=WHITE)
+        head = Text("Wiki: файлы связаны между собой", font_size=40, color=WHITE).to_edge(UP, buff=0.55)
+        # та же раскладка полос: заголовок вверху, карточки ниже
         docs = VGroup(*[
             RoundedRectangle(
                 corner_radius=0.15, width=1.5, height=1.9,
                 stroke_color=BLUE3, stroke_width=3,
-            ).move_to(LEFT * 5 + RIGHT * i * 2.5)
+            ).move_to(LEFT * 5 + RIGHT * i * 2.5 + DOWN * 0.9)
             for i in range(len(DOCS))
         ])
         labels = VGroup(*[
@@ -160,16 +164,19 @@ class WhoWrites(Scene):
             Circle(radius=0.35, color=BLUE3, stroke_width=3).shift(UP * 0.5),
             Line(LEFT * 0.45, RIGHT * 0.45, color=BLUE3, stroke_width=5).shift(DOWN * 0.4),
         )
-        gap = fit(VGroup(human, agent).arrange(RIGHT, buff=3.0), pad=0.35)
-        gap.move_to(ORIGIN)
+        # фигуры в середине, подписи строго ниже: раньше текст про wiki висел
+        # над стрелкой и перекрывал фигуры на 30% их площади
+        gap = VGroup(human, agent).arrange(RIGHT, buff=3.0)
+        gap.scale(min(FRAME_W * 0.60 / gap.width, FRAME_H * 0.45 / gap.height))
+        gap.move_to(ORIGIN + UP * 0.6)
 
-        left_t = Text("человек", font_size=36, color=GREY_T).next_to(human, DOWN, buff=0.4)
-        right_t = Text("LLM", font_size=36, color=BLUE3).next_to(agent, DOWN, buff=0.4)
+        left_t = Text("человек", font_size=36, color=GREY_T).next_to(human, DOWN, buff=0.35)
+        right_t = Text("LLM", font_size=36, color=BLUE3).next_to(agent, DOWN, buff=0.35)
 
-        arrow = Arrow(agent.get_left(), human.get_right(), buff=0.3, color=BLUE3,
+        arrow = Arrow(agent.get_left(), human.get_right(), buff=0.45, color=BLUE3,
                       stroke_width=5, max_tip_length_to_length_ratio=0.1)
         arrow_t = Text("пишет и поддерживает wiki", font_size=30, color=WHITE)
-        arrow_t.next_to(arrow, UP, buff=0.3)
+        arrow_t.next_to(gap, DOWN, buff=1.05)
 
         self.play(FadeIn(human), FadeIn(left_t), run_time=0.6)
         self.play(GrowArrow(arrow), FadeIn(arrow_t), run_time=0.6)
