@@ -47,13 +47,112 @@ ASD-STE100 - это управляемый английский для авиа�
 
 Одно правило, которое надо понять до применения: модальность убирать нельзя. "Возможно, сбой произошёл из-за таймаута" и "сбой произошёл из-за таймаута" - это разные утверждения. Уверенность автора это содержание, а не стилистический мусор. Линтер это специально не проверяет.
 
-## Видео как высшая ступень
+## Видео: самая дорогая ступень
 
-Карпатый считает объясняющее видео самым перспективным форматом. Пример с роликом про Shazam он приводит как иллюстрацию. Я проверил, что для этого нужно на этой машине, и результат оказался в две стороны.
+Карпатый считает объясняющее видео самым перспективным форматом, ролик про Shazam приводит как образец. Это третья ступень из четырёх и самая дорогая по времени, дальше в статье пойдёт разбор, как её поставить. Четвёртая ступень - курс с практикумом, её коснусь в примерах.
 
-Хорошая новость: движок стоит. Manim Community 0.20.1 в venv, разрешение 1920x1080, озвучка локальная через модель 0.3B. Актуальный релиз движка при этом 0.21.0, обновление я не трогал.
+![Джилл у монитора с анимацией синусоиды](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/video-curve.png)
 
-Плохая была: LaTeX на машине не было. Manim проверяет два бинаря, а не один, и второй - конвертер в SVG - в простой установке не появляется:
+### Manim: что это и зачем
+
+Manim - движок анимации, написанный на Python. Ты описываешь сцену кодом, а он рисует её в видеоролик: оси строятся, кривые прорисовываются, точки едят по кривым, подписи меняют значения. Автор первой версии - Карпатый, отсюда и стиль.
+
+![Синусоида с бегунком и живой подписью](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/scene-sinus.png)
+
+Отличие от видеоредактора в том, что каждый кадр получается кодом. Анимация синусоиды - это одна строка с функцией, а не ключи в таймлайне:
+
+```python
+curve = ax.plot(lambda x: np.sin(x), color=BLUE)
+self.play(Create(curve), run_time=1.8)
+```
+
+За такое платят скоростью: правку в цифре делаешь в файле, а не кликами.
+
+### Установка
+
+Движок ставится как обычный Python-пакет, всё нужное тянет за собой:
+
+```bash
+pip install manim
+python -m manim --version
+```
+
+Проверка установки - штатная команда движка, а не запуск тестовой сцены:
+
+```bash
+python -m manim checkhealth
+```
+
+```
+Manim Community v0.20.1
+- Checking whether manim is on your PATH ... PASSED
+- Checking whether the executable belongs to manim ... PASSED
+- Checking whether latex is available ... PASSED
+- Checking whether dvisvgm is available ... PASSED
+No problems detected, your installation seems healthy!
+```
+
+### Первая сцена
+
+Файл сцены - обычный Python. Класс наследуется от `Scene`, метод `construct` описывает, что происходит:
+
+```python
+from manim import *
+
+
+class CircleGrow(Scene):
+    def construct(self):
+        circle = Circle(radius=1, color=BLUE, stroke_width=6)
+        dot = Dot(color=YELLOW).move_to(circle.get_center())
+
+        self.play(Create(circle))
+        self.play(dot.animate.move_to(circle.point_from_proportion(0.25)))
+        self.wait(0.5)
+```
+
+Три строки в `play` - это три анимации подряд: окружность рисуется, точка едет по ней, пауза. Ролик получается в `media/videos/first/480p15/CircleGrow.mp4`.
+
+Запуск:
+
+```bash
+python -m manim render -ql first.py CircleGrow
+```
+
+Флаги качества: `-ql` черновик 480p для проверки вёрстки, `-qh` финальный, `-qm` средний. Разрешение удобнее задавать в начале файла, флаг `-r` переопределяет:
+
+```python
+config.pixel_width = 1920
+config.pixel_height = 1080
+config.frame_rate = 60
+```
+
+### Что дальше рисуется тем же способом
+
+Остальное добавляется объектами того же движка, все сцены ниже отрендерены на 1080p60.
+
+Окружность на числовой плоскости с подписью:
+
+![Окружность на числовой плоскости](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/scene-circle.png)
+
+Сложное число: точка, радиус из начала координат и угол аргумента:
+
+![Сложное число на комплексной плоскости](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/scene-complex.png)
+
+Бинарный поиск: зелёная рамка - левая граница, синяя - правая, найденный элемент подсвечен:
+
+![Бинарный поиск на отсортированном массиве](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/scene-binary-search.png)
+
+Сортировка: элементы едут на новые места, 5 2 9 1 7 превращается в 1 2 5 7 9:
+
+![Сортировка перестановкой элементов](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/scene-sort.png)
+
+Граф: рёбра со стрелками рисуются раньше вершин, иначе стрелки перечёркивают точки:
+
+![Ориентированный граф с пятью вершинами](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/scene-graph.png)
+
+### Формулы требуют LaTeX
+
+Формулы рисует не Python, а настоящий TeX. Проверяет движок два бинаря, а не один, и второй - конвертер в вектор:
 
 ```
 - Checking whether latex is available ... FAILED
@@ -62,11 +161,9 @@ Manim cannot find <latex> on your system's PATH. You will not be able to use
 Tex and MathTex mobjects in your scenes.
 ```
 
-Формулы приходилось писать обычным текстом с юникодом: `Text("e^(iπ) + 1 = 0")` рендерится, `Text("∑ f(x) dx")` тоже, но дроби, интегралы со скобками и матрицы на этом не собираются в принципе.
+Без установленного LaTeX формулы приходится писать обычным текстом: `Text("e^(iπ) + 1 = 0")` рендерится, `Text("∑ f(x) dx")` тоже, но дроби, интегралы со скобками и матрицы на этом не собираются в принципе. Ниже раздел с командами установки и граблями, которые на установку ушли.
 
-Дальше - команды установки с нуля и грабли, которые на установку ушли.
-
-## Как поставить LaTeX с нуля
+### Как поставить LaTeX с нуля
 
 Manim нужно два бинаря: `latex` - движок вёрстки, `dvisvgm` - конвертер результата в вектор для анимации. Без второго формулы не заработают даже при установленном первом.
 
@@ -95,7 +192,7 @@ grep -i AutoInstall <путь-к-конфигу- MiKTeX>/miktex.ini
 AutoInstall=1
 ```
 
-## Проверка установки
+### Проверка установки
 
 Exit code рендера тут не годится: он скажет "ок" и на голом фоне. Нужен штатный диагност движка:
 
@@ -107,7 +204,9 @@ python -m manim checkhealth
 
 Ждём четыре строки PASSED, включая обе ключевые. Если `dvisvgm` остался SKIPPED при зелёном `latex`, доустанавливается отдельно: `mpm --install=dvisvgm`. Флаг `--admin` в портативной установке не работает и вызовет отказ, поэтому указывать его не надо.
 
-## Что изменилось после установки
+### Что изменилось после установки
+
+![Формулы после установки LaTeX: Эйлер, интеграл с пределами, матрица](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/scene-tex-formulas.png)
 
 Тесты на 1080p60: формула Эйлера, интеграл с пределами и матрица 2x2 с круглыми скобками. Всё три рендерится настоящим TeX:
 
@@ -117,9 +216,15 @@ MathTex(r"\int_a^b f(x)\,dx = F(b) - F(a)")
 MathTex(r"\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}")
 ```
 
-![Джилл у монитора с анимацией синусоиды](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/video-curve.png)
+![Матрица одной строкой MathTex](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-03-explain-skills/images/scene-matrix-tex.png)
 
-Матрица до установки собиралась вручную из `Text` и рамки `SurroundingRectangle` - восемь строк кода, и скобки всё равно отставали от рамки. После установки это одна строка, и выглядит как надо.
+Матрица до установки собиралась вручную из `Text` и рамки `SurroundingRectangle` - восемь строк кода, и скобки всё равно отставали от рамки. После установки это одна строка:
+
+```
+MathTex(r"\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}")
+```
+
+И выглядит как надо, скобки настоящие.
 
 Что не поменялось: кириллица в обычном `Text` работала и раньше, а вот русский текст внутри `MathTex` зависит от шрифта и настроек движка, я его не проверял. Подписи держи в `Text`.
 
