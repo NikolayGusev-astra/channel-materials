@@ -15,6 +15,8 @@ BLUE3 = "#58C4DD"
 YEL3 = "#FC6255"
 GRN3 = "#83C167"
 
+FRAME_W, FRAME_H = 14.222, 8.0
+
 TRACK = ValueTracker(0.0)
 
 
@@ -61,7 +63,9 @@ class CirclePlane(Scene):
         circ = Circle(radius=2 * ax.c2p(1, 0)[0], stroke_color=BLUE3, stroke_width=5)
         circ.move_to(ax.c2p(1, 1))
         cap = Text("круг: (x-1)^2 + (y-1)^2 = 4", font_size=40, color=WHITE)
-        g = VGroup(circ, cap).arrange(DOWN, buff=0.6).scale_to_fit_width(13.0)
+        g = VGroup(circ, cap).arrange(DOWN, buff=0.6)
+        # один вызов, запас 10% по каждой оси
+        g.scale(min(FRAME_W * 0.90 / g.width, FRAME_H * 0.90 / g.height))
         self.add(ax)
         self.play(Create(circ), run_time=1.6)
         self.play(FadeIn(cap), run_time=0.6)
@@ -195,7 +199,7 @@ class MatrixTex(Scene):
 
     def construct(self):
         m = MathTex(r"\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}", color=BLUE3)
-        m.scale_to_fit_height(5.5).move_to(ORIGIN)
+        m.scale(5.5 / m.height).move_to(ORIGIN)
         self.play(Write(m), run_time=1.4)
         self.wait(1.2)
 
@@ -208,8 +212,15 @@ class TexFormulas(Scene):
         eq = MathTex(r"e^{i\pi} + 1 = 0", color=BLUE3)
         integral = MathTex(r"\int_a^b f(x)\,dx = F(b) - F(a)", color=YEL3)
         matrix = MathTex(r"\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}", color=GRN3)
+        # Масштабировать ОДИН раз. Цепочка scale_to_fit_width(...).scale_to_fit_height(...)
+        # увеличивает оба измерения: группа была 11.712 x 5.560, первый вызов растянул
+        # до 13, второй до 7.2 по высоте, на выходе ширина 15.168 при кадре 14.222 -
+        # контент уезжал за кадр и буквы на краях срезало.
         g = VGroup(head, eq, integral, matrix).arrange(DOWN, buff=0.7)
-        g.scale_to_fit_width(13.0).scale_to_fit_height(7.2)
+        if g.width / FRAME_W > g.height / FRAME_H:
+            g.scale(FRAME_W * 0.90 / g.width)
+        else:
+            g.scale(FRAME_H * 0.90 / g.height)
         g.move_to(ORIGIN)
         self.add(g)
         self.wait(0.2)
