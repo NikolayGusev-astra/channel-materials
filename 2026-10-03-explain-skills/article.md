@@ -4,6 +4,10 @@ slug: explain-skills-ladder
 date: 2026-10-03
 tags: [hermes, teachme, skills, ai-literacy]
 author: Гусев Николай
+site:
+  slug: explain-skills-ladder
+  tags: [hermes, teachme, skills]
+  cover: cover.png
 ---
 # Как разбираться в ответах ИИ: 29 скилов на четыре ступени объяснения
 
