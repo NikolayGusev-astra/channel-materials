@@ -120,13 +120,13 @@ hermes skills list | grep -E "teachme|eli5|asd-ste100"
 
 Без `/reload-skills` имя не появится в автоподсказке: реестр команд кэшируется при старте сессии. Сам файл виден - скиллы читаются с диска напрямую.
 
-Для роликов с формулами нужен LaTeX, иначе рендер падает. Скрипт `materials/scripts/setup-latex.sh` ставит его целиком и идемпотентно.
+Для роликов с формулами нужен LaTeX, иначе рендер падает. Скрипт [`materials/scripts/setup-latex.sh`](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-10-03-explain-skills/materials/scripts/setup-latex.sh) ставит его целиком и идемпотентно.
 
 ## Что лежит в репозитории
 
 Отчуждаемая копия скилов teachme: 29 папок, 8 МБ, симлинки разыменованы. Нужна для переноса на другую машину и для страховки от куратора, который архивирует то, чем давно не пользовались.
 
-Ролик про LLM Wiki: `materials/llmwiki.mp4`, код сцен: `materials/llmwiki_video.py`.
+Ролик про LLM Wiki: [`materials/llmwiki.mp4`](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-10-03-explain-skills/materials/llmwiki.mp4), код сцен: [`materials/llmwiki_video.py`](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-10-03-explain-skills/materials/llmwiki_video.py).
 
 ## Итог
 
