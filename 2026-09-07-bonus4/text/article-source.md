@@ -159,8 +159,8 @@ SDXL base (нейтральный): без стилевых модификато
 
 Все скрипты, конфиги, чекпойнты, иллюстрации в репозиториях:
 
-- **GitHub**: github.com/NikolayGusev-astra/channel-materials (папка `2026-09-07-bonus4-`)
-- **GitFlic** (зеркало): gitflic.ru/project/manve-sulimo2/channel-materials
+- **GitHub**: [NikolayGusev-astra/channel-materials](https://github.com/NikolayGusev-astra/channel-materials/tree/master/2026-09-07-bonus4), папка [`2026-09-07-bonus4`](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-09-07-bonus4/README-install.md)
+- **GitFlic** (зеркало): [manve-sulimo2/channel-materials](https://gitflic.ru/project/manve-sulimo2/channel-materials)
 
 Полный README с пошаговой установкой от 0 до первой панели лежит в `2026-09-07-bonus4/README-install.md`. Краткая выжимка:
 
@@ -190,7 +190,7 @@ SDXL base (нейтральный): без стилевых модификато
 
 - `README-install.md` — пошаговая установка от 0 до первой панели для агента
 - `download-bonus4-bundle.py` — скрипт автозагрузки 17 моделей с HF через `python urllib` (обходит прокси-баг curl)
-- `text/article-source.md` — исходник этой статьи
+- [`text/article-source.md`](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-09-07-bonus4/text/article-source.md) — исходник этой статьи
 - `prompts/` — JSON с промптами для воспроизведения
 - `styles/` — 5 панелей «один персонаж в 5 стилях» + лист сравнения
 - `character/` — 6-панельная серия «Джилл в 6 сценах» через IP-Adapter + лист + референс
