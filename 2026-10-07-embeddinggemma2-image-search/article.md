@@ -1,8 +1,12 @@
 ---
-title: Поиск по скриншотам документации на одной видеокарте: EmbeddingGemma 2, 53 картинки и 8 секунд
+title: "Поиск по скриншотам документации на одной видеокарте: EmbeddingGemma 2, 53 картинки и 8 секунд"
+slug: embeddinggemma2-skrinshoty-poisk
+date: 2026-10-07
+tags: [embeddinggemma, rag, embeddings, multimodal]
+author: Гусев Николай
 site:
   slug: embeddinggemma2-skrinshoty-poisk
-tags: [embeddinggemma, rag, embeddings, мультимодальность, local-llm]
+  tags: [embeddinggemma, rag, embeddings, multimodal]
 ---
 # Поиск по скриншотам документации на одной видеокарте: EmbeddingGemma 2, 53 картинки и 8 секунд
 
