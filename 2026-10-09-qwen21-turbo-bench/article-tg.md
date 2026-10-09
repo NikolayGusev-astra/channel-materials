@@ -8,8 +8,6 @@ author: Гусев Николай
 
 # Qwen-Image-2.1 Turbo: в 2.5 раза быстрее на одной карте
 
-![Сравнение кадров base и turbo](https://hermes-agent.ru/qwen-image-21-turbo-bench/base-poster.png)
-
 9 октября Alibaba выложила Turbo-версию Qwen-Image-2.1. К вечеру того же дня она прошла полный прогон на моей карте: RTX 4060 с восемью гигабайтами, ComfyUI, 1024×1024. Замер простой: три сцены, два зерна, одинаковые промпты, одна и та же обвязка. Отличаются только чекпойнт и число шагов.
 
 Результат: базовая модель отрисовывает кадр за 121 секунду, Turbo за 48. Ускорение в 2.52 раза, при этом качество на тексте и руках не просело.
@@ -40,9 +38,9 @@ turbo Q4 GGUF,8 шагов:   45.6 сек  (41.6-46.9)
 
 Текст читается чисто в обоих вариантах, буквы без артефактов. Анатомия рук и хват кружки корректны и там, и там. По общему уровню детализации разницы на глаз нет. Для постеров и обложек Turbo подходит без оговорок.
 
-![Кадр base, 25 шагов](https://hermes-agent.ru/qwen-image-21-turbo-bench/base-poster.png)
+![Кадр base, 25 шагов](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-09-qwen21-turbo-bench/base-poster.png)
 
-![Кадр turbo, 8 шагов](https://hermes-agent.ru/qwen-image-21-turbo-bench/turbo-int8-poster.png)
+![Кадр turbo, 8 шагов](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-09-qwen21-turbo-bench/turbo-int8-poster.png)
 
 ## Грабли, ради которых статья и писалась
 
@@ -56,9 +54,9 @@ turbo Q4 GGUF,8 шагов:   45.6 сек  (41.6-46.9)
 
 Четвертое. Q6_K из GGUF-линейки не заработал у меня конкретно вот как: модель весит 5.6 гигабайта в распакованном виде, в восемь гигабайт карты она не помещается целиком, ComfyUI включает режим стриминга весов с диска, и при первой же выгрузке куска модели под декодер нода comfyui-gguf падает с access violation внутри операции перемещения тензора между устройствами. Воспроизвелось дважды на чистой памяти, включая прогревочный кадр: он отрабатывает, падает уже декодер. Это баг ноды в пути частичной выгрузки, а не проблема кванта или модели. На карте с 16 гигабайтами VRAM и больше Q6_K, скорее всего, заведется без единой правки: модель влезет целиком, стриминг не включится, падать будет нечему. Проверить не могу, у меня восьмерка. Q4_K_M весит меньше и влезает целиком, поэтому работает.
 
-![Руки, base](https://hermes-agent.ru/qwen-image-21-turbo-bench/base-hands.png)
+![Руки, base](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-09-qwen21-turbo-bench/base-hands.png)
 
-![Руки, turbo](https://hermes-agent.ru/qwen-image-21-turbo-bench/turbo-int8-hands.png)
+![Руки, turbo](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-09-qwen21-turbo-bench/turbo-int8-hands.png)
 
 ## А как же квант поменьше
 
@@ -66,7 +64,7 @@ Q4_K_M весит 4.19 гигабайта против 7.26 у int8. Казал�
 
 Итог по квантам: int8-convrot Turbo остается рабочим вариантом. Q4 экономит место на диске и больше ничего. Q6 не работает.
 
-![Постер на Q4, текст хуже](https://hermes-agent.ru/qwen-image-21-turbo-bench/turbo-q4-poster.png)
+![Постер на Q4, текст хуже](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-09-qwen21-turbo-bench/turbo-q4-poster.png)
 
 ## Лицензия
 
