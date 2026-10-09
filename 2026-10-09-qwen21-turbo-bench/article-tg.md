@@ -4,8 +4,11 @@ slug: qwen-image-21-turbo-bench
 date: 2026-10-09
 tags: [qwen, comfyui, benchmark, локальные модели]
 author: Гусев Николай
+site:
+  slug: qwen-image-21-turbo-bench
+  cover: turbo-int8-poster.png
+  tags: [qwen, comfyui, benchmark]
 ---
-
 # Qwen-Image-2.1 Turbo: в 2.5 раза быстрее на одной карте
 
 9 октября Alibaba выложила Turbo-версию Qwen-Image-2.1. К вечеру того же дня она прошла полный прогон на моей карте: RTX 4060 с восемью гигабайтами, ComfyUI, 1024×1024. Замер простой: три сцены, два зерна, одинаковые промпты, одна и та же обвязка. Отличаются только чекпойнт и число шагов.
@@ -76,11 +79,13 @@ Turbo-чекпойнты идут под Qwen Research License, некоммер
 
 ## Код и материалы
 
-Весь пайп выложен в открытом репо канала: github.com/NikolayGusev-astra/channel-materials, каталог 2026-10-09-qwen21-turbo-bench. Внутри:
+Весь пайп выложен в открытом репо канала, каталог [2026-10-09-qwen21-turbo-bench](https://github.com/NikolayGusev-astra/channel-materials/tree/master/2026-10-09-qwen21-turbo-bench). Внутри:
 
-- code/bench-generic.py - скрипт A/B-бенчмарка: гоняет ваши чекпойнты на одинаковых промптах и зернах, меряет время по таймстампам ComfyUI, складывает JSON. Все места для замены помечены: имена моделей, классы лоадеров, канон персонажа, сцены, зерна. Выгрузка весов и обход кэша уже зашиты.
-- code/submit-generic.py - минимальный клиент разовой генерации: подставили свою модель и промпт, запустили, получили картинку и выгрузку памяти в конце. С этого файла проще всего начать сбор своего пайпа.
-- article.md - эта статья, картинки кадров отдельно.
+- [code/bench-generic.py](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-10-09-qwen21-turbo-bench/code/bench-generic.py) - скрипт A/B-бенчмарка: гоняет ваши чекпойнты на одинаковых промптах и зернах, меряет время по таймстампам ComfyUI, складывает JSON. Все места для замены помечены: имена моделей, классы лоадеров, канон персонажа, сцены, зерна. Выгрузка весов и обход кэша уже зашиты.
+- [code/submit-generic.py](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-10-09-qwen21-turbo-bench/code/submit-generic.py) - минимальный клиент разовой генерации: подставили свою модель и промпт, запустили, получили картинку и выгрузку памяти в конце. С этого файла проще всего начать сбор своего пайпа.
+- [article.md](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-10-09-qwen21-turbo-bench/article.md) - эта статья, картинки кадров отдельно.
+
+Зеркало для РФ: [gitflic.ru/manve-sulimo2/channel-materials](https://gitflic.ru/project/manve-sulimo2/channel-materials), тот же каталог.
 
 Под свою модель меняются три вещи: классы нод загрузки и энкодера (UNETLoader против UnetLoaderGGUF, TextEncodeQwenImage21 против CLIPTextEncode), имена файлов весов и текст канона. Под свое железо - размер батча и число шагов Turbo-чекпойнта, если ваша карта тянет больше восьми гигабайт и вы хотите полную версию модели.
 
