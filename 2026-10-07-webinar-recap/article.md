@@ -89,7 +89,7 @@ Tools уже внутри агента: файлы, терминал, брауз
 - cloudflare-temporary-deploy: Worker без аккаунта через wrangler --temporary;
 - publish-site: версионированные деплои на GitHub Pages и Cloudflare Pages.
 
-Команды установки для всех лежат в репозитории материалов, файл vendor-skills.md.
+Команды установки для всех лежат в репозитории материалов: [vendor-skills.md](https://github.com/NikolayGusev-astra/channel-materials/blob/master/2026-10-07-webinar-recap/vendor-skills.md)
 
 Честный ответ на вопрос «а что ещё вендорского есть»: искал по официальному источнику отдельно terraform, ansible, kubernetes, prometheus, grafana, nginx, github actions. Ноль результатов. По этим темам в хабе только community-скиллы лотерейного качества. Если работа с ними повседневная, честнее написать свой скилл под свои конвенции. В этом и идея скиллов: процедурная память под свою практику, а не чужой пересказ документации.
 
