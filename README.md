@@ -27,6 +27,7 @@
 | 2026-09-20 | [Любовь - это русские придумали, чтобы денег не платить: добиваем бесплатных Бертов до платного Jev](./2026-09-20-jev-decision-models/part4-protocol_10k.md) | часть 4: дообучение mmBERT на 10k письмах, accuracy 0.427 -> 0.959, finetune_kit/ с полным конвейером; опубликована в канале (msg 242) |
 | 2026-09-20 | [Дообучение модели под свою задачу: что это и зачем](./2026-09-20-jev-decision-models/part3-theory_finetune.md) | теория: промпт/RAG/fine-tune, замер 4 систем на 150 письмах |
 | 2026-10-01 | [Воркфлоу с DoD и гейтами на Hermes Agent](./2026-10-01-workflow-dod-gates/) | статья + 2 скрипта: `public/onto_gate.py` (клиент MemoryArtifact: draft/submit/status/accept, MCP-транспорт, локальный файл состояния), `public/publish-draft.py` (Telegra.ph: лимит 60 символов, маркер черновика в заголовке, editPage вместо повторного createPage). Ключи только из env, realm UUID читается из ONTONET_REALM |
+| 2026-10-09 | [Qwen-Image-2.1 Turbo: в 2.5 раза быстрее на одной карте](./2026-10-09-qwen21-turbo-bench/) | бенчмарк на RTX 4060 8GB (base 121с vs turbo 48с, x2.52) + generic-код пайпа: `code/bench-generic.py` (A/B-бенчмарк через HTTP API ComfyUI с выгрузкой весов и обходом кэша зерен), `code/submit-generic.py` (минимальный клиент генерации). Грабли: GGUF mmap+деанв, free_vram на WDDM, краш Q6_K при partial unload, лицензия Qwen Research |
 
 ## Формат папки
 
