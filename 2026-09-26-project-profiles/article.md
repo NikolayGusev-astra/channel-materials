@@ -74,9 +74,9 @@ site:
 Проект в Hermes - это именованная рабочая область, которая может состоять из нескольких папок. Внутри профиля их можно заводить сколько угодно, и у каждой свой активный статус:
 
 ```bash
-hermes project create "Название" <local-path>\Work\projects\first --use
+hermes project create "Название" C:\Work\projects\first --use
 hermes project use "Название"       # переключиться на другой проект
-hermes project add-folder "Название" <local-path>\Work\projects\second
+hermes project add-folder "Название" C:\Work\projects\second
 hermes project list
 ```
 
@@ -140,7 +140,7 @@ hermes project list
 Что работает без молчаливых дублей - один каталог-хранилище общих скиллов и симлинки на нужное в каталоге скиллов профиля:
 
 ```bash
-mklink /J %PROFILE%\skills\content\writer <local-path>\Work\agents\shared-skills\content\writer
+mklink /J %PROFILE%\skills\content\writer C:\Work\agents\shared-skills\content\writer
 ```
 
 Сканер ходит по симлинкам как по обычным каталогам, слэш-команды и список скиллов видят то же самое, а файл физически один. Правишь скилл - изменение сразу в нужных профилях. Специфика профиля при этом остаётся обычными каталогами рядом и не выдаёт себя за общий эталон.

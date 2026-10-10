@@ -67,13 +67,13 @@
 
 [Moffatt v. Air Canada, 2024 BCCRT 149](https://en.wikipedia.org/wiki/Moffatt_v._Air_Canada)
 
-[BB<local-path>line held liable for its chatbot giving passenger bad advice](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know)
+[BBC: Airline held liable for its chatbot giving passenger bad advice](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know)
 
-[CNB<local-path>McDonald's to end IBM AI drive-thru test](https://www.cnbc.com/2024/06/17/mcdonalds-to-end-ibm-ai-drive-thru-test.html)
+[CNBC: McDonald's to end IBM AI drive-thru test](https://www.cnbc.com/2024/06/17/mcdonalds-to-end-ibm-ai-drive-thru-test.html)
 
 [The Markup: NYC's AI Chatbot Tells Businesses to Break the Law](https://themarkup.org/artificial-intelligence/2024/03/29/nycs-ai-chatbot-tells-businesses-to-break-the-law)
 
-[BB<local-path>DPD error caused chatbot to swear at customer](https://www.bbc.co.uk/news/technology-68025677)
+[BBC: DPD error caused chatbot to swear at customer](https://www.bbc.co.uk/news/technology-68025677)
 
 [Driving.ca: GM dealer chatbot talked into selling Chevy Tahoe for $1](https://driving.ca/auto-news/crashes/chatbot-chatgpt-ai-chevrolet-dealership-virtual-service-assistant)
 
@@ -83,4 +83,4 @@
 
 [FinTech Weekly: Klarna hires customer service agents again](https://www.fintechweekly.com/magazine/articles/klarna-hires-customer-service-after-ai-pivot)
 
-[CB<local-path>B.C. lawyer reprimanded for citing fake cases](https://www.cbc.ca/news/canada/british-columbia/lawyer-chatgpt-fake-precedent-1.7126393)
+[CBC: B.C. lawyer reprimanded for citing fake cases](https://www.cbc.ca/news/canada/british-columbia/lawyer-chatgpt-fake-precedent-1.7126393)

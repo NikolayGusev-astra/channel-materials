@@ -67,7 +67,7 @@ VOTC размещён на [player2.game](https://player2.game) - платфор
 
 ## Ссылки
 
-[VOT<local-path>репозиторий](https://github.com/Voices-of-the-Court/VOTC) и [страница мода на Player2](https://player2.game/games/user-4ae8-mio5/game-03c63ebb)
+[VOTC: репозиторий](https://github.com/Voices-of-the-Court/VOTC) и [страница мода на Player2](https://player2.game/games/user-4ae8-mio5/game-03c63ebb)
 
 [Voices of the Court в Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3346777360) | [Платформа Player2 (Elefant AI)](https://player2.game)
 

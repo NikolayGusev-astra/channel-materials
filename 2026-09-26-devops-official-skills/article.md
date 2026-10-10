@@ -475,9 +475,9 @@ ERROR: Ansible requires the locale encoding to be UTF-8; Detected 1251.
 На Windows их три, и они ведут себя по-разному. Это главный источник сюрпризов при администрировании стендов.
 
 ```
-<local-path>\Program Files\Git\usr\bin\ssh.exe      OpenSSH_10.5p1    НЕЛЬЗЯ, читает неверного пользователя
-<local-path>\Windows\System32\OpenSSH\ssh.exe        1 243 648 байт   рабочий, звать через cmd.exe
-<local-path>\Program Files\PuTTY\plink.exe            0.83, 64-bit     парольный вход, ключ -batch
+C:\Program Files\Git\usr\bin\ssh.exe      OpenSSH_10.5p1    НЕЛЬЗЯ, читает неверного пользователя
+C:\Windows\System32\OpenSSH\ssh.exe        1 243 648 байт   рабочий, звать через cmd.exe
+C:\Program Files\PuTTY\plink.exe            0.83, 64-bit     парольный вход, ключ -batch
 ```
 
 У меня на машине git-bash лежит в `/usr/bin/ssh`, и это именно тот запрещённый. Он подставляет локального пользователя Windows вместо того, к которому идём, и каждая неудачная попытка увеличивает счётчик блокировок на целевой машине. Три провала - и учётка заблокирована.
@@ -485,7 +485,7 @@ ERROR: Ansible requires the locale encoding to be UTF-8; Detected 1251.
 **Рабочий путь: cmd.exe плюс системный OpenSSH.**
 
 ```
-cmd.exe /c "<local-path>\Windows\System32\OpenSSH\ssh.exe -o StrictHostKeyChecking=no -o ConnectTimeout=5 -p 2211 admin@localhost hostname"
+cmd.exe /c "C:\Windows\System32\OpenSSH\ssh.exe -o StrictHostKeyChecking=no -o ConnectTimeout=5 -p 2211 admin@localhost hostname"
 ```
 
 Грабли, на которые натыкается каждый. `cmd.exe` не знает одинарных кавычек, поэтому удалённая команда с любым из символов `; | && > <` разваливается: cmd режет строку своими операторами раньше, чем её увидит ssh. Одинарные кавычки доезжают до удалённой машины как обычные символы, и bash пытается выполнить файл с именем из кавычек. Отсюда классическое `bash: /tmp/x.sh: Нет такого файла или каталога`.
@@ -496,8 +496,8 @@ cmd.exe /c "<local-path>\Windows\System32\OpenSSH\ssh.exe -o StrictHostKeyChecki
 
 ```
 sed -i 's/\r$//' /c/tmp/probe.sh
-cmd.exe /c "<local-path>\Windows\System32\OpenSSH\scp.exe -o BatchMode=yes /c/tmp/probe.sh USER@bastion-host:/tmp/"
-cmd.exe /c "<local-path>\Windows\System32\OpenSSH\ssh.exe USER@bastion-host bash /tmp/probe.sh"
+cmd.exe /c "C:\Windows\System32\OpenSSH\scp.exe -o BatchMode=yes /c/tmp/probe.sh USER@bastion-host:/tmp/"
+cmd.exe /c "C:\Windows\System32\OpenSSH\ssh.exe USER@bastion-host bash /tmp/probe.sh"
 ```
 
 Строка `sed` не формальность. Локально написанный файл несёт переводы строк CRLF, и на стенде bash видит `bash: <line>: command not found` - перевод строк приклеен к первому слову каждой строки.
@@ -505,7 +505,7 @@ cmd.exe /c "<local-path>\Windows\System32\OpenSSH\ssh.exe USER@bastion-host bash
 **plink - парольный вход, когда ключ не подходит.**
 
 ```
-echo y | "<local-path>\Program Files\PuTTY\plink.exe" -ssh -P 22 -l YOUR_USER -pw 'PASSWORD' -batch 192.168.2.50 "hostname"
+echo y | "C:\Program Files\PuTTY\plink.exe" -ssh -P 22 -l YOUR_USER -pw 'PASSWORD' -batch 192.168.2.50 "hostname"
 ```
 
 `-batch` обязателен. Без него plink зависает на интерактивном запросе, когда хост не принимает пароль чисто. `echo y |` один раз принимает ключ хоста.
@@ -517,8 +517,8 @@ echo y | "<local-path>\Program Files\PuTTY\plink.exe" -ssh -P 22 -l YOUR_USER -p
 У меня paramiko 5.0.0, ставится через `uv`:
 
 ```
-uv venv <local-path>mp/diagvenv
-uv pip install --python <local-path>mp/diagvenv paramiko
+uv venv C:/tmp/diagvenv
+uv pip install --python C:/tmp/diagvenv paramiko
 ```
 
 Минимальный рабочий шаблон:
@@ -551,7 +551,7 @@ BASTION_HOST = "bastion-host"    # имя или адрес бастиона
 bastion = paramiko.SSHClient()
 bastion.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 bastion.connect(BASTION_HOST, username="USER",
-                key_filename="<local-path>YOUR_USER/.ssh/id_ed25519")
+                key_filename="C:/Users/YOUR_USER/.ssh/id_ed25519")
 chan = bastion.get_transport().open_channel("direct-tcpip",
                                              (TARGET_IP, 22), ("127.0.0.1", 0))
 target = paramiko.SSHClient()
