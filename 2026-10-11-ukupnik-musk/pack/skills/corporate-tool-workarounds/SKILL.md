@@ -472,7 +472,7 @@ codex writing files).
 **Symptom:** `git clone https://... ~/.hermes/desktop-plugins/x` prints
 `Cloning into '/c/Users/...'...` and returns **exit 0**, yet `ls ~/.hermes/...`
 shows nothing and `cd` into the target fails with `No such file or directory`.
-The repo actually landed at `/c/Users/<user>/.hermes/desktop-plugins/x`
+The repo actually landed at `/c/c/Users/<user>/.hermes/desktop-plugins/x`
 (on drive root `/c/c/...`), because git is a native Windows binary that does
 NOT translate the MSYS destination path.
 
@@ -545,9 +545,9 @@ ansible host --become -m script -a /path/to/script.sh
 ```
 
 **Script conventions:**
-- Scripts on bastion: `/home/<user>/proj-stand/<name>.sh`
-- Copy via: `scp local.sh user@bastion:/home/<user>/proj-stand/`
-- Run via: `ansible host -m script -a /home/<user>/proj-stand/script.sh`
+- Scripts on bastion: `/home/<user>/proj/<name>.sh`
+- Copy via: `scp local.sh user@bastion:/home/<user>/proj/`
+- Run via: `ansible host -m script -a /home/<user>/proj/script.sh`
 - All diagnostic output in script body (echo, grep, ipactl, etc.)
 
 **`&&` chaining through cmd.exe:** NEVER chain ansible commands with `&&`
@@ -812,7 +812,7 @@ earlier.
 SSH key is registered on the Bitbucket DC even when you do not know the project
 key. Enumerate candidate slugs with `git ls-remote ssh://git@git.example.test:7999/<PROJ>/<repo>.git`
 — "Repository not found" means wrong path, refs output means found. Known:
-ИИ-платформа repo lives at `INT/int-6536` (web UI path `users/.../repos/...` is
+ИИ-платформа repo lives at `group/ai-platform` (web UI path `users/.../repos/...` is
 NOT the clone path). The Jira PAT (`JIRA_PAT` from `hermes config get
 mcp_servers.jira.env.JIRA_PAT`, base64 `userId:secret`) authenticates
 Jira/Confluence REST but NOT Bitbucket REST — git-over-SSH with id_ed25519 is
@@ -828,7 +828,7 @@ the error text until read):
 | 4.1 | committer email matches `*@example.test` |
 | — | **commits must be signed**; unsigned commits rejected |
 
-**Rule 3.1 is the trap.** A subject line like `[PROJ-1001] feature` passes, but
+**Rule 3.1 is the trap.** A subject line like `[PROJ-100] feature` passes, but
 mentioning a second ticket anywhere in the body makes the hook count two keys
 and reject. Cross-references go in the task tracker, not the commit body.
 
