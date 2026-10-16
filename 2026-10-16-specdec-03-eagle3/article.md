@@ -10,7 +10,7 @@ site:
 ---
 # EAGLE-3 на 4060: acceptance 0.17 при любой квантизации - домен решает, не битрейт
 
-Автор: Гусев Николай. Серия про спекулятивное декодирование на 8 ГБ: [часть 1](https://hermes-agent.ru/news/proverka-speculyacii-na-odnoj-4060/), [часть 2 - DFlash](https://hermes-agent.ru/news/dflash-2-granica-primenimosti/).
+Автор: Гусев Николай. Серия про спекулятивное декодирование на 8 ГБ: [часть 1](https://hermes-agent.ru/news/proverka-speculyacii-na-odnoj-4060/), [часть 2 - DFlash](https://hermes-agent.ru/news/dflash-2-granica-primenimosti/), [часть 4 - 96K и Lucebox](https://hermes-agent.ru/news/96k-vlezaet-v-8gb-lucebox-pod-windows/).
 
 EAGLE-3 - самый цитируемый метод спекулятивного декодирования последних двух лет. Заявления: acceptance 0.80-0.88, ускорение до 5×. На моём стенде он работает в минус, и разбор этого провала дал больше понимания, чем любой из удачных замеров серии.
 

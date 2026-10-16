@@ -10,7 +10,7 @@ site:
 ---
 # DFlash 2: ускоряет код в 1.8 раза и роняет документы в 0.25 - где проходит граница
 
-Автор: Гусев Николай. Серия про спекулятивное декодирование на 8 ГБ, [часть 1 - общая картина](https://hermes-agent.ru/news/proverka-speculyacii-na-odnoj-4060/).
+Автор: Гусев Николай. Серия про спекулятивное декодирование на 8 ГБ: [часть 1 - общая картина](https://hermes-agent.ru/news/proverka-speculyacii-na-odnoj-4060/), [часть 3 - EAGLE-3](https://hermes-agent.ru/news/eagle3-acceptance-017-lyubaya-kvantizaciya/), [часть 4 - 96K и Lucebox](https://hermes-agent.ru/news/96k-vlezaet-v-8gb-lucebox-pod-windows/).
 
 DFlash 2 - блочный диффузионный драфтер от Z Lab. Заявление: 2-3.4× на детерминированных задачах - код, JSON, математика. Замер на моей 4060 это подтвердил ровно наполовину, и вторая половина интереснее первой.
 
