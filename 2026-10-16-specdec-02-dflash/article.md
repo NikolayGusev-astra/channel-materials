@@ -80,12 +80,12 @@ DFlash 2 - блочный диффузионный драфтер от Z Lab. З
 Параметр `n_max` задаёт ширину блока. Мы специально прогнали n=4, n=8 и n=15, потому что максимальная ширина из рекламного примера не обязана быть оптимальной для конкретного корпуса.
 
 ```bash
-git clone https://github.com/NikolayGusev-astra/poc-node-utilization.git
+git clone https://github.com/NikolayGusev-astra/specdec-bench.git
 cd poc-node-utilization
 python validation-v3/r2b_nmax_sweep.py
 ```
 
-Скрипт не принимает аргументов: n_max берётся из жёсткого набора `[4, 8, 15]`, таргет и драфт зафиксированы под Qwen3-4B + DFlash, повторы = 2. Он импортирует общий харнесс из `run_spec_matrix.py` и `run_validated.py`, сам создаёт сессию в `measurements/r2b-nmax-sweep-<timestamp>/`, прогоняет три ширины блока и сохраняет сырые логи и JSON-результаты. Для запуска на другом компьютере нужны локально скачанные `Qwen3-4B-Q4_K_M.gguf`, `AtomicChat-Qwen3-4B-DFlash.Q8_0.gguf` и `llama-server.exe` — пути к ним читаются из `run_config.json`. Полный файл: [r2b_nmax_sweep.py](https://github.com/NikolayGusev-astra/poc-node-utilization/blob/main/validation-v3/r2b_nmax_sweep.py).
+Скрипт не принимает аргументов: n_max берётся из жёсткого набора `[4, 8, 15]`, таргет и драфт зафиксированы под Qwen3-4B + DFlash, повторы = 2. Он импортирует общий харнесс из `run_spec_matrix.py` и `run_validated.py`, сам создаёт сессию в `measurements/r2b-nmax-sweep-<timestamp>/`, прогоняет три ширины блока и сохраняет сырые логи и JSON-результаты. Для запуска на другом компьютере нужны локально скачанные `Qwen3-4B-Q4_K_M.gguf`, `AtomicChat-Qwen3-4B-DFlash.Q8_0.gguf` и `llama-server.exe` — пути к ним читаются из `run_config.json`. Полный файл: [r2b_nmax_sweep.py](https://github.com/NikolayGusev-astra/specdec-bench/blob/main/validation-v3/r2b_nmax_sweep.py).
 ## Почему код и документы надо разделять
 
 В коде и JSON ответ часто имеет жёсткую локальную структуру: после `"language":` с большой вероятностью идёт допустимое значение, после открывающей скобки - ключ или закрытие. В свободном анализе на русском языке распределение продолжений шире: модель может начать пояснение, сменить синтаксический ритм, закончить абзац или перейти к оговорке.

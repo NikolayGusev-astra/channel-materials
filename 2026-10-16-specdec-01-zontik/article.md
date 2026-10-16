@@ -85,7 +85,7 @@ $common = @(
 & $server @common "--spec-type" "draft-mtp"
 ```
 
-Для автоматизированного сравнения я использовал скрипт [spec_r0_smoke_mtp.py](https://github.com/NikolayGusev-astra/poc-node-utilization/blob/main/validation-v3/spec_r0_smoke_mtp.py): он запускает две arms, отправляет одинаковый greedy-запрос через `/v1/chat/completions`, сохраняет timings и пишет сырые логи в `measurements/spec-r0-smoke/`. В публичную статью я не прячу смысл команды за ссылкой на несуществующий `benchmark.py`: если нужен именно автоматический раннер, его можно взять из материалов проекта или прогнать этот короткий smoke руками. Скрипт не скачивает модель и не содержит бинарник сервера.
+Для автоматизированного сравнения я использовал скрипт [spec_r0_smoke_mtp.py](https://github.com/NikolayGusev-astra/specdec-bench/blob/main/validation-v3/spec_r0_smoke_mtp.py): он запускает две arms, отправляет одинаковый greedy-запрос через `/v1/chat/completions`, сохраняет timings и пишет сырые логи в `measurements/spec-r0-smoke/`. В публичную статью я не прячу смысл команды за ссылкой на несуществующий `benchmark.py`: если нужен именно автоматический раннер, его можно взять из материалов проекта или прогнать этот короткий smoke руками. Скрипт не скачивает модель и не содержит бинарник сервера.
 
 ### Почему MTP не ломается на документах
 

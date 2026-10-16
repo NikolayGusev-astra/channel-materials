@@ -82,12 +82,12 @@ Q8_0   target -> acceptance ~0.17
 Копируемая форма такого замера должна фиксировать метод и набор. Для этой серии реальный воспроизводимый entrypoint - не выдуманный `benchmark.py`, а матричный раннер из материалов эксперимента:
 
 ```bash
-git clone https://github.com/NikolayGusev-astra/poc-node-utilization.git
+git clone https://github.com/NikolayGusev-astra/specdec-bench.git
 cd poc-node-utilization
 python validation-v3/run_spec_matrix.py --group qwen3-4b --reps 3
 ```
 
-Он запускает baseline, DFlash и EAGLE-3 на группе Qwen3-4B, сохраняет команды, свойства сервера, GPU-сэмплы и JSON-результаты в `measurements/v7-spec-matrix/`. Полный файл: [run_spec_matrix.py](https://github.com/NikolayGusev-astra/poc-node-utilization/blob/main/validation-v3/run_spec_matrix.py). Для другой машины нужно проверить пути к движку и GGUF в `run_config.json`; скрипт не скачивает модель и не включает бинарники в репозиторий.
+Он запускает baseline, DFlash и EAGLE-3 на группе Qwen3-4B, сохраняет команды, свойства сервера, GPU-сэмплы и JSON-результаты в `measurements/v7-spec-matrix/`. Полный файл: [run_spec_matrix.py](https://github.com/NikolayGusev-astra/specdec-bench/blob/main/validation-v3/run_spec_matrix.py). Для другой машины нужно проверить пути к движку и GGUF в `run_config.json`; скрипт не скачивает модель и не включает бинарники в репозиторий.
 
 ### Матрица из четырёх прогонов
 
