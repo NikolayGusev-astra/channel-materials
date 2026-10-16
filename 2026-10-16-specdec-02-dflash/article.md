@@ -131,3 +131,11 @@ for task in code_tasks:
 Роутерная схема, которая следует из замеров: детерминированный класс (код, JSON, извлечение) - DFlash-канал; естественно-языковой анализ и общение - baseline или MTP. На моём стенде роутер стоит одной строкой: классификатор задачи на входе, флаг на перезапуске воркера - и не нужен никакой ретрейн.
 
 Практический потолок: даже в идеальных условиях DFlash даёт 1.8× на третьей части трафика. MTP даёт 1.4× на всём трафике бесплатно. Прежде чем заводить отдельный DFlash-канал, посчитайте, что именно у вас детерминированного и не закроет ли MTP эту потребность сам.
+## Источники
+
+- [DFlash: Block Diffusion for Flash Speculative Decoding](https://github.com/z-lab/dflash) и [страница проекта](https://z-lab.ai/projects/dflash/) - сам метод и заявления 2-3.4×.
+- [AgentSpec: Speculative Decoding for Batch Inference of LLM Agents](https://arxiv.org/abs/2608.24004) - деградация спекуляции при росте батча.
+- [PARD-2: Target-Aligned Parallel Draft Model for Dual-Mode Speculative Decoding](https://arxiv.org/abs/2605.08632) - objective драфтера: длина непрерывного принятия, а не token accuracy.
+- [Verification-Aware Training for Speculative Decoding](https://arxiv.org/abs/2608.30135) - обучение драфтера с учётом верификации таргетом.
+- [ECHO: Elastic Speculative Decoding with Sparse Gating for High-Concurrency Scenarios](https://arxiv.org/abs/2604.09603) - поведение спекуляции под конкурентностью.
+- [Learning to Draft: Adaptive Speculative Decoding with Reinforcement Learning](https://arxiv.org/abs/2603.01639) - адаптация drafting-политики.

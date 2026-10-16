@@ -137,3 +137,11 @@ Baseline отдаёт 45 корректных задач в минуту. DFlash
 ## Вывод
 
 Провал EAGLE-3 на моём стенде - не кривые руки и не квантизация. Это два независимых фактора: домен (русский NL - метод работает в минус, подтверждено сторонним воспроизведением) и, вероятно, ревизия головы (гипотеза - проверить без ретрейна нельзя, и я это честно пишу). Урок шире конкретного метода: цитируя «до 5×», всегда спрашивайте, на каком языке и каком домене.
+## Источники
+
+- [EAGLE-3: Scaling up Inference Acceleration of Large Language Models via Training-Time Test-time Scaling](https://arxiv.org/abs/2503.01840) - исходный метод и заявления.
+- [AngelSlim](https://github.com/Tencent/AngelSlim) - готовая EAGLE-3 голова под Qwen3, конвертированная в GGUF для этого замера.
+- [SpecForge](https://github.com/sgl-project/SpecForge) - фреймворк тренировки EAGLE-голов, который закрыл бы ревизионную гипотезу.
+- [Воспроизведение EAGLE-3 на Qwen3 (dmagog)](https://github.com/dmagog/eagle3-speculative-decoding) - независимый прогон на Kaggle T4, таблица по доменам из этой статьи.
+- [PACER: Blockwise Pre-verification for Speculative Decoding with Adaptive Length](https://arxiv.org/abs/2602.01274) - про цену проверки блоков разной глубины.
+- [BitNest: Bit-Nested Speculative Decoding for Memory-Efficient LLM Inference Acceleration](https://arxiv.org/abs/2610.02800) - спекуляция на низком битрейте.

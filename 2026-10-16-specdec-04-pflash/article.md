@@ -230,3 +230,11 @@ DFlash-плечо внутри Lucebox не заработало: демон т�
 ## Вывод
 
 Длинный контекст на 8 ГБ - не «невозможно», а «влезает до ~96K с квантованным KV, и узкое место переносится из памяти в prefill». Prefill - сжимаемая величина. Формула для агентных сценариев: гибридно-внимательная модель, квантованный KV и сжатие префилла на длинных контекстах. Все патчи и скрипты - в репозитории проекта.
+## Источники
+
+- [llama.cpp](https://github.com/ggml-org/llama.cpp) - базовый движок и гибридные ветки внимания.
+- [DFlash: Block Diffusion for Flash Speculative Decoding](https://github.com/z-lab/dflash) - драфтер, с которым работала PFlash-ветка Lucebox.
+- [Towards High-Goodput LLM Serving with Prefill-Decode Multiplexing](https://arxiv.org/abs/2504.14489) - мультиплексирование prefill и decode.
+- [DuetServe: Harmonizing Prefill and Decode for LLM Serving via Adaptive GPU Multiplexing](https://arxiv.org/abs/2511.04791) - адаптивное распределение GPU между prefill и decode.
+- [Adaptive DHiSparse: Speculative Decoding over a Load-Adaptive KV Hierarchy](https://arxiv.org/abs/2610.13708) - KV-иерархия под нагрузку, близко к теме квантованного KV на 8 ГБ.
+- [PARD-2: Target-Aligned Parallel Draft Model for Dual-Mode Speculative Decoding](https://arxiv.org/abs/2605.08632) - цитируется в тексте серии.
