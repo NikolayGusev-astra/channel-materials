@@ -166,7 +166,7 @@ PFlash - сжатие prefill из research-демона Lucebox, которог
 Именно поэтому следующие три статьи не являются рекламными карточками: отдельно разберём хорошие условия DFlash, доменную зависимость EAGLE-3 и prefill с длинным контекстом. А в четвёртой, последней части соберём теоретические ветки, которые на RTX 4060 нельзя честно закрыть измерением: тренировку собственной EAGLE-3 головы, MLX-оптимизации и перенос на Ryzen AI Max+ 395 с ROCm. Каждая ветка получила свой статус: измерено, спроектировано или отложено до подходящего железа. Скрипты владеют матрицей эксперимента сами: LLM в исполнительном контуре нет, агент ничего не решает после старта.
 ## Источники
 
-- [Better & Faster Large Language Models via Multi-token Prediction](https://arxiv.org/abs/2404.19737) - исходная статья про MTP-головы.
+- [Better and Faster Large Language Models via Multi-token Prediction](https://arxiv.org/abs/2404.19737) - исходная статья про MTP-головы.
 - [AgentSpec: Speculative Decoding for Batch Inference of LLM Agents](https://arxiv.org/abs/2608.24004) - деградация спекуляции под ростом батча.
 - [PARD-2: Target-Aligned Parallel Draft Model for Dual-Mode Speculative Decoding](https://arxiv.org/abs/2605.08632) - objective драфтера через длину непрерывного принятия.
 - [Qwen3.5-4B-MTP-GGUF (unsloth)](https://huggingface.co/unsloth/Qwen3.5-4B-MTP-GGUF) - модель с нативными MTP-головами, измеренная в серии.
