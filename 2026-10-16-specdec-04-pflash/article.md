@@ -59,12 +59,12 @@ PFlash оптимизирует именно первую стрелку. Это
 
 ## Сборка несуществующего
 
-Сборка не лежит в GitHub как бинарный релиз: `test_dflash.exe` и CUDA DLL занимают сотни мегабайт, а часть зависимостей привязана к локальной версии CUDA. В репозитории лежат исходники Lucebox в `vendor/lucebox/`, журнал сборки и патчи. Для Windows я использовал CMake, Ninja, CUDA Toolkit и Visual Studio Build Tools.
+Сборка не лежит в GitHub как бинарный релиз: `test_dflash.exe` и CUDA DLL занимают сотни мегабайт, а часть зависимостей привязана к локальной версии CUDA. Исходники Lucebox лежат в `vendor/lucebox/` материалов проекта - сам движок в git не заливается, почему и куда смотреть, разобрано ниже. Там же журнал сборки и патчи. Для Windows я использовал CMake, Ninja, CUDA Toolkit и Visual Studio Build Tools.
 
 Минимальный путь для Linux/WSL2, близкий к upstream-инструкции:
 
 ```bash
-cd poc-node-utilization/vendor/lucebox
+cd vendor/lucebox
 cmake -B server/build -S server -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_CUDA_ARCHITECTURES=89

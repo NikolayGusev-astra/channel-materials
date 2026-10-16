@@ -80,6 +80,7 @@ DFlash 2 - блочный диффузионный драфтер от Z Lab. З
 Параметр `n_max` задаёт ширину блока. Мы специально прогнали n=4, n=8 и n=15, потому что максимальная ширина из рекламного примера не обязана быть оптимальной для конкретного корпуса.
 
 ```bash
+git clone https://github.com/NikolayGusev-astra/poc-node-utilization.git
 cd poc-node-utilization
 python validation-v3/r2b_nmax_sweep.py
 ```
