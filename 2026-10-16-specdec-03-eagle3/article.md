@@ -83,7 +83,7 @@ Q8_0   target -> acceptance ~0.17
 
 ```bash
 git clone https://github.com/NikolayGusev-astra/specdec-bench.git
-cd poc-node-utilization
+cd specdec-bench
 python validation-v3/run_spec_matrix.py --group qwen3-4b --reps 3
 ```
 

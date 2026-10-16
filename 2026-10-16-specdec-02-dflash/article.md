@@ -81,7 +81,7 @@ DFlash 2 - блочный диффузионный драфтер от Z Lab. З
 
 ```bash
 git clone https://github.com/NikolayGusev-astra/specdec-bench.git
-cd poc-node-utilization
+cd specdec-bench
 python validation-v3/r2b_nmax_sweep.py
 ```
 
