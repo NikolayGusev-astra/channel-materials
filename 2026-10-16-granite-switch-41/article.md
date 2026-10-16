@@ -1,3 +1,12 @@
+---
+title: "Granite Switch 4.1 — универсальный солдат?"
+date: 2026-10-16
+tags: [granite, llm, speech, model-routing]
+author: Гусев Николай
+site:
+  slug: granite-switch-41
+  tags: [ai, llm, speech, model-routing]
+---
 # Granite Switch 4.1 — универсальный солдат?
 
 
@@ -44,7 +53,7 @@
 
 Результат — не просто текстовый ответ, а структурированная запись: язык обращения, его тема, приоритет, эмоциональная окраска текста (sentiment), флаги риска (risk flags — признаки, требующие дополнительной проверки), найденные документы, рекомендуемый следующий шаг и объяснение выбранного маршрута.
 
-![Схема L1-пайпа Granite Switch: один endpoint сам решает — отвечать клиенту или переводить на L2](https://raw.githubusercontent.com/NikolayGusev-astra/channel-materials/master/2026-10-16-granite-switch-41/granite-l1-pipeline.png)
+![Схема L1-пайпа Granite Switch: один endpoint сам решает — отвечать клиенту или переводить на L2](/granite-switch-41/granite-l1-pipeline.png)
 
 ### Заметки на полях: куда я бы это поставил
 
