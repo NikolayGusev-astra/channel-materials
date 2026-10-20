@@ -1,6 +1,0 @@
-| model                          |       size |     params | backend    | threads |            test |                  t/s |
-| ------------------------------ | ---------: | ---------: | ---------- | ------: | --------------: | -------------------: |
-| llama 8B Q4_K - Medium         |   4.58 GiB |     8.04 B | ZenDNN     |      12 |           pp512 |         51.59 ± 0.94 |
-| llama 8B Q4_K - Medium         |   4.58 GiB |     8.04 B | ZenDNN     |      12 |           tg128 |          9.94 ± 0.03 |
-
-build: unknown (0)
