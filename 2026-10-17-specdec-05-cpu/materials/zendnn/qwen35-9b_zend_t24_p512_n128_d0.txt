@@ -1,0 +1,6 @@
+| model                          |       size |     params | backend    | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | ------: | --------------: | -------------------: |
+| qwen35 9B Q4_K - Medium        |   5.28 GiB |     8.95 B | ZenDNN     |      24 |           pp512 |         48.57 ± 4.32 |
+| qwen35 9B Q4_K - Medium        |   5.28 GiB |     8.95 B | ZenDNN     |      24 |           tg128 |          1.06 ± 0.93 |
+
+build: unknown (0)
