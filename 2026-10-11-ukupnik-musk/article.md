@@ -4,9 +4,6 @@ slug: shest-gvozdey-v-diferent
 date: 2026-10-11
 tags: [ai-agents, engineering-method, decision-gate, skills]
 author: Гусев Николай
-site:
-  slug: shest-gvozdey-v-diferent
-  tags: [ai-agents, engineering-method, decision-gate, skills]
 ---
 # Шесть гвоздей в диф
 

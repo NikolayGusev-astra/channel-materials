@@ -1,0 +1,6 @@
+| model                          |       size |     params | backend    | threads |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | ------: | --------------: | -------------------: |
+| gemma4 E4B Q4_K - Medium       |   4.62 GiB |     7.52 B | ZenDNN     |      12 |           pp512 |         83.34 ± 1.27 |
+| gemma4 E4B Q4_K - Medium       |   4.62 GiB |     7.52 B | ZenDNN     |      12 |           tg128 |         12.33 ± 0.15 |
+
+build: unknown (0)
