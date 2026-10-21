@@ -7,6 +7,7 @@ author: Гусев Николай
 site:
   slug: hermes-top10-skills
   tags: [hermes, skills, agents]
+  cover: cover.png
 ---
 # Топ-10 скиллов Hermes Agent на каждый день
 
