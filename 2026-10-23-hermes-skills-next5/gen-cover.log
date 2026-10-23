@@ -1,0 +1,5 @@
+queued warmup -> 0ac28708-307f-43d6-bc6b-6817d35e952a
+DONE warmup: warmup-gears_00001_.png (45s)
+queued cover-gears -> 473878d3-db51-4211-be7d-04beb280b9bc
+DONE cover-gears: cover-gears_00001_.png (60s)
+{'filename': 'cover-gears_00001_.png', 'subfolder': 'qwen21', 'type': 'output'}
