@@ -8,6 +8,7 @@ site:
   slug: qwen-image-21-turbo-bench
   cover: turbo-int8-poster.png
   tags: [qwen, comfyui, benchmark]
+summary: "Живой бенчмарк Qwen-Image-2.1 Turbo против базы на одной карте: 48 секунд против 121, текст в кадре и руки на паритете, грабли GGUF-квантов и гарантированный краш референса."
 ---
 # Qwen-Image-2.1 Turbo: в 2.5 раза быстрее на одной карте
 
