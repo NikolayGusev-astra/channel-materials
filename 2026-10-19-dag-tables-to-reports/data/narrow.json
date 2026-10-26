@@ -1,0 +1,117 @@
+{
+ "facts": [
+  {
+   "slug": "qwen-image-21-turbo-bench",
+   "title": "Qwen-Image-2.1 Turbo: в 2.5 раза быстрее на одной карте",
+   "published": "2026-10-09",
+   "ip": 2010,
+   "views_09_13": 1141,
+   "views_14_19": 1035,
+   "trend": "стабильно"
+  },
+  {
+   "slug": "multiagentnost-router-supervisor-cena-komandy",
+   "title": "Мультиагентность: роутер, supervisor и цена команды",
+   "published": "2026-10-08",
+   "ip": 1990,
+   "views_09_13": 1263,
+   "views_14_19": 891,
+   "trend": "спад"
+  },
+  {
+   "slug": "agenty-uchim-model-zvat-instrumenty",
+   "title": "Агенты: учим модель звать инструменты",
+   "published": "2026-10-08",
+   "ip": 1633,
+   "views_09_13": 1229,
+   "views_14_19": 543,
+   "trend": "спад"
+  },
+  {
+   "slug": "embeddinggemma2-skrinshoty-poisk",
+   "title": "Поиск по скриншотам документации на одной видеокарте: EmbeddingGemma 2, 53 картинки и 8 секунд",
+   "published": "2026-10-07",
+   "ip": 1582,
+   "views_09_13": 1230,
+   "views_14_19": 469,
+   "trend": "спад"
+  },
+  {
+   "slug": "mcp-ekosistema-agenta",
+   "title": "MCP и память агента: экосистема вокруг модели",
+   "published": "2026-10-14",
+   "ip": 785,
+   "views_09_13": 0,
+   "views_14_19": 824,
+   "trend": "новинка"
+  },
+  {
+   "slug": "granite-switch-41",
+   "title": "Granite Switch 4.1 — универсальный солдат?",
+   "published": "2026-10-16",
+   "ip": 756,
+   "views_09_13": 0,
+   "views_14_19": 786,
+   "trend": "новинка"
+  },
+  {
+   "slug": "frontiernye-llm-ne-vsegda-opravdany",
+   "title": "Почему при доступности фронтирных LLM их использование не всегда оправдано, или \"Не забиваем гвозди микроскопом",
+   "published": "2026-10-14",
+   "ip": 740,
+   "views_09_13": 0,
+   "views_14_19": 777,
+   "trend": "новинка"
+  },
+  {
+   "slug": "proverka-speculyacii-na-odnoj-4060",
+   "title": "Проверяем спекулятивное декодирование на одной RTX 4060: четыре метода, ноль API",
+   "published": "2026-10-16",
+   "ip": 623,
+   "views_09_13": 0,
+   "views_14_19": 645,
+   "trend": "новинка"
+  },
+  {
+   "slug": "eagle3-acceptance-017-lyubaya-kvantizaciya",
+   "title": "EAGLE-3 на 4060: acceptance 0.17 при любой квантизации - домен решает, не битрейт",
+   "published": "2026-10-16",
+   "ip": 602,
+   "views_09_13": 0,
+   "views_14_19": 621,
+   "trend": "новинка"
+  },
+  {
+   "slug": "knizhka-v-samolyot-glava-1",
+   "title": "Книжка в самолёт: глава 1 - движок, чат-бот, агент",
+   "published": "2026-10-06",
+   "ip": 553,
+   "views_09_13": 310,
+   "views_14_19": 287,
+   "trend": "стабильно"
+  },
+  {
+   "slug": "summa-mr-vs-refine",
+   "title": "Суммаризация: MapReduce против Refine на живом замере",
+   "published": "2026-10-06",
+   "ip": 530,
+   "views_09_13": 346,
+   "views_14_19": 211,
+   "trend": "спад"
+  },
+  {
+   "slug": "ot-cepocek-k-grafam-langgraph",
+   "title": "От цепочек к графам: LangGraph и цена свободы",
+   "published": "2026-10-06",
+   "ip": 513,
+   "views_09_13": 287,
+   "views_14_19": 255,
+   "trend": "стабильно"
+  }
+ ],
+ "report": {
+  "google/gemma-4-e4b": {
+   "error": "no json"
+  }
+ }
+}

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Granite Switch 4.1 — автоматизация L1-поддержки</title>
+<style>
+  :root{
+    --bg: #0e1016;
+    --card:#171a23;
+    --card2:#1d222d;
+    --line:#2b3240;
+    --ink:#e7ebf3;
+    --muted:#9aa7bb;
+    --accent:#8b7cff;
+    --accent2:#39c7d6;
+    --ok:#3ecf8e;
+    --warn:#ffb454;
+    --risk:#ff6b6b;
+    --base:#6d7cff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5; padding:28px 20px 60px;
+  }
+  .wrap{max-width:980px;margin:0 auto}
+  header{margin-bottom:22px}
+  h1{font-size:22px;margin:0 0 6px;letter-spacing:.2px}
+  .sub{color:var(--muted);font-size:14px;margin:0}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+  .chip{font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted)}
+  .chip b{color:var(--ink);font-weight:600}
+  .controls{display:flex;gap:10px;align-items:center;margin-bottom:22px;flex-wrap:wrap}
+  button{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#0a0b10;border:0;border-radius:10px;padding:10px 18px;font-weight:600;
+    font-size:14px;cursor:pointer;transition:transform .1s ease,filter .1s ease;
+  }
+  button:hover{filter:brightness(1.08)}
+  button:active{transform:translateY(1px)}
+  button.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+  .run-status{color:var(--muted);font-size:13px}
+  .run-status b{color:var(--ok)}
+
+  /* pipeline grid */
+  .stage{margin:0 0 26px}
+  .stage-title{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px}
+
+  .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  }
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .node{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px;position:relative;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+    cursor:default;
+  }
+  .node .t{font-weight:600;font-size:14px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+  .node .d{font-size:12.5px;color:var(--muted)}
+  .node .tag{
+    position:absolute;top:10px;right:10px;font-size:10px;padding:2px 7px;border-radius:6px;
+    background:var(--card2);border:1px solid var(--line);color:var(--muted);
+  }
+  .node .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 0 4px rgba(139,124,255,.15)}
+
+  /* color variants */
+  .node.asr{border-top:2px solid var(--accent2)}
+  .node.decision{border-top:2px solid var(--base)}
+  .node.crm{border-top:2px solid var(--warn)}
+  .node.rag{border-top:2px solid var(--accent)}
+  .node.gen{border-top:2px solid var(--accent2)}
+  .node.guard{border-top:2px solid var(--risk)}
+  .node.ticket{border-top:2px solid var(--ok)}
+  .node.human{border-top:2px solid var(--warn);border-style:dashed}
+
+  .node.active{transform:translateY(-3px);border-color:var(--accent);
+    box-shadow:0 8px 26px rgba(139,124,255,.22)}
+  .node.dim{opacity:.35}
+  .node .tag.active{background:var(--accent);color:#0a0b10;border-color:var(--accent)}
+
+  /* decision diamond */
+  .decision{
+    background:var(--card2);border:1px dashed var(--warn);border-radius:14px;
+    padding:14px;text-align:center;margin-top:14px;
+  }
+  .decision .t{justify-content:center}
+  .decision .t .dot{background:var(--warn);box-shadow:0 0 0 4px rgba(255,180,84,.15)}
+  .branches{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .branch{
+    font-size:12.5px;padding:8px 12px;border-radius:9px;background:var(--card);
+    border:1px solid var(--line);flex:1;min-width:150px;text-align:center;
+  }
+  .branch b{display:block;font-size:13px;margin-bottom:3px}
+  .branch.low b{color:var(--ok)}
+  .branch.high b{color:var(--warn)}
+  .branch .arrow{font-size:11px;color:var(--muted)}
+.branch.on{border-color:var(--accent);box-shadow:0 8px 26px rgba(139,124,255,.22);background:var(--card2);transform:translateY(-2px)}
+
+  /* flow arrows between stages */
+  .arrow-down{text-align:center;color:var(--muted);margin:6px 0 18px;font-size:20px;line-height:1}
+
+  /* log */
+  .log{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;font-family:ui-monospace,monospace;font-size:13px;
+    max-height:230px;overflow:auto;margin-top:8px;
+  }
+  .log .row{padding:3px 0;color:var(--muted);border-bottom:1px dashed rgba(255,255,255,.04)}
+  .log .row:last-child{border-bottom:0}
+  .log .row b{color:var(--ink)}
+  .log .row .t{color:var(--accent2)}
+  .log .row .w{color:var(--warn)}
+  .log .row .g{color:var(--ok)}
+  .log .row .r{color:var(--risk)}
+  .empty{color:var(--muted);font-style:italic;padding:6px 0}
+
+  .note{margin-top:20px;font-size:12.5px;color:var(--muted);background:var(--card);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 8px 8px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Granite Switch 4.1 — автоматизация L1-поддержки</h1>
+    <p class="sub">Единый inference-слой: один endpoint последовательно обслуживает речь, классификацию, поиск и проверку. Оркестратор (CRM, RAG, тикет-система) — вне модели.</p>
+  </header>
+
+  <div class="legend">
+    <span class="chip"><b>ASR</b> — распознавание речи</span>
+    <span class="chip"><b>Decision</b> — классификация и приоритет</span>
+    <span class="chip"><b>Guardian</b> — проверка безопасности</span>
+    <span class="chip"><b>Base</b> — генерация ответа</span>
+    <span class="chip"><b>CRM / RAG</b> — внешние системы</span>
+  </div>
+
+  <div class="controls">
+    <button id="runLow">▶ Низкорисковый запрос</button>
+    <button id="runHigh">▶ Запрос с риском</button>
+    <button class="ghost" id="resetBtn">Сбросить</button>
+    <span class="run-status" id="status">Выберите сценарий, чтобы прогнуть обращение через конвейер.</span>
+  </div>
+
+  <!-- STAGE 1 -->
+  <div class="stage"><div class="stage-title">1. Приём обращения</div>
+    <div class="grid">
+      <div class="node asr" data-name="ASR"><span class="tag"> Granite Speech 5.0 </span>
+        <div class="t"><span class="dot"></span>Распознание речи</div>
+        <div class="d">Голос → текст. Встроенный энкодер на 470M. Пока только <b>English</b>.</div>
+      </div>
+      <div class="node" data-name="Текст">
+        <div class="t"><span class="dot" style="background:var(--muted)"></span>Текстовое обращение</div>
+        <div class="d">Письмо, чат, голосовое сообщение, комментарий.</div>
+      </div>
+      <div class="node" data-name="Норма">
+        <div class="t"><span class="dot" style="background:var(--muted)"></span>Нормализация</div>
+        <div class="d">Очистка, определение языка, разделение реплик.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down">↓</div>
+
+  <!-- STAGE 2 -->
+  <div class="stage"><div class="stage-title">2. Классификация (Decision aLoRA)</div>
+    <div class="grid">
+      <div class="node decision" data-name="Decision"><span class="tag"> aLoRA </span>
+        <div class="t"><span class="dot"></span>Определение типа и приоритета</div>
+        <div class="d">Одна прогонка: категория, срочность, риск, маршрут, какие системы вызывать.</div>
+      </div>
+      <div class="node crm" data-name="CRM">
+        <div class="t"><span class="dot" style="background:var(--warn)"></span>Карточка заказчика</div>
+        <div class="d">Идентификатор → тариф, продукт, договоры, контакты.</div>
+      </div>
+      <div class="node crm" data-name="История">
+        <div class="t"><span class="dot" style="background:var(--warn)"></span>Предыдущие обращения</div>
+        <div class="d">Открытые и закрытые тикеты, история обращений в поддержку.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down">↓</div>
+
+  <!-- STAGE 3 -->
+  <div class="stage"><div class="stage-title">3. Контекст и поиск (RAG)</div>
+    <div class="grid">
+      <div class="node" data-name="Контекст">
+        <div class="t"><span class="dot" style="background:var(--muted)"></span>Сбор контекста проблемы</div>
+        <div class="d">Текущий запрос + история + данные клиента + технические параметры.</div>
+      </div>
+      <div class="node rag" data-name="RAG"><span class="tag"> корп. база </span>
+        <div class="t"><span class="dot" style="background:var(--accent)"></span>Поиск в корпоративной базе</div>
+        <div class="d">Инструкции, регламенты, база инцидентов, известные решения.</div>
+      </div>
+      <div class="node gen" data-name="Генерация"><span class="tag"> Base model </span>
+        <div class="t"><span class="dot" style="background:var(--accent2)"></span>Генерация ответа</div>
+        <div class="d">Базовая модель формирует ответ на основе найденного контекста.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down">↓</div>
+
+  <!-- STAGE 4 -->
+  <div class="stage"><div class="stage-title">4. Проверка (Guardian) и решение</div>
+    <div class="grid">
+      <div class="node guard" data-name="Guardian"><span class="tag"> aLoRA </span>
+        <div class="t"><span class="dot"></span>Проверка безопасности</div>
+        <div class="d">Утежка чувствительных данных, нарушения политик, опасное содержание.</div>
+      </div>
+      <div class="node" data-name="Правила">
+        <div class="t"><span class="dot" style="background:var(--muted)"></span>Бизнес-правила</div>
+        <div class="d">Категория низкорисковая? Есть уверенность? Есть статья?</div>
+      </div>
+      <div class="node decision" data-name="Решение">
+        <div class="t"><span class="dot"></span>Автоответ или эскалация</div>
+        <div class="d">Низкий риск → автоответ. Иначе → специалисту.</div>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="t"><span class="dot"></span>Прошёл ли Guardian и правила?</div>
+      <div class="branches">
+        <div class="branch low"><b class="low">✅ Низкий риск</b>Автоответ клиенту + запись в тикет<span class="arrow">уверенность высокая, статья найдена</span></div>
+        <div class="branch high"><b class="high">⚠ Перевести специалисту</b>Текст → L2-оператору, человек принимает решение<span class="arrow">низкая уверенность / риск / нет статьи</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down">↓</div>
+
+  <!-- STAGE 5 -->
+  <div class="stage"><div class="stage-title">5. Результат (внешняя тикет-система)</div>
+    <div class="grid">
+      <div class="node ticket" data-name="Тикет">
+        <div class="t"><span class="dot" style="background:var(--ok)"></span>Запись в тикет</div>
+        <div class="d">Обращение, резюме, категория, приоритет, найденные статьи, ответ.</div>
+      </div>
+      <div class="node ticket" data-name="Отправка">
+        <div class="t"><span class="dot" style="background:var(--ok)"></span>Отправка клиенту</div>
+        <div class="d">Готовый ответ на языке клиента (только для низкорисковых категорий).</div>
+      </div>
+      <div class="node human" data-name="L2">
+        <div class="t"><span class="dot" style="background:var(--warn)"></span>Передача специалисту</div>
+        <div class="d">L2-оператор получает контекст, историю и подготовленную версию ответа.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Важно.</b> Granite Switch не является CRM, RAG или тикет-системой. Он распознаёт речь, классифицирует запрос, анализирует текст и формирует ответ. Поиск клиента, вызов API, поиск документов, создание тикета и отправка делает внешний оркестратор.
+  </div>
+
+  <div class="log" id="log">
+    <div class="row empty">Нажмите «Показать путь», чтобы проанализировать обращение.</div>
+  </div>
+</div>
+
+<script>
+const nodes=document.querySelectorAll('.node');
+const logEl=document.getElementById('log');
+const statusEl=document.getElementById('status');
+const runLow=document.getElementById('runLow');
+const runHigh=document.getElementById('runHigh');
+
+function clearActive(){
+  nodes.forEach(n=>{n.classList.remove('active','dim')});
+}
+function dimAllExcept(names){
+  nodes.forEach(n=>{
+    if(names.includes(n.dataset.name)) n.classList.add('active');
+    else n.classList.add('dim');
+  });
+}
+function resetNodes(){nodes.forEach(n=>n.classList.remove('active','dim'))}
+
+const scenarios=[
+  {
+    title:'Сценарий A — низкорисковый запрос',
+    path:['Текстовое обращение','Распознание речи','Нормализация','Определение типа и приоритета','Карточка заказчика','Предыдущие обращения','Сбор контекста проблемы','Поиск в корпоративной базе','Генерация ответа','Проверка безопасности','Бизнес-правила','Отправка','Тикет'],
+    log:[
+      ['t','Входящее обращение: «Как продлить тариф на сервере?»'],
+      ['g','ASR: голосовой запрос распознан в текст'],
+      ['t','Decision: категория = «Тариф/Продление», приоритет = низкий'],
+      ['w','CRM: карточка клиента найдена, активный тариф X'],
+      ['w','История: 1 обращение за последние 30 дней (не решало задачу)'],
+      ['t','RAG: найдена статья «Продление тарифа»'],
+      ['g','Base: сформирован ответ с инструкцией'],
+      ['r','Guardian: чувствительные данные не обнаружены'],
+      ['g','Правила: низкий риск, уверенность 0.94 → автоответ'],
+      ['g','Тикет: статус «Решено», ответ отправлен клиенту'],
+    ]
+  },
+  {
+    title:'Сценарий B — потенциальный риск',
+    path:['Голосовое обращение','Распознание речи','Нормализация','Определение типа и приоритета','Карточка заказчика','Предыдущие обращения','Сбор контекста проблемы','Поиск в корпоративной базе','Генерация ответа','Проверка безопасности','Бизнес-правила','Отправка','L2'],
+    log:[
+      ['t','Входящее обращение: голосовое, эмоциональный тон'],
+      ['g','ASR: распознание с WER 0.21 (низкая уверенность в транскрипте)'],
+      ['t','Decision: категория = «Жалоба/Возврат», приоритет = высокий'],
+      ['w','CRM: карточка клиента найдена'],
+      ['w','История: 2 предыдущих обращения с темой «Оплата»'],
+      ['t','RAG: подходящей статьи нет'],
+      ['g','Base: подготовлен черновик ответа'],
+      ['r','Guardian: обнаружено упоминание персональных данных'],
+      ['w','Правила: риск = да, статьи нет → эскалация'],
+      ['w','Тикет: статус «Передан в L2», контекст отправлен оператору'],
+    ]
+  }
+];
+
+const branches=document.querySelectorAll('.branch');
+async function run(idx){
+  const s=scenarios[idx];
+  logEl.innerHTML='';
+  statusEl.innerHTML='Прогон: <b>'+s.title+'</b>';
+  resetNodes();
+  branches.forEach((b,i)=>{b.classList.toggle('on',i===idx)});
+  runLow.disabled=true;
+  runHigh.disabled=true;
+  await sleep(120);
+  for(const step of s.path){
+    dimAllExcept([step]);
+    await sleep(520);
+  }
+  await sleep(200);
+  for(const [cls,txt] of s.log){
+    const row=document.createElement('div');
+    row.className='row';
+    row.innerHTML='<span class="'+cls+'">▸</span> '+escapeHtml(txt);
+    logEl.appendChild(row);
+    logEl.scrollTop=logEl.scrollHeight;
+    await sleep(360);
+  }
+  clearActive();
+  branches.forEach((b,i)=>{b.classList.toggle('on',i===idx)});
+  runLow.disabled=false;
+  runHigh.disabled=false;
+}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+runLow.onclick=()=>run(0);
+runHigh.onclick=()=>run(1);
+document.getElementById('resetBtn').onclick=()=>{resetNodes();branches.forEach(b=>b.classList.remove('on'));logEl.innerHTML='<div class="row empty">Выберите сценарий, чтобы прогнуть обращение через конвейер.</div>';statusEl.textContent='Сброс';};
+</script>
+</body>
+</html>
