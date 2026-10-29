@@ -1,0 +1,9 @@
+<b>Анлок 3090: 2000 tok/s prefill на 32K</b>
+
+Комментарий читателя: совместил HyperQwen с gpu-unlock и получил почти 2000 токенов в секунду prefill на 32K контекста одной 3090. Цифра подозрительная - пришлось разбираться.
+
+В разборе: откуда берётся 2000 (спойлер: это prefill, не декод), что такое HyperQwen (патчи к vLLM 0.31.0 + реквант чекпойнта Qwen3.8-27B, Apache 2.0, docker compose), кому анлок реально поможет на 2080 Ti, 3090, 4060 Ti и 4090, почему 5070 Ti мимо (Blackwell), и при чём тут APU на 128 ГБ.
+
+→ <a href="https://hermes-agent.ru/news/gpu-unlock-prefill-agenty/">Читать на сайте</a>
+
+#llm #gpu #inference #agents
